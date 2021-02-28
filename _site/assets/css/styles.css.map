@@ -1,0 +1,16 @@
+{
+	"version": 3,
+	"file": "styles.css",
+	"sources": [
+		"styles.scss",
+		"_sass/main.scss",
+		"_sass/ball.scss"
+	],
+	"sourcesContent": [
+		"@import \"main\";\n@import \"ball\";",
+		"body {\n    font-family: Arial, Helvetica, sans-serif;\n    user-select: none\n}\n\nnav {\n    background-color: grey;\n}\n\n.content {\n    background-color: aqua;\n    margin: 0 150px;\n}\n\n.current {\n    color: green;\n    font-size: 50pt;\n}",
+		"#ball {\n    width: 50px;\n    height: 50px;\n    border-radius: 50%;\n    background-color: green;\n    display: inline-block;\n    position: absolute;\n}\n\n#text {\n    border: solid 1px black;\n    position: relative;\n    left: 50px;\n    bottom: 50px;\n}\n"
+	],
+	"names": [],
+	"mappings": "ACAA,AAAA,IAAI,CAAC,EACD,WAAW,EAAE,4BAA4B,EACzC,WAAW,EAAE,IACjB,GAAC;;AAED,AAAA,GAAG,CAAC,EACA,gBAAgB,EAAE,IAAI,GACzB;;AAED,AAAA,QAAQ,CAAC,EACL,gBAAgB,EAAE,IAAI,EACtB,MAAM,EAAE,OAAO,GAClB;;AAED,AAAA,QAAQ,CAAC,EACL,KAAK,EAAE,KAAK,EACZ,SAAS,EAAE,IAAI,GAClB;;ACjBD,AAAA,KAAK,CAAC,EACF,KAAK,EAAE,IAAI,EACX,MAAM,EAAE,IAAI,EACZ,aAAa,EAAE,GAAG,EAClB,gBAAgB,EAAE,KAAK,EACvB,OAAO,EAAE,YAAY,EACrB,QAAQ,EAAE,QAAQ,GACrB;;AAED,AAAA,KAAK,CAAC,EACF,MAAM,EAAE,eAAe,EACvB,QAAQ,EAAE,QAAQ,EAClB,IAAI,EAAE,IAAI,EACV,MAAM,EAAE,IAAI,GACf"
+}
