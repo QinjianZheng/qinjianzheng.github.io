@@ -10,7 +10,7 @@ head: Games
     {%- for item in site.data.games -%}
         <div class="gamecard">
             <div class="imgcontainer">
-                <img src={{ item.img }} />
+                <img src="{{ item.img }}" />
             </div>
             <a href="{{ item.link }}">
                 {{ item.name }}
