@@ -1,8 +1,11 @@
-const limitInterval = 500;
+const limitInterval = 200;
 const ball = document.getElementById("ball");
 const espace = document.getElementById("escape");
 const time = document.getElementById("time");
 const description = document.getElementById("description");
+const reloadButton = document.getElementById("reload");
+
+
 ball.style.left = '100px';
 ball.style.top = '250px';
 
@@ -11,7 +14,7 @@ let count = 0;
 let currTime = Date.now();
 let prevTime = 0;
 
-const handler = (event) => {
+document.addEventListener('mousemove', (event) => {
     const ballRect = ball.getBoundingClientRect();
     let ballX = (ballRect.left + ballRect.right) / 2;
     let ballY = (ballRect.top + ballRect.bottom) / 2;
@@ -31,8 +34,8 @@ const handler = (event) => {
         count ++;
         espace.textContent = `Escape: ${count}`;
         time.textContent = `Time: ${timePass}`;
-        let randomX = 150 + Math.floor(Math.random() * 500);
-        let randomY = 200 + Math.floor(Math.random() * 300);
+        let randomX = 150 + Math.floor(Math.random() * 1000);
+        let randomY = 200 + Math.floor(Math.random() * 600);
         ball.style.left = randomX + 'px';
         ball.style.top = randomY + 'px';
         if(count % 4 == 0) {
@@ -45,8 +48,8 @@ const handler = (event) => {
         console.log("previous time = ", prevTime);
         
     }
-};
+});
 
-document.addEventListener('mousemove', handler);
-
-
+reloadButton.addEventListener('click', () => {
+    location.reload();
+});

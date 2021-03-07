@@ -1,13 +1,65 @@
-body { font-family: Arial, Helvetica, sans-serif; user-select: none; }
+body { margin: 0; font-family: Helvetica, sans-serif; -webkit-font-smoothing: antialiased; }
 
-nav { background-color: grey; }
+body a { text-decoration: none; }
 
-.content { background-color: aqua; margin: 0 150px; }
+.main { background-color: rgba(255, 255, 255, 0); max-width: 650px; margin: 0 auto 50px; padding-top: 20px; height: 100%; }
 
-.current { color: green; font-size: 50pt; }
+.main #me { width: 200px; height: auto; }
+
+.main #introduction { font-size: 14pt; }
+
+.main #image { width: 200px; height: 213.56px; border-radius: 50%; overflow: hidden; float: right; margin-left: 20px; }
+
+.main h2 { font-weight: 600; margin-block-end: 0.5em; }
+
+.main h4 { color: grey; font-weight: 300; margin-block-start: 0; }
+
+.main a:hover { text-decoration: underline; }
+
+.main hr { border: none; height: 1px; background-color: #c4c4c4; }
+
+.main p { line-height: 1.6em; }
+
+.main ul { padding-inline-start: 0; }
+
+.main .listing { border-bottom: dashed 1px #c4c4c4; width: 100%; display: flex; justify-content: space-between; align-items: center; height: 30px; }
+
+.main .listing span { color: grey; }
 
 #ball { width: 50px; height: 50px; border-radius: 50%; background-color: green; display: inline-block; position: absolute; }
 
 #text { border: solid 1px black; position: relative; left: 50px; bottom: 50px; }
+
+nav { height: 60px; background-color: white; display: flex; align-items: center; justify-content: space-around; border-bottom: solid 1px #ebe9e9; }
+
+.logo { font-family: monospace; font-size: 24pt; font-weight: lighter; margin-left: 30px; }
+
+.logo a { color: #292727; }
+
+.menu { font-size: 14pt; display: flex; justify-content: space-around; width: 400px; }
+
+.menu a { color: #292727; text-decoration: none; }
+
+.current { color: green; }
+
+footer { height: 40px; color: #b1b1b1; display: flex; align-items: center; justify-content: center; }
+
+footer a { color: #b1b1b1; margin-right: 20px; }
+
+footer .content { border-top: solid 1px #ebe9e9; padding-top: 10px; width: 650px; display: flex; justify-content: center; }
+
+#gamehead { text-align: center; }
+
+.gamecontainer { display: grid; grid-template-rows: 1fr 1fr; grid-template-columns: 1fr 1fr; justify-items: center; }
+
+.gamecard { width: 250px; height: 250px; background-color: #efeffe; margin: 5px; padding-bottom: 10px; display: flex; flex-direction: column; justify-content: space-around; align-items: center; }
+
+.gamecard img { object-fit: cover; width: 200px; height: 200px; }
+
+.gamecard .imgcontainer { width: 200px; height: 200px; overflow: hidden; }
+
+.gamecard:hover { background-color: #d0d0ff; }
+
+.gamecard a { font-size: 20pt; color: black; font-weight: bold; }
 
 /*# sourceMappingURL=styles.css.map */

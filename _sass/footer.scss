@@ -1,0 +1,23 @@
+footer {
+    height: 40px;
+    color: rgb(177, 177, 177);
+    
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+}
+
+footer a {
+    color: rgb(177, 177, 177);
+    margin-right: 20px;
+}
+
+footer .content {
+    border-top: solid 1px rgb(235, 233, 233);
+    padding-top: 10px;
+    width: 650px;
+    display: flex;
+    justify-content: center;
+}
+

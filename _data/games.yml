@@ -1,0 +1,6 @@
+- name: Pick Me Up
+  link: /games/ballgame.html
+  img:  /ballgame1.jpg
+- name: Escape Ball
+  link: /games/ballgame2.html
+  img:  /ballgame2.jpg

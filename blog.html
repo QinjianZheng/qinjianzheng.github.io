@@ -1,14 +1,19 @@
 ---
 layout: default
-title: Blog
+title: Blog - Qinjian
+head: Posts
 ---
-<h1>Latest Posts</h1>
 
-<ul>
+<h2>{{ page.head }}</h2>
+<br/>
   {% for post in site.posts %}
-    <li>
-      <h2><a href="{{ post.url }}">{{ post.title }}</a></h2>
-      {{ post.excerpt }}
-    </li>
+    
+      <div class="listing">
+        <a href="{{ post.url }}">
+          {{ post.title }}
+        </a>
+        <span>{{ post.date | date_to_string}}</span>
+      </div>
+
+
   {% endfor %}
-</ul>

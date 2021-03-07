@@ -1,7 +1,7 @@
 const ball = document.getElementById("ball");
 
 ball.style.left = '100px';
-ball.style.top = '200px';
+ball.style.top = '300px';
 
 
 let cursorInBallOffsetX = 0;

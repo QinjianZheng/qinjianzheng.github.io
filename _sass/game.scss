@@ -1,0 +1,45 @@
+#gamehead {
+    text-align: center;
+}
+
+.gamecontainer {
+    display: grid;
+    grid-template-rows: 1fr 1fr;
+    grid-template-columns: 1fr 1fr;
+    justify-items: center;
+}
+
+.gamecard {
+    width: 250px;
+    height: 250px;
+    background-color: rgb(239, 239, 254);
+    margin: 5px;
+    padding-bottom: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+    align-items: center;
+}
+
+.gamecard img {
+    object-fit: cover;
+    width: 200px;
+    height: 200px;
+}
+
+.gamecard .imgcontainer {
+    width: 200px;
+    height: 200px;
+    overflow: hidden;
+
+}
+
+.gamecard:hover {
+    background-color: rgb(208, 208, 255);
+}
+
+.gamecard a {
+    font-size: 20pt;
+    color: black;
+    font-weight: bold;
+}

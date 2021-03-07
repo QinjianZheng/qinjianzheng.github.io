@@ -1,0 +1,36 @@
+nav {
+    height: 60px;
+    background-color: white;
+    display: flex;
+    align-items: center;
+    justify-content: space-around;
+    border-bottom: solid 1px rgb(235, 233, 233);
+}
+
+.logo {
+    font-family: monospace;
+    font-size: 24pt;
+    font-weight: lighter;
+    margin-left: 30px;
+}
+
+.logo a {
+    color: #292727;
+}
+
+.menu {
+    font-size: 14pt;
+    display: flex;
+    justify-content: space-around;
+    width: 400px;
+}
+
+.menu a {
+    color: #292727;
+    text-decoration: none;
+}
+
+.current {
+    color: green;
+    // font-size: 50pt;
+}

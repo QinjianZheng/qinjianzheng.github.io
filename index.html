@@ -1,9 +1,24 @@
 ---
 layout: default
-title: Home
+title: Qinjian's Place
 ---
 
-<div class="content">
-    <p>{{ "Welcome to my site" | downcase }}</p>
-</div>
+<h2>Hi, I'm Qinjian<div id="image"><img id="me" src="/me.png" alt="me"/></div></h2>
+<p id="introduction">
+    Welcome to my site! This is my personal place to 
+    share some of my thoughts about interesting things I found in life and study. Feel free to hang around.
+</p>
+    
+<br/><br/>
+<h2>Recent Posts</h2>
+<br/>
+
+
+    {% for post in site.posts %}
+
+        <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+        {{ post.excerpt }}
+        <hr/>
+
+    {% endfor %}
 
