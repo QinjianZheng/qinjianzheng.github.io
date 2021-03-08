@@ -1,4 +1,4 @@
-pre {
+.main pre {
     width: 850px;
     background-color: rgb(246,248,250);
     border-radius: 5px;
@@ -10,7 +10,7 @@ pre {
     word-wrap: break-word;
 }
 
-blockquote {
+.main blockquote {
     color: rgb(138, 138, 138);
     margin: 0;  
     padding-left: 1.4rem;  
