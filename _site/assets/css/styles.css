@@ -120,8 +120,8 @@ footer .content { border-top: solid 1px #ebe9e9; padding-top: 10px; width: 850px
 
 .language-plaintext { color: #ff8fa1; }
 
-pre { width: 850px; background-color: #f6f8fa; border-radius: 5px; padding: 10px; font-size: 13pt; white-space: pre-wrap; word-wrap: break-word; }
+.main pre { width: 850px; background-color: #f6f8fa; border-radius: 5px; padding: 10px; font-size: 13pt; white-space: pre-wrap; word-wrap: break-word; }
 
-blockquote { color: #8a8a8a; margin: 0; padding-left: 1.4rem; border-left: 4px solid #dadada; }
+.main blockquote { color: #8a8a8a; margin: 0; padding-left: 1.4rem; border-left: 4px solid #dadada; }
 
 /*# sourceMappingURL=styles.css.map */
