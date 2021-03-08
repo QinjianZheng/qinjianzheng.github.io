@@ -54,11 +54,11 @@ footer .content { border-top: solid 1px #ebe9e9; padding-top: 10px; width: 650px
 
 .gamecontainer { display: grid; grid-template-rows: 1fr 1fr; grid-template-columns: 1fr 1fr; justify-items: center; }
 
-.gamecard { width: 250px; height: 250px; background-color: #efeffe; margin: 5px; padding-bottom: 10px; display: flex; flex-direction: column; justify-content: space-around; align-items: center; }
+.gamecard { width: 250px; height: 250px; background-color: #efeffe; padding-bottom: 10px; display: flex; flex-direction: column; justify-content: space-between; align-items: center; }
 
-.gamecard img { object-fit: cover; width: 200px; height: 200px; }
+.gamecard img { object-fit: cover; width: 250px; height: 200px; }
 
-.gamecard .imgcontainer { width: 200px; height: 200px; overflow: hidden; }
+.gamecard .imgcontainer { width: 250px; height: 200px; overflow: hidden; }
 
 .gamecard:hover { background-color: #d0d0ff; }
 
