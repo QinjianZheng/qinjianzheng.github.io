@@ -1,0 +1,18 @@
+pre {
+    width: 850px;
+    background-color: rgb(246,248,250);
+    border-radius: 5px;
+    padding: 10px;
+    // border: solid 0.5px rgb(246,248,250);
+    font-size: 13pt;
+    // box-shadow: 3px 3px rgb(246,248,250);
+    white-space: pre-wrap;
+    word-wrap: break-word;
+}
+
+blockquote {
+    color: rgb(138, 138, 138);
+    margin: 0;  
+    padding-left: 1.4rem;  
+    border-left: 4px solid #dadada;
+}

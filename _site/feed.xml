@@ -1,1 +1,70 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-03-08T18:15:17+08:00</updated><id>/feed.xml</id></feed>
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-03-09T00:01:33+08:00</updated><id>/feed.xml</id><entry><title type="html">Notes of PostgreSQL operations and Shell commands</title><link href="/2021/03/08/Notes-of-PostgreSQL-operations-and-Shell-commands.html" rel="alternate" type="text/html" title="Notes of PostgreSQL operations and Shell commands" /><published>2021-03-08T00:00:00+08:00</published><updated>2021-03-08T00:00:00+08:00</updated><id>/2021/03/08/Notes%20of%20PostgreSQL%20operations%20and%20Shell%20commands</id><content type="html" xml:base="/2021/03/08/Notes-of-PostgreSQL-operations-and-Shell-commands.html">&lt;p&gt;Sometimes, commands will slip out the brain, and it is always good to have a place to look up these commands.
+&lt;!--more--&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;postgresql&quot;&gt;PostgreSql&lt;/h3&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;Start postgresql server&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pg_ctl start &lt;span class=&quot;nt&quot;&gt;-l&lt;/span&gt; YOUR_INSTALL_DIRECTORY/log
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;Stop postgresql server&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pg_ctl stop
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;check current status of server (is there any server running?)&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;pg_ctl status
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;create database&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;createdb
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;drop database&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;dropdb
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;For more information about PostgreSql, check &lt;a href=&quot;https://www.postgresql.org/docs/12/index.html&quot;&gt;PostgreSQL’s Documentation&lt;/a&gt;.&lt;/p&gt;
+
+&lt;h3 id=&quot;shell-commands&quot;&gt;Shell commands&lt;/h3&gt;
+&lt;hr /&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;definitions of commands come from &lt;strong&gt;“BSD General Commands Manual”&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;echo&lt;/code&gt; : write arguments to the standard output&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;hello&quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# hello&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cat&lt;/code&gt; : concatenate and print files&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;hello&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; file
+&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;file
+&lt;span class=&quot;c&quot;&gt;# hello&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;touch&lt;/code&gt; : change file access and modification times&lt;/p&gt;
+
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;touch &lt;/span&gt;file1
+&lt;span class=&quot;nb&quot;&gt;touch &lt;/span&gt;file2
+&lt;span class=&quot;nb&quot;&gt;touch &lt;/span&gt;file3
+&lt;span class=&quot;c&quot;&gt;# or &lt;/span&gt;
+&lt;span class=&quot;nb&quot;&gt;touch &lt;/span&gt;file1 file2 file3
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ls&lt;/code&gt; : list directory contents&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# file1 file2 file3&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;p&gt;If you want to learn more about shell commands, check out the following links.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.cs.cf.ac.uk/notes/linux-shell-commands/&quot;&gt;Linux Shell Commands&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://swcarpentry.github.io/shell-novice/reference&quot;&gt;The Unix Shell: Summary of Basic Commands&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://ubuntu.com/tutorials/command-line-for-beginners#1-overview&quot;&gt;The Linux command line for beginners&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">Sometimes, commands will slip out the brain, and it is always good to have a place to look up these commands.</summary></entry></feed>

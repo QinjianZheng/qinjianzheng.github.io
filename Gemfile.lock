@@ -72,6 +72,8 @@ DEPENDENCIES
   jekyll-feed
   jekyll-seo-tag
   jekyll-sitemap
+  kramdown
+  rouge
   webrick
 
 BUNDLED WITH

@@ -12,10 +12,11 @@ body a {
     font-family: "Assistant";
     src: url("/assets/font/Assistant-VariableFont_wght.ttf");
 }
+
 .main {
     font-family: "Assistant";
     background-color: rgba(255,255,255,0);
-    max-width: 650px;
+    max-width: 850px;
     margin: 0 auto 50px;
     padding-top: 20px;
     height: 100%;
@@ -45,6 +46,12 @@ body a {
     margin-block-end: 0.5em;
 }
 
+.main h3 {
+    margin-block-start: 2em;
+    margin-block-end: 0;
+}
+
+
 .main h4 {
     color: grey;
     font-weight: 300;
@@ -65,8 +72,12 @@ body a {
     line-height: 1.6em;
     font-size: 14pt;
 }
+
+
+
+
 .main ul {
-    padding-inline-start: 0;
+    // padding-inline-start: 0;
 }
 
 .main .listing {
