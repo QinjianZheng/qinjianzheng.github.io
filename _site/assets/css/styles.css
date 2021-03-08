@@ -2,7 +2,9 @@ body { margin: 0; font-family: Helvetica, sans-serif; -webkit-font-smoothing: an
 
 body a { text-decoration: none; }
 
-.main { background-color: rgba(255, 255, 255, 0); max-width: 650px; margin: 0 auto 50px; padding-top: 20px; height: 100%; }
+@font-face { font-family: "Assistant"; src: url("/assets/font/Assistant-VariableFont_wght.ttf"); }
+
+.main { font-family: "Assistant"; background-color: rgba(255, 255, 255, 0); max-width: 650px; margin: 0 auto 50px; padding-top: 20px; height: 100%; }
 
 .main #me { width: 200px; height: auto; }
 
@@ -18,7 +20,7 @@ body a { text-decoration: none; }
 
 .main hr { border: none; height: 1px; background-color: #c4c4c4; }
 
-.main p { line-height: 1.6em; }
+.main p { line-height: 1.6em; font-size: 14pt; }
 
 .main ul { padding-inline-start: 0; }
 

@@ -8,8 +8,12 @@ body {
 body a {
     text-decoration: none;
 }
-
+@font-face {
+    font-family: "Assistant";
+    src: url("/assets/font/Assistant-VariableFont_wght.ttf");
+}
 .main {
+    font-family: "Assistant";
     background-color: rgba(255,255,255,0);
     max-width: 650px;
     margin: 0 auto 50px;
@@ -19,7 +23,6 @@ body a {
 
 .main #me {
     width: 200px;
-    // height: 220px;
     height: auto;
 
 }
@@ -60,6 +63,7 @@ body a {
 
 .main p {
     line-height: 1.6em;
+    font-size: 14pt;
 }
 .main ul {
     padding-inline-start: 0;
