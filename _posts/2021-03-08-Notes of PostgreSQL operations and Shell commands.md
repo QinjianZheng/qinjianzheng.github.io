@@ -12,29 +12,62 @@ Sometimes, commands will slip out the brain, and it is always good to have a pla
 Start postgresql server
 
 ```shell
-pg_ctl start -l YOUR_INSTALL_DIRECTORY/log
+$ pg_ctl start -l YOUR_INSTALL_DIRECTORY/log
 ```
 
 Stop postgresql server
 
 ```shell
-pg_ctl stop
+$ pg_ctl stop
 ```
-check current status of server (is there any server running?)
+Check current status of server (is there any server running?)
 
 ```shell
-pg_ctl status
+$ pg_ctl status
 ```
 
-create database
+Create database
 ```shell
-createdb
+$ createdb DATABASE_NAME
 ```
 
-drop database
+Drop database
 ```shell
-dropdb
+$ dropdb DATABASE_NAME
 ```
+
+Show a list of your database
+```shell
+$ psql -l
+```
+
+Get inside *YOUR_DATABASE*
+```shell
+$ psql YOUR_DATABASE
+```
+
+Inside database *YOUR_DATABASE*
+
+```
+YOUR_DATABASE=# \d
+# ...show a list of relations in YOUR_DATABASE
+
+YOUR_DATABASE=# \d+
+# ...show a list of relations in YOUR_DATABASE with more details
+
+YOUR_DATABASE=# \df
+# ...show a list of functions in YOUR_DATABASE ('+' syntax also applies)
+
+YOUR_DATABASE=# \x
+# ...show infomation with extended mode
+
+YOUR_DATABASE=# \do
+# ...show a list of operations in YOUR_DATABASE ('+' syntax also applies)
+
+YOUR_DATABASE=# \q
+# ...quit your YOUR_DATABASE
+```
+
 
 For more information about PostgreSql, check [PostgreSQL's Documentation](https://www.postgresql.org/docs/12/index.html).
 
@@ -46,14 +79,14 @@ For more information about PostgreSql, check [PostgreSQL's Documentation](https:
 `echo` : write arguments to the standard output
 
 ```shell
-echo "hello"
+$ echo "hello"
 # hello
 ```
 
 `cat` : concatenate and print files
 
 ```shell
-echo "hello" > file
+$ echo "hello" > file
 cat file
 # hello
 ```
@@ -61,16 +94,16 @@ cat file
 `touch` : change file access and modification times
 
 ```shell
-touch file1
-touch file2
-touch file3
+$ touch file1
+$ touch file2
+$ touch file3
 # or 
-touch file1 file2 file3
+$ touch file1 file2 file3
 ```
 
 `ls` : list directory contents
 ```shell
-ls
+$ ls
 # file1 file2 file3
 ```
 

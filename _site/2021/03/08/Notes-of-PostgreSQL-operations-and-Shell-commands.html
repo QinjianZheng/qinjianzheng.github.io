@@ -17,7 +17,7 @@
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Notes of PostgreSQL operations and Shell commands" />
 <script type="application/ld+json">
-{"headline":"Notes of PostgreSQL operations and Shell commands","dateModified":"2021-03-08T00:00:00+08:00","datePublished":"2021-03-08T00:00:00+08:00","url":"/2021/03/08/Notes-of-PostgreSQL-operations-and-Shell-commands.html","mainEntityOfPage":{"@type":"WebPage","@id":"/2021/03/08/Notes-of-PostgreSQL-operations-and-Shell-commands.html"},"@type":"BlogPosting","description":"Sometimes, commands will slip out the brain, and it is always good to have a place to look up these commands.","@context":"https://schema.org"}</script>
+{"headline":"Notes of PostgreSQL operations and Shell commands","dateModified":"2021-03-08T00:00:00+08:00","datePublished":"2021-03-08T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"/2021/03/08/Notes-of-PostgreSQL-operations-and-Shell-commands.html"},"url":"/2021/03/08/Notes-of-PostgreSQL-operations-and-Shell-commands.html","@type":"BlogPosting","description":"Sometimes, commands will slip out the brain, and it is always good to have a place to look up these commands.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <title>Notes of PostgreSQL operations and Shell commands</title>
@@ -58,24 +58,53 @@
 
 <p>Start postgresql server</p>
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pg_ctl start <span class="nt">-l</span> YOUR_INSTALL_DIRECTORY/log
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>pg_ctl start <span class="nt">-l</span> YOUR_INSTALL_DIRECTORY/log
 </code></pre></div></div>
 
 <p>Stop postgresql server</p>
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pg_ctl stop
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>pg_ctl stop
 </code></pre></div></div>
-<p>check current status of server (is there any server running?)</p>
+<p>Check current status of server (is there any server running?)</p>
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>pg_ctl status
-</code></pre></div></div>
-
-<p>create database</p>
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>createdb
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>pg_ctl status
 </code></pre></div></div>
 
-<p>drop database</p>
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code>dropdb
+<p>Create database</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>createdb DATABASE_NAME
+</code></pre></div></div>
+
+<p>Drop database</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>dropdb DATABASE_NAME
+</code></pre></div></div>
+
+<p>Show a list of your database</p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>psql <span class="nt">-l</span>
+</code></pre></div></div>
+
+<p>Get inside <em>YOUR_DATABASE</em></p>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span>psql YOUR_DATABASE
+</code></pre></div></div>
+
+<p>Inside database <em>YOUR_DATABASE</em></p>
+
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>YOUR_DATABASE=# \d
+# ...show a list of relations in YOUR_DATABASE
+
+YOUR_DATABASE=# \d+
+# ...show a list of relations in YOUR_DATABASE with more details
+
+YOUR_DATABASE=# \df
+# ...show a list of functions in YOUR_DATABASE ('+' syntax also applies)
+
+YOUR_DATABASE=# \x
+# ...show infomation with extended mode
+
+YOUR_DATABASE=# \do
+# ...show a list of operations in YOUR_DATABASE ('+' syntax also applies)
+
+YOUR_DATABASE=# \q
+# ...quit your YOUR_DATABASE
 </code></pre></div></div>
 
 <p>For more information about PostgreSql, check <a href="https://www.postgresql.org/docs/12/index.html">PostgreSQL’s Documentation</a>.</p>
@@ -89,28 +118,28 @@
 
 <p><code class="language-plaintext highlighter-rouge">echo</code> : write arguments to the standard output</p>
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"hello"</span>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">echo</span> <span class="s2">"hello"</span>
 <span class="c"># hello</span>
 </code></pre></div></div>
 
 <p><code class="language-plaintext highlighter-rouge">cat</code> : concatenate and print files</p>
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">echo</span> <span class="s2">"hello"</span> <span class="o">&gt;</span> file
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">echo</span> <span class="s2">"hello"</span> <span class="o">&gt;</span> file
 <span class="nb">cat </span>file
 <span class="c"># hello</span>
 </code></pre></div></div>
 
 <p><code class="language-plaintext highlighter-rouge">touch</code> : change file access and modification times</p>
 
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">touch </span>file1
-<span class="nb">touch </span>file2
-<span class="nb">touch </span>file3
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">touch </span>file1
+<span class="nv">$ </span><span class="nb">touch </span>file2
+<span class="nv">$ </span><span class="nb">touch </span>file3
 <span class="c"># or </span>
-<span class="nb">touch </span>file1 file2 file3
+<span class="nv">$ </span><span class="nb">touch </span>file1 file2 file3
 </code></pre></div></div>
 
 <p><code class="language-plaintext highlighter-rouge">ls</code> : list directory contents</p>
-<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nb">ls</span>
+<div class="language-shell highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nv">$ </span><span class="nb">ls</span>
 <span class="c"># file1 file2 file3</span>
 </code></pre></div></div>
 
