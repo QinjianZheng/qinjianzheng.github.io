@@ -1,0 +1,132 @@
+
+@font-face {
+    font-family: "Assistant";
+    src: url("/assets/font/Assistant-VariableFont_wght.ttf");
+}
+
+#tic-tac-toe {
+    font-family: "Assistant";
+    text-align: center;
+    user-select: none;
+    margin-bottom: 50px;
+}
+
+h1 {
+    font-size: 3em;
+}
+
+h2 {
+    font-size: 90pt;
+}
+
+#player-info {
+    width: 650px;
+    margin: 0 auto;
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+}
+
+#player-info h2 {
+    width: 200px;
+    margin-top: 10px;
+    display: none;
+}
+
+
+#start-box {
+    width: 400px;
+    height: 240px;
+    border: solid 1px black;
+    transform: translate(-50%, -50%);
+}
+
+.name-box {
+    margin: 10px;
+}
+
+#first {
+    margin: 10px;
+}
+
+#first #player1 {
+    margin-left: 10px;
+}
+
+#start-button {
+    /* font-size: 14pt; */
+    margin-top: 10px;
+    padding: 5px 20px;
+}
+
+#turn {
+    display: none;
+}
+
+#board {
+    margin: 0 auto;
+    display: grid;
+    background-color: #83878e;
+    width: 600px;
+    height: 600px;
+    grid-template-columns: 1fr 1fr 1fr;
+    grid-template-rows: 1fr 1fr 1fr;
+    display: none;
+}
+
+.blank {
+    font-family: Arial, Helvetica, sans-serif;
+    background-color: #61dafb;
+    border: dashed 1px #282c34;
+    font-size: 90pt;
+    padding-top: 12px;
+}
+  
+.blank:hover {
+    background-color: #23cfff;
+}
+
+.blank:hover[cleanup] {
+    color: #23cfff;
+}
+
+.message-box {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.centered {
+    position: fixed;
+    width: 300px;
+    height: 150px;
+    transform: translate(-50%, -30%);
+    top: 50%;
+    left: 50%;
+    background-color: rgb(239,239,239);
+    border-radius: 10px;
+    box-shadow: -3px 3px 8px rgb(155, 155, 155);
+}
+
+
+.message-content {
+    font-size: 26pt;
+    font-weight: bold;
+    margin-top: 30px;
+}
+
+.restart-button {
+    width: 100%;
+    font-size: 14pt;
+    padding: 10px 20px;
+    color: #23cfff;
+    border-left: none;
+    border-right: none;
+    border-bottom: none;
+    border-top: solid 1px #282c34;
+    border-bottom-left-radius: 10px;
+    border-bottom-right-radius: 10px;
+
+}
+
