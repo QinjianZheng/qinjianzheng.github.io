@@ -7,7 +7,14 @@ const putFooterBottom = () => {
     footer.style.left = "50%";
     footer.style.marginLeft = '-425px';
 }
-
 if(body.getClientRects()[0].height < window.innerHeight) {
     putFooterBottom();
 }
+
+window.addEventListener("resize", () => {
+    if(body.getClientRects()[0].height < window.innerHeight) {
+        putFooterBottom();
+    }
+});
+
+
