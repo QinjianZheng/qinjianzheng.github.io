@@ -239,14 +239,14 @@ const clickHandler = (event, blanks, nrow, ncol, handler) => {
         console.log(event.target);
         checkWin(blanks, nrow, ncol);
         if(player1win) {
-            MessageBox("Player 1 wins!",blanks, nrow, ncol);
+            MessageBox(`${nameInput1.value} wins!`,blanks, nrow, ncol);
             cleanup(blanks, nrow, ncol);
             player1Score++;
             score1.innerText = `${nameInput1.value} Score: ${player1Score}`;
             
             
         } else if(player2win) {
-            MessageBox("Player 2 wins!",blanks, nrow, ncol);
+            MessageBox(`${nameInput2.value} wins!`,blanks, nrow, ncol);
             cleanup(blanks, nrow, ncol);
             player2Score++;
             score2.innerText = `${nameInput2.value} Score: ${player2Score}`;
