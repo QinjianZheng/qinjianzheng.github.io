@@ -2,11 +2,16 @@
     text-align: center;
 }
 
-.gamecontainer {
-    display: grid;
-    grid-template-rows: 1fr 1fr;
-    grid-template-columns: 1fr 1fr;
-    justify-items: center;
+// .gamecontainer {
+//     display: grid;
+//     grid-template-rows: 1fr 1fr;
+//     grid-template-columns: 1fr 1fr;
+//     justify-items: center;
+// }
+
+#game {
+    font-size: 16pt;
+    margin: 10px;
 }
 
 .gamecard {

@@ -1,9 +1,8 @@
 - name: Pick Me Up
   link: /games/ballgame.html
-  img:  /assets/imgs/ballgame1.JPG
 - name: Escape Ball
   link: /games/ballgame2.html
-  img:  /assets/imgs/ballgame2.JPG
 - name: Tic Tac Toe
   link: /games/tic_tac_toe.html
-  img: https://upload.wikimedia.org/wikipedia/commons/thumb/3/32/Tic_tac_toe.svg/1200px-Tic_tac_toe.svg.png
+- name: 2048
+  link: /games/2048.html

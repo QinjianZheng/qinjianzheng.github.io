@@ -4,17 +4,14 @@ title: Games - Qinjian
 head: Games
 ---
 
-<h2 id="gamehead">{{ page.head }}</h2>
+<h2>{{ page.head }}</h2>
 <br/>
 <div class="gamecontainer">
     {%- for item in site.data.games -%}
-        <div class="gamecard">
-            <div class="imgcontainer">
-                <img src="{{ item.img }}" />
-            </div>
-            <a href="{{ item.link }}">
-                {{ item.name }}
-            </a>
-        </div>
+    <div id="game">
+        <a href="{{ item.link }}">
+            {{ item.name }}
+        </a>
+    </div>
     {%- endfor -%}
 </div>

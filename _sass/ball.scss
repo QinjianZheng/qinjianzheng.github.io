@@ -1,10 +1,21 @@
+#plain {
+    
+    width: 600px;
+    height: 600px;
+    border: solid 2px #cccccc;
+    margin: 10px auto 0;
+}
+
+
 #ball {
     width: 50px;
     height: 50px;
     border-radius: 50%;
     background-color: green;
     display: inline-block;
-    position: absolute;
+    position: relative;
+    left: 275px;
+    top: 275px;
 }
 
 #text {

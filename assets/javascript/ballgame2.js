@@ -6,9 +6,6 @@ const description = document.getElementById("description");
 const reloadButton = document.getElementById("reload");
 
 
-ball.style.left = '100px';
-ball.style.top = '250px';
-
 let ballRadius = parseInt(getComputedStyle(ball).width) / 2;
 let count = 0;
 let currTime = Date.now();
@@ -34,8 +31,8 @@ document.addEventListener('mousemove', (event) => {
         count ++;
         espace.textContent = `Escape: ${count}`;
         time.textContent = `Time: ${timePass}`;
-        let randomX = 150 + Math.floor(Math.random() * 1000);
-        let randomY = 200 + Math.floor(Math.random() * 600);
+        let randomX = Math.floor(Math.random() * 550);
+        let randomY = Math.floor(Math.random() * 550);
         ball.style.left = randomX + 'px';
         ball.style.top = randomY + 'px';
         if(count % 4 == 0) {

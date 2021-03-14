@@ -28,7 +28,9 @@ body a { text-decoration: none; }
 
 .main .listing span { color: grey; }
 
-#ball { width: 50px; height: 50px; border-radius: 50%; background-color: green; display: inline-block; position: absolute; }
+#plain { width: 600px; height: 600px; border: solid 2px #cccccc; margin: 10px auto 0; }
+
+#ball { width: 50px; height: 50px; border-radius: 50%; background-color: green; display: inline-block; position: relative; left: 275px; top: 275px; }
 
 #text { border: solid 1px black; position: relative; left: 50px; bottom: 50px; }
 
@@ -52,7 +54,7 @@ footer .content { border-top: solid 1px #ebe9e9; padding-top: 10px; width: 850px
 
 #gamehead { text-align: center; }
 
-.gamecontainer { display: grid; grid-template-rows: 1fr 1fr; grid-template-columns: 1fr 1fr; justify-items: center; }
+#game { font-size: 16pt; margin: 10px; }
 
 .gamecard { width: 250px; height: 250px; background-color: #efeffe; padding-bottom: 10px; display: flex; flex-direction: column; justify-content: space-between; align-items: center; margin: 30px; }
 
