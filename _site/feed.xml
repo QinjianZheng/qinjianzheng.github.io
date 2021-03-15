@@ -1,58 +1,52 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-03-14T14:39:12+08:00</updated><id>/feed.xml</id><entry><title type="html">References</title><link href="/2021/03/10/References.html" rel="alternate" type="text/html" title="References" /><published>2021-03-10T00:00:00+08:00</published><updated>2021-03-10T00:00:00+08:00</updated><id>/2021/03/10/References</id><content type="html" xml:base="/2021/03/10/References.html">This page contains links and resources of useful information about several topics.
-&lt;!--more--&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-03-15T16:21:41+08:00</updated><id>/feed.xml</id><entry><title type="html">References</title><link href="/2021/03/10/References.html" rel="alternate" type="text/html" title="References" /><published>2021-03-10T00:00:00+08:00</published><updated>2021-03-10T00:00:00+08:00</updated><id>/2021/03/10/References</id><content type="html" xml:base="/2021/03/10/References.html">&lt;p&gt;This page contains links and resources of useful information about several topics.
+&lt;!--more--&gt;&lt;/p&gt;
 
-### Linux commands
-&lt;hr/&gt;
+&lt;h3 id=&quot;linux-commands&quot;&gt;Linux commands&lt;/h3&gt;
+&lt;hr /&gt;
 
-- [How to Use the cd Command in Bash Scripts](https://www.baeldung.com/linux/cd-command-bash-scrip)
-- [XTerm introduction and TrueType fonts configuration](http://www.futurile.net/2016/06/14/xterm-setup-and-truetype-font-configuration/)
-- [The right and wrong way to set Python 3 as default on a Mac](https://opensource.com/article/19/5/python-3-default-mac)</content><author><name></name></author><summary type="html">This page contains links and resources of useful information about several topics.</summary></entry><entry><title type="html">Notes of PostgreSQL operations and Shell commands</title><link href="/2021/03/08/Notes-of-PostgreSQL-operations-and-Shell-commands.html" rel="alternate" type="text/html" title="Notes of PostgreSQL operations and Shell commands" /><published>2021-03-08T00:00:00+08:00</published><updated>2021-03-08T00:00:00+08:00</updated><id>/2021/03/08/Notes%20of%20PostgreSQL%20operations%20and%20Shell%20commands</id><content type="html" xml:base="/2021/03/08/Notes-of-PostgreSQL-operations-and-Shell-commands.html">Sometimes, commands will slip out the brain, and it is always good to have a place to look up these commands.
-&lt;!--more--&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://www.baeldung.com/linux/cd-command-bash-scrip&quot;&gt;How to Use the cd Command in Bash Scripts&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;http://www.futurile.net/2016/06/14/xterm-setup-and-truetype-font-configuration/&quot;&gt;XTerm introduction and TrueType fonts configuration&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://opensource.com/article/19/5/python-3-default-mac&quot;&gt;The right and wrong way to set Python 3 as default on a Mac&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">This page contains links and resources of useful information about several topics.</summary></entry><entry><title type="html">Notes of PostgreSQL operations and Shell commands</title><link href="/2021/03/08/Notes-of-PostgreSQL-operations-and-Shell-commands.html" rel="alternate" type="text/html" title="Notes of PostgreSQL operations and Shell commands" /><published>2021-03-08T00:00:00+08:00</published><updated>2021-03-08T00:00:00+08:00</updated><id>/2021/03/08/Notes%20of%20PostgreSQL%20operations%20and%20Shell%20commands</id><content type="html" xml:base="/2021/03/08/Notes-of-PostgreSQL-operations-and-Shell-commands.html">&lt;p&gt;Sometimes, commands will slip out the brain, and it is always good to have a place to look up these commands.
+&lt;!--more--&gt;&lt;/p&gt;
 
-### PostgreSql
-&lt;hr/&gt;
+&lt;h3 id=&quot;postgresql&quot;&gt;PostgreSql&lt;/h3&gt;
+&lt;hr /&gt;
 
-Start postgresql server
+&lt;p&gt;Start postgresql server&lt;/p&gt;
 
-```shell
-$ pg_ctl start -l YOUR_INSTALL_DIRECTORY/log
-```
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;pg_ctl start &lt;span class=&quot;nt&quot;&gt;-l&lt;/span&gt; YOUR_INSTALL_DIRECTORY/log
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-Stop postgresql server
+&lt;p&gt;Stop postgresql server&lt;/p&gt;
 
-```shell
-$ pg_ctl stop
-```
-Check current status of server (is there any server running?)
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;pg_ctl stop
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+&lt;p&gt;Check current status of server (is there any server running?)&lt;/p&gt;
 
-```shell
-$ pg_ctl status
-```
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;pg_ctl status
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-Create database
-```shell
-$ createdb DATABASE_NAME
-```
+&lt;p&gt;Create database&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;createdb DATABASE_NAME
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-Drop database
-```shell
-$ dropdb DATABASE_NAME
-```
+&lt;p&gt;Drop database&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;dropdb DATABASE_NAME
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-Show a list of your database
-```shell
-$ psql -l
-```
+&lt;p&gt;Show a list of your database&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;psql &lt;span class=&quot;nt&quot;&gt;-l&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-Get inside *YOUR_DATABASE*
-```shell
-$ psql YOUR_DATABASE
-```
+&lt;p&gt;Get inside &lt;em&gt;YOUR_DATABASE&lt;/em&gt;&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;psql YOUR_DATABASE
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-Inside database *YOUR_DATABASE*
+&lt;p&gt;Inside database &lt;em&gt;YOUR_DATABASE&lt;/em&gt;&lt;/p&gt;
 
-```
-YOUR_DATABASE=# \d
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;YOUR_DATABASE=# \d
 # ...show a list of relations in YOUR_DATABASE
 
 YOUR_DATABASE=# \d+
@@ -69,48 +63,47 @@ YOUR_DATABASE=# \do
 
 YOUR_DATABASE=# \q
 # ...quit your YOUR_DATABASE
-```
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
+&lt;p&gt;For more information about PostgreSql, check &lt;a href=&quot;https://www.postgresql.org/docs/12/index.html&quot;&gt;PostgreSQL’s Documentation&lt;/a&gt;.&lt;/p&gt;
 
-For more information about PostgreSql, check [PostgreSQL&apos;s Documentation](https://www.postgresql.org/docs/12/index.html).
+&lt;h3 id=&quot;shell-commands&quot;&gt;Shell commands&lt;/h3&gt;
+&lt;hr /&gt;
 
-### Shell commands
-&lt;hr/&gt;
+&lt;blockquote&gt;
+  &lt;p&gt;definitions of commands come from &lt;strong&gt;“BSD General Commands Manual”&lt;/strong&gt;&lt;/p&gt;
+&lt;/blockquote&gt;
 
-&gt; definitions of commands come from **&quot;BSD General Commands Manual&quot;**
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;echo&lt;/code&gt; : write arguments to the standard output&lt;/p&gt;
 
-`echo` : write arguments to the standard output
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;hello&quot;&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# hello&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-```shell
-$ echo &quot;hello&quot;
-# hello
-```
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;cat&lt;/code&gt; : concatenate and print files&lt;/p&gt;
 
-`cat` : concatenate and print files
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;echo&lt;/span&gt; &lt;span class=&quot;s2&quot;&gt;&quot;hello&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;&amp;gt;&lt;/span&gt; file
+&lt;span class=&quot;nb&quot;&gt;cat &lt;/span&gt;file
+&lt;span class=&quot;c&quot;&gt;# hello&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-```shell
-$ echo &quot;hello&quot; &gt; file
-cat file
-# hello
-```
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;touch&lt;/code&gt; : change file access and modification times&lt;/p&gt;
 
-`touch` : change file access and modification times
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;touch &lt;/span&gt;file1
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;touch &lt;/span&gt;file2
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;touch &lt;/span&gt;file3
+&lt;span class=&quot;c&quot;&gt;# or &lt;/span&gt;
+&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;touch &lt;/span&gt;file1 file2 file3
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-```shell
-$ touch file1
-$ touch file2
-$ touch file3
-# or 
-$ touch file1 file2 file3
-```
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ls&lt;/code&gt; : list directory contents&lt;/p&gt;
+&lt;div class=&quot;language-shell highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nv&quot;&gt;$ &lt;/span&gt;&lt;span class=&quot;nb&quot;&gt;ls&lt;/span&gt;
+&lt;span class=&quot;c&quot;&gt;# file1 file2 file3&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-`ls` : list directory contents
-```shell
-$ ls
-# file1 file2 file3
-```
-
-If you want to learn more about shell commands, check out the following links.
-- [Linux Shell Commands](https://docs.cs.cf.ac.uk/notes/linux-shell-commands/)
-- [The Unix Shell: Summary of Basic Commands](https://swcarpentry.github.io/shell-novice/reference)
-- [The Linux command line for beginners](https://ubuntu.com/tutorials/command-line-for-beginners#1-overview)</content><author><name></name></author><summary type="html">Sometimes, commands will slip out the brain, and it is always good to have a place to look up these commands.</summary></entry></feed>
+&lt;p&gt;If you want to learn more about shell commands, check out the following links.&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://docs.cs.cf.ac.uk/notes/linux-shell-commands/&quot;&gt;Linux Shell Commands&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://swcarpentry.github.io/shell-novice/reference&quot;&gt;The Unix Shell: Summary of Basic Commands&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://ubuntu.com/tutorials/command-line-for-beginners#1-overview&quot;&gt;The Linux command line for beginners&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">Sometimes, commands will slip out the brain, and it is always good to have a place to look up these commands.</summary></entry></feed>
