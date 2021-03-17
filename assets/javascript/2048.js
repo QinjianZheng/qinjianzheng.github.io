@@ -85,9 +85,7 @@ const gameOver = () => {
 const keyHandler = (event) => {
     event.preventDefault();
     // pop out a random block
-
     // slide to the sides
-
     switch (event.key) {
         case "ArrowUp":
             // demoUP().then(() => {
@@ -122,14 +120,15 @@ const keyHandler = (event) => {
 
 }
 
-
-window.addEventListener("keydown", function load(event) {
+const load = (event) => {
     keyHandler(event);
-    if(gameOver()) {
+    if(!gameOver()) {
         alert("Game Over!");
         window.removeEventListener("keydown", load);
     }
-});
+}
+
+window.addEventListener("keydown", load);
     
 
 
@@ -177,20 +176,22 @@ let scoreInt = 0;
 if UP or DOWN, nextCol is equal to col
 if LEFT or RIGHT, nextRow is equal to row
 */
-const moveOneCell =  (row, nextRow, col, nextCol, mergedList) => {
+const moveOneCell = async (row, nextRow, col, nextCol, mergedList) => {
     if(blanks[row][col].innerText) {
         if(blanks[nextRow][nextCol].innerText === "") {
-            // await sleep(250);
+
             blanks[nextRow][nextCol].innerText = blanks[row][col].innerText;
+
             blanks[row][col].innerText = "";
         } else if(blanks[row][col].innerText === blanks[nextRow][nextCol].innerText && 
                   !isInMergedList(mergedList, blanks[row][col].innerText)) {
-            // await sleep(250);
+
             blanks[nextRow][nextCol].innerText = (parseInt(blanks[row][col].innerText) * 2).toString();
             scoreInt += parseInt(blanks[nextRow][nextCol].innerText);
             score.innerText = `Score: ${scoreInt}`;
             let ismerged = {id: blanks[row][col].innerText, merged: true};
             mergedList.push(ismerged);
+ 
             blanks[row][col].innerText = "";
         }
         
@@ -206,6 +207,7 @@ const move = async (direction, v) => {
                 let j = i
                 while(j > 0) {
                     if(direction === "UP") {
+
                         moveOneCell(j, j-1, v, v, mergedList);
                     } else {
                         moveOneCell(v, v, j, j-1, mergedList);

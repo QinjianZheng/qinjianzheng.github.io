@@ -24,6 +24,8 @@ body a { text-decoration: none; }
 
 .main p { line-height: 1.6em; font-size: 14pt; }
 
+.main ol { font-size: 14pt; line-height: 1.5em; }
+
 .main .listing { border-bottom: dashed 1px #c4c4c4; width: 100%; display: flex; justify-content: space-between; align-items: center; height: 30px; }
 
 .main .listing span { color: grey; }

@@ -228,7 +228,7 @@ const cleanup = (blanks, nrow, ncol) => {
 };
 
 
-const clickHandler = (event, blanks, nrow, ncol, handler) => {
+const clickHandler = (event, blanks, nrow, ncol) => {
     if(!event.target.innerText) {
         if(player1) {
             event.target.innerText = "X";
@@ -263,7 +263,10 @@ const clickHandler = (event, blanks, nrow, ncol, handler) => {
     }
 };
 
-
+const load = (event) => {
+    clickHandler(event, blanks, blanks.length, blanks[0].length);
+    event.target.removeEventListener("click", load);   
+}
 
 for (let i = 0; i < blanks.length; i++) {
     for(let j = 0; j < blanks[i].length; j++) {
@@ -271,10 +274,8 @@ for (let i = 0; i < blanks.length; i++) {
         blanks[i][j].className = "blank";
         blanks[i][j].id = `blank${i}.${j}`;
         board.appendChild(blanks[i][j]);
-        blanks[i][j].addEventListener("click", function load(event) {
-            event.target.removeEventListener("click", load, true);
-            clickHandler(event, blanks, blanks.length, blanks[0].length, load);   
-        }, true);
+
+        blanks[i][j].addEventListener("click", load);
     }
 }
 

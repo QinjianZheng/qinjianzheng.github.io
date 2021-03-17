@@ -87,7 +87,7 @@ $ echo "hello"
 
 ```shell
 $ echo "hello" > file
-cat file
+$ cat file
 # hello
 ```
 
