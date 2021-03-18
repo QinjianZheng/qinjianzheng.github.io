@@ -1,0 +1,313 @@
+<!doctype html>
+<html>
+  <head>
+    <meta charset="utf-8">
+    <link rel="stylesheet" href="/assets/css/styles.css">
+    <link rel="shortcut icon" href="/assets/imgs/favicon.ico" type="image/x-icon" />
+    <link type="application/atom+xml" rel="alternate" href="/feed.xml" />
+    <!-- Begin Jekyll SEO tag v2.7.1 -->
+<title>Front-end programming topics</title>
+<meta name="generator" content="Jekyll v4.2.0" />
+<meta property="og:title" content="Front-end programming topics" />
+<meta property="og:locale" content="en_US" />
+<meta name="description" content="To be a well-rounded front-end programmer, one should have a solid understanding of underlying mechanism of tools she uses. Some might think that knowing how to use the tools is good enough, but the mistakes usually come from the lack of understanding. What’s worse, these mistakes are not easy to detect since ones who make them might not realize they are mistakes. The topics in this post are all about my own understandings, there might be mistakes. So if you find any, do contact me via Email." />
+<meta property="og:description" content="To be a well-rounded front-end programmer, one should have a solid understanding of underlying mechanism of tools she uses. Some might think that knowing how to use the tools is good enough, but the mistakes usually come from the lack of understanding. What’s worse, these mistakes are not easy to detect since ones who make them might not realize they are mistakes. The topics in this post are all about my own understandings, there might be mistakes. So if you find any, do contact me via Email." />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2021-03-18T00:00:00+08:00" />
+<meta name="twitter:card" content="summary" />
+<meta property="twitter:title" content="Front-end programming topics" />
+<script type="application/ld+json">
+{"headline":"Front-end programming topics","dateModified":"2021-03-18T00:00:00+08:00","datePublished":"2021-03-18T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"/2021/03/18/Front-end_programming_topics.html"},"url":"/2021/03/18/Front-end_programming_topics.html","@type":"BlogPosting","description":"To be a well-rounded front-end programmer, one should have a solid understanding of underlying mechanism of tools she uses. Some might think that knowing how to use the tools is good enough, but the mistakes usually come from the lack of understanding. What’s worse, these mistakes are not easy to detect since ones who make them might not realize they are mistakes. The topics in this post are all about my own understandings, there might be mistakes. So if you find any, do contact me via Email.","@context":"https://schema.org"}</script>
+<!-- End Jekyll SEO tag -->
+
+    <title>Front-end programming topics</title>
+  </head>
+  <body>
+    <nav>
+    <div class="logo"><a href="/">QINJIAN</a></div>
+    <div class="menu">
+        
+            <a href="/" >
+                Home
+            </a>
+        
+            <a href="/about.html" >
+                About
+            </a>
+        
+            <a href="/blog.html" >
+                Blog
+            </a>
+        
+            <a href="/games.html" >
+                Game
+            </a>
+        
+    </div>
+    
+</nav>
+    <div class="main">
+      <h2>Front-end programming topics</h2>
+<h5><i>18 Mar 2021</i></h5>
+
+<p>To be a well-rounded front-end programmer, one should have a solid understanding of underlying mechanism of tools she uses. Some might think that knowing how to use the tools is good enough, but the mistakes usually come from the lack of understanding. What’s worse, these mistakes are not easy to detect since ones who make them might not realize they are mistakes.</p>
+
+<p>The topics in this post are all about my own understandings, there might be mistakes. So if you find any, do contact me via <a href="mailto:qinjianzheng@student.unsw.edu.au">Email</a>.
+<!--more--></p>
+
+<h4 id="table-of-contents">Table of Contents</h4>
+
+<!-- TOC -->
+
+<ul>
+  <li><a href="#closure-闭包">Closure 闭包</a>
+    <ul>
+      <li><a href="#practical-use-of-closure">Practical use of closure</a></li>
+    </ul>
+  </li>
+  <li><a href="#event-loop-事件循环">Event loop 事件循环</a></li>
+  <li><a href="#event-capturing-and-bubbling">Event capturing and bubbling</a></li>
+  <li><a href="#microtasks">Microtasks</a>
+    <ul>
+      <li><a href="#example-1">Example 1</a></li>
+      <li><a href="#example-2">Example 2</a></li>
+      <li><a href="#example-3">Example 3</a></li>
+      <li><a href="#example-4">Example 4</a></li>
+    </ul>
+  </li>
+  <li><a href="#reference">Reference</a>
+<!-- /TOC --></li>
+</ul>
+
+<h3 id="closure-闭包">Closure 闭包</h3>
+<hr />
+
+<p>Definition from <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures">MDN</a>:</p>
+
+<blockquote>
+  <p>A closure is the combination of a function bundled together (enclosed) with references to its surrounding state (the lexical environment).</p>
+</blockquote>
+
+<p>In my own words, a closure is made up of 3 parts, a function, the usage of variables which are not defined by the function, and an outer scope relative to the function. Essentially, the core of closure is to make use of the scope in different level, e.g. inner function has access to the outer function’s scope (get the value, change the value). However, the power of closure is in binding the variables in the outer scope to instances created. In other words, function instances with their own outer scope variables won’t affect each other when they make changes to the variables, which is not the case if you have a global variable.</p>
+
+<h4 id="practical-use-of-closure">Practical use of closure</h4>
+
+<ol>
+  <li>Hide the variables and leave the interfaces to the clients</li>
+  <li>Emulate private methods which can only be accessed by other methods in the same class (a function that return an object which contains functions that have access to its outer scope. Outside the function, instances of the function will have their own lexical environment, in effect, create a class with attributes and methods)</li>
+</ol>
+
+<h3 id="event-loop-事件循环">Event loop 事件循环</h3>
+<hr />
+
+<blockquote>
+  <p>The event loop is a single-threaded loop which runs in the browser, and manages all events. When an event is triggered, the event is added to the queue.</p>
+</blockquote>
+
+<p>Event loop general implementation:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">while</span> <span class="p">(</span><span class="nx">queue</span><span class="p">.</span><span class="nx">waitForMessage</span><span class="p">())</span> <span class="p">{</span>
+  <span class="nx">queue</span><span class="p">.</span><span class="nx">processNextMessage</span><span class="p">()</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<blockquote>
+  <p>JavaScript uses a run-to-completion model, meaning it will not handle a new event until the current event has completed.</p>
+</blockquote>
+
+<p>With a queue to manage the events, and run-to-completion model, the events will be sequentially processed without affecting each other. The function calls as event handler will be maintained in a stack.</p>
+
+<p>When an event occurs, or a user triggers the event via mouse or keyboard, if the event has listener, then this event (message) will be added to the event loop (message queue), while the events without any listener will be lost.</p>
+
+<h3 id="event-capturing-and-bubbling">Event capturing and bubbling</h3>
+
+<p>When an event happens, the target binded with the event listener is labelled as <code class="language-plaintext highlighter-rouge">event.target</code>. Three phases for the event:</p>
+
+<ol>
+  <li>Capturing phase is the process in which an event moves from document root to <code class="language-plaintext highlighter-rouge">event.target</code>.</li>
+  <li>Target phase is the process in which <code class="language-plaintext highlighter-rouge">event.target</code> is triggered and the handler is called.</li>
+  <li>Bubbling phase is the process in which an event moves from the <code class="language-plaintext highlighter-rouge">event.target</code> to document root.</li>
+</ol>
+
+<p>Relating to method <code class="language-plaintext highlighter-rouge">AddEventListerner</code> third argument<code class="language-plaintext highlighter-rouge">[Capture: true]</code>: optional for switching whether the event should be triggered in capturing phase (true for yes, false/default for no), controlling the event handlers are called during the capturing phase or bubbling phase.</p>
+
+<p><code class="language-plaintext highlighter-rouge">event.stopPropagation()</code> is used to stop the event handler in the target the method assigned to, effectly stop bubbling, but it is rarely used. <code class="language-plaintext highlighter-rouge">event.stopPropagation()</code> can only stop the event listener which is binded with this method, <code class="language-plaintext highlighter-rouge">event.stopImmediatePropagation()</code> can stop all handlers.</p>
+
+<h3 id="microtasks">Microtasks</h3>
+<hr />
+
+<blockquote>
+  <p>Promise handlers .then/.catch/.finally are always asynchronous.</p>
+
+  <p>Asynchronous tasks need proper management. For that, the ECMA standard specifies an internal queue PromiseJobs, more often referred to as the “microtask queue” (V8 term).</p>
+
+  <p>As stated in the specification:</p>
+  <ul>
+    <li>The queue is first-in-first-out: tasks enqueued first are run first.</li>
+    <li>Execution of a task is initiated only when nothing else is running.</li>
+  </ul>
+</blockquote>
+
+<p>Contrast to microtasks, macrotasks are tasks in the event loop including scripts, event handlers, <code class="language-plaintext highlighter-rouge">setTimeout()</code>, etc.. Since the event loop is a single-threaded loop, while executing one task, other tasks will have to wait for it to finish, i.e. no rendering will happen and if the task takes too long, the browser will freeze.</p>
+
+<p>Microtasks are tasks relating to promises. <code class="language-plaintext highlighter-rouge">.then/catch/finally</code> handlers will be put into the microtask queue, and only when current code (marcotask) is finished, or the handlers will be called.</p>
+
+<blockquote>
+  <p>code example from <a href="https://juejin.cn/post/6844904087163502605">this post</a></p>
+</blockquote>
+
+<h4 id="example-1">Example 1</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">promise1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">promise1</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">})</span>
+<span class="nx">promise1</span><span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">1</span><span class="dl">'</span><span class="p">,</span> <span class="nx">promise1</span><span class="p">);</span>
+
+<span class="kd">const</span> <span class="nx">fn</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
+    <span class="nx">resolve</span><span class="p">(</span><span class="dl">'</span><span class="s1">success</span><span class="dl">'</span><span class="p">)</span>
+<span class="p">}))</span>
+<span class="nx">fn</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span>
+<span class="p">})</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">start</span><span class="dl">'</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Analysis:</p>
+
+<ol>
+  <li>From top to bottom to execute the code, the code inside <code class="language-plaintext highlighter-rouge">Promise</code> constructor is called, log <code class="language-plaintext highlighter-rouge">promise1</code>.</li>
+  <li><code class="language-plaintext highlighter-rouge">.then</code> handler is put into the microtask queue, waiting for current code to finish.</li>
+  <li><code class="language-plaintext highlighter-rouge">console.log('1', promise1)</code> is run after ``console.log(‘promise1’)<code class="language-plaintext highlighter-rouge"> but before </code>.then`.</li>
+  <li><code class="language-plaintext highlighter-rouge">console.log(2)</code> inside <code class="language-plaintext highlighter-rouge">fn</code> is executed and the promise is resolved.</li>
+  <li><code class="language-plaintext highlighter-rouge">console.log('start')</code> is still in the same marcotask as <code class="language-plaintext highlighter-rouge">console.log('promise1')</code> and <code class="language-plaintext highlighter-rouge">console.log(3);</code></li>
+  <li>After all codes are finished, resolved promises will execute <code class="language-plaintext highlighter-rouge">.then</code> handler, in this case <code class="language-plaintext highlighter-rouge">console.log(res)</code>, print out <code class="language-plaintext highlighter-rouge">success</code></li>
+  <li>Since <code class="language-plaintext highlighter-rouge">promise1</code> is nevered resolved, <code class="language-plaintext highlighter-rouge">.then</code> handler is never called.</li>
+</ol>
+
+<p>Result:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>promise1
+1 Promise { &lt;pending&gt; }
+2
+start
+success
+</code></pre></div></div>
+
+<h4 id="example-2">Example 2</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                                        <span class="c1">// macro1 -- Whole script</span>
+<span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>          <span class="c1">// micro1 -- .then  </span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">promise1</span><span class="dl">'</span><span class="p">);</span>            
+    <span class="kd">const</span> <span class="nx">timer2</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>   <span class="c1">// macro3 -- setTimeout</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">timer2</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">},</span> <span class="mi">0</span><span class="p">)</span>
+<span class="p">});</span>
+<span class="kd">const</span> <span class="nx">timer1</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>       <span class="c1">// macro2 -- setTimeout</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">timer1</span><span class="dl">'</span><span class="p">)</span>
+    <span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>      <span class="c1">// micro2</span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">promise2</span><span class="dl">'</span><span class="p">)</span>
+    <span class="p">})</span>
+<span class="p">},</span> <span class="mi">0</span><span class="p">)</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">start</span><span class="dl">'</span><span class="p">);</span>                   <span class="c1">// macro1 -- execute -- start</span>
+</code></pre></div></div>
+
+<p>Analysis:</p>
+<ol>
+  <li>Execute script as macro1, add micro1 to microqueue</li>
+  <li>Add macro2 to the event loop</li>
+  <li>Execute macro1, log <code class="language-plaintext highlighter-rouge">start</code></li>
+  <li>Check microqueue, find micro1, execute micro1, log <code class="language-plaintext highlighter-rouge">promise1</code>, add macro3 to the event loop</li>
+  <li>Execute macro2, log <code class="language-plaintext highlighter-rouge">timer1</code>, add micro2 to microqueue</li>
+  <li>Check microqueue, find micro2, execute micro2, log <code class="language-plaintext highlighter-rouge">promise2</code></li>
+  <li>Execute macro3, log <code class="language-plaintext highlighter-rouge">timer2</code></li>
+</ol>
+
+<p>Result:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>start
+promise1
+timer1
+promise2
+timer2
+</code></pre></div></div>
+
+<h4 id="example-3">Example 3</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                                                        <span class="c1">// macro1</span>
+<span class="kd">const</span> <span class="nx">promise1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>     
+    <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>                                  <span class="c1">// macro2</span>
+        <span class="nx">resolve</span><span class="p">(</span><span class="dl">'</span><span class="s1">success</span><span class="dl">'</span><span class="p">)</span>                              <span class="c1">// promise1 resolve</span>
+    <span class="p">},</span> <span class="mi">1000</span><span class="p">)</span>
+<span class="p">})</span>
+<span class="kd">const</span> <span class="nx">promise2</span> <span class="o">=</span> <span class="nx">promise1</span><span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>                  <span class="c1">// promise1 pending promise2 pending</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">error!!!</span><span class="dl">'</span><span class="p">)</span>                         <span class="c1">// micro1</span>
+<span class="p">})</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">promise1</span><span class="dl">'</span><span class="p">,</span> <span class="nx">promise1</span><span class="p">)</span>                       <span class="c1">// macro1</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">promise2</span><span class="dl">'</span><span class="p">,</span> <span class="nx">promise2</span><span class="p">)</span>                       <span class="c1">// macro1</span>
+<span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>                                      <span class="c1">// macro3</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">promise1</span><span class="dl">'</span><span class="p">,</span> <span class="nx">promise1</span><span class="p">)</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">promise2</span><span class="dl">'</span><span class="p">,</span> <span class="nx">promise2</span><span class="p">)</span>
+<span class="p">},</span> <span class="mi">2000</span><span class="p">)</span>
+</code></pre></div></div>
+
+<p>Result:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>promise1 promise { &lt;pending&gt; }
+promise2 promise { &lt;pending&gt; }
+Uncaught in promise Error 
+promise1 promise { &lt;resolved&gt; "success" }
+promise2 promise { &lt;rejected&gt;: Error: error!!!}
+</code></pre></div></div>
+
+<h4 id="example-4">Example 4</h4>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">promise1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> 
+    <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>                        <span class="c1">// macro2</span>
+        <span class="nx">resolve</span><span class="p">(</span><span class="dl">"</span><span class="s2">success</span><span class="dl">"</span><span class="p">);</span>                   <span class="c1">// promise1 resolved </span>
+        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">timer1</span><span class="dl">"</span><span class="p">);</span>                <span class="c1">// macro2</span>
+    <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">promise1里的内容</span><span class="dl">"</span><span class="p">);</span>           <span class="c1">// macro1</span>
+<span class="p">});</span>
+<span class="kd">const</span> <span class="nx">promise2</span> <span class="o">=</span> <span class="nx">promise1</span><span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>        <span class="c1">// promise pending</span>
+    <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">"</span><span class="s2">error!!!</span><span class="dl">"</span><span class="p">);</span>              <span class="c1">// micro1 after macro2</span>
+<span class="p">});</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">promise1</span><span class="dl">"</span><span class="p">,</span> <span class="nx">promise1</span><span class="p">);</span>            <span class="c1">// macro1</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">promise2</span><span class="dl">"</span><span class="p">,</span> <span class="nx">promise2</span><span class="p">);</span>            <span class="c1">// macro1</span>
+<span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>                            <span class="c1">// macro3</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">timer2</span><span class="dl">"</span><span class="p">);</span>                    <span class="c1">// macro3</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">promise1</span><span class="dl">"</span><span class="p">,</span> <span class="nx">promise1</span><span class="p">);</span>        <span class="c1">// macro3</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">promise2</span><span class="dl">"</span><span class="p">,</span> <span class="nx">promise2</span><span class="p">);</span>        <span class="c1">// macro3</span>
+<span class="p">},</span> <span class="mi">2000</span><span class="p">);</span>
+</code></pre></div></div>
+
+<p>Result:</p>
+<div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>promise1里的内容
+promise1 promise { &lt;pending&gt; }
+promise2 promise { &lt;pending&gt; }
+timer1
+error
+timer2
+promise1 promise { &lt;resolved&gt; "success" }
+promise2 promise { &lt;rejected&gt;: Error: error!!!}
+</code></pre></div></div>
+
+<h3 id="reference">Reference</h3>
+
+<ul>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop">Event loop</a></li>
+  <li><a href="https://javascript.info/bubbling-and-capturing">Event capturing and bubbling</a></li>
+  <li><a href="https://javascript.info/microtask-queue">Microtasks</a></li>
+</ul>
+
+    </div>
+  </body>
+  <footer id="footer">
+    <div class="content"> 
+        <a href="/index.html">© 2021 Qinjian Zheng</a>  
+        <a href="mailto:qinjianzheng@student.unsw.edu.au">Email</a> 
+        <a href="https://github.com/QinjianZheng">GitHub</a>
+    </div>
+    <script type="text/javascript" src="/assets/javascript/footer.js"></script>
+</footer>
+</html>

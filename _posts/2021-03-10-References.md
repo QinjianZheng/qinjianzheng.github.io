@@ -23,11 +23,3 @@ This page contains links and resources of useful information about several topic
 - [4 Ways to Swap Variables in JavaScript](https://dmitripavlutin.com/swap-variables-javascript/#comments)
 
 
-### Front-end programming
-<hr/>
-
-Topic:
-- Closure
-- Event Loop
-- ES6 new features
-- HTTP Protocol
