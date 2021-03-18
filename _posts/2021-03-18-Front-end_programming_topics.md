@@ -21,6 +21,14 @@ The topics in this post are all about my own understandings, there might be mist
   - [Example 2](#example-2)
   - [Example 3](#example-3)
   - [Example 4](#example-4)
+- [CSS layout](#css-layout)
+  - [Fixed left box and responsive right box](#fixed-left-box-and-responsive-right-box)
+- [Prototype and prototype chains](#prototype-and-prototype-chains)
+- [instanceof](#instanceof)
+  - [Code example](#code-example)
+- [Equality and strict equality](#equality-and-strict-equality)
+- [new operator](#new-operator)
+- [Promise.all](#promiseall)
 - [Reference](#reference)
 <!-- /TOC -->
 
@@ -227,9 +235,219 @@ promise1 promise { <resolved> "success" }
 promise2 promise { <rejected>: Error: error!!!}
 ```
 
+### CSS layout
+<hr/>
+
+#### Fixed left box and responsive right box
+
+<div style="display: flex;border: solid 3px black;">
+    <div style="color: white; font-size: 3rem;flex: 0 0 200px; height:200px; background: #cb4b16;">Left</div>
+    <div style="color: white; font-size: 3rem;flex: 1; height: 200px; background: #859900;">Right</div>
+</div>
+
+### Prototype and prototype chains
+<hr/>
+
+Key points:
+1. Prototype is like class, with inheritance and all.
+2. To get an object's prototype object directly via `Object.getPrototypeOf(obj)`.
+3. Ones begin with `Object.prototype.` are inherited, ones begin with `Object.` are not.
+4. `constructor` property is contained in `prototype` property, and every instance object has this property. Also, `constructor` is a function can be invoked via parentheses, with `new` keyword, to create a new instance: `let person3 = new person1.constructor(...)`.
+5. Add new methods and property outside the constructor function, call `YOUR_OBJECT.prototype.NEW_METHOD/NEW_PROPERTY = ...`.
+6. ES6 Class Syntax, with `class YOUR_CLASS { constrcutor(...), YOUR_PROPERTIES, YOUR_METHODS(...) ...}`
+
+
+### instanceof
+<hr/>
+
+> The `instanceof` **operator** tests to see if the prototype property of a constructor appears anywhere in the prototype chain of an object. The return value is a boolean value. 
+
+Syntax: object `instanceof` constructor/class
+
+My implementation:
+
+```javascript
+const myInstanceof = (object, constructor) => {
+    let proto = object.__proto__;
+    while(proto !== null) {
+        if(proto === constructor.prototype) {
+            return true;
+        }
+        proto = proto.__proto__;
+    }
+    return false;
+}
+```
+
+#### Code example
+
+Open console, check the script right below and interact with the `Person` Object.
+
+Code example from [MDN](https://github.com/mdn/learning-area/blob/master/javascript/oojs/introduction/oojs-class-further-exercises.html).
+
+
+<script>
+    // function Person(first, last, age, gender, interests) {
+    //     this.name = {
+    //         'first': first,
+    //         'last' : last
+    //     };
+    //     this.age = age;
+    //     this.gender = gender;
+    //     this.interests = interests;
+    //     this.bio = function() {
+    //     // First define a string, and make it equal to the part of
+    //     // the bio that we know will always be the same.
+    //         var string = this.name.first + ' ' + this.name.last + ' is ' + this.age + ' years old. ';
+    //         // define a variable that will contain the pronoun part of
+    //         // the second sentence
+    //         var pronoun;
+
+    //         // check what the value of gender is, and set pronoun
+    //         // to an appropriate value in each case
+    //         if(this.gender === 'male' || this.gender === 'Male' || this.gender === 'm' || this.gender === 'M') {
+    //             pronoun = 'He likes ';
+    //         } else if(this.gender === 'female' || this.gender === 'Female' || this.gender === 'f' || this.gender === 'F') {
+    //             pronoun = 'She likes ';
+    //         } else {
+    //             pronoun = 'They like ';
+    //         }
+
+    //         // add the pronoun string on to the end of the main string
+    //         string += pronoun;
+
+    //         // use another conditional to structure the last part of the
+    //         // second sentence depending on whether the number of interests
+    //         // is 1, 2, or 3
+    //         if(this.interests.length === 1) {
+    //             string += this.interests[0] + '.';
+    //         } else if(this.interests.length === 2) {
+    //             string += this.interests[0] + ' and ' + this.interests[1] + '.';
+    //         } else {
+    //             // if there are more than 2 interests, we loop through them
+    //             // all, adding each one to the main string followed by a comma,
+    //             // except for the last one, which needs an and & a full stop
+    //             for(var i = 0; i < this.interests.length; i++) {
+    //                 if(i === this.interests.length - 1) {
+    //                     string += 'and ' + this.interests[i] + '.';
+    //                 } else {
+    //                     string += this.interests[i] + ', ';
+    //                 }
+    //             }
+    //         }
+
+    //         // finally, with the string built, we alert() it
+    //         alert(string);
+    //     };
+    //     this.greeting = function() {
+    //         alert('Hi! I\'m ' + this.name.first + '.');
+    //     };
+    // };
+
+
+
+    // convert to ES2015 Classes Syntax
+    class Person {
+        constructor(first, last, age, gender, interests) {
+            this.name = {
+                first,
+                last
+            };
+            this.age = age;
+            this.gender = gender;
+            this.interests = interests;
+        }
+
+        greeting() {
+            console.log(`Hi! I'm ${this.name.first}`);
+        };
+
+        farewell() {
+            console.log(`${this.name.first} has left the building. Bye for now!`);
+        };
+    }
+    class Teacher extends Person {
+        constructor(first, last, age, gender, interests, subject, grade) {
+            super(first, last, age, gender, interests);
+            this.subject = subject;
+            this.grade = grade;
+        }
+    }
+    let person1 = new Person('Tammi', 'Smith', 32, 'neutral', ['music', 'skiing', 'kickboxing']);
+    Person.prototype.farewell = function() {
+        alert(this.name.first + ' has left the building. Bye for now!');
+    };
+    let snape = new Teacher('Severus', 'Snape', 58, 'male', ['Potions'], 'Dark arts', 5);
+</script>
+
+### Equality and strict equality
+<hr/>
+
+Definition from [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Strict_equality):
+
+> The strict equality operator (===) checks whether its two operands are equal, returning a Boolean result. Unlike the equality operator, the strict equality operator always considers operands of different types to be different.
+
+> The equality operator (==) checks whether its two operands are equal, returning a Boolean result. Unlike the strict equality operator, it attempts to convert and compare operands that are of different types.
+
+Comparison between different types, try to convert them to the same type before comparing, see [The Abstract Equality Comparison Algorithm](https://262.ecma-international.org/5.1/#sec-11.9.3).
+
+Compare a object and a string or a number, convert the object using `ToPrimitive()` function, which 
+
+```javascript
+"1" ==  1;            // true
+1 == "1";             // true
+0 == false;           // true
+0 == null;            // false
+0 == undefined;       // false
+0 == !!null;          // true, look at Logical NOT operator
+0 == !!undefined;     // true, look at Logical NOT operator
+null == undefined;    // true
+
+const number1 = new Number(3);
+const number2 = new Number(3);
+number1 == 3;         // true
+number1 == number2;   // false, need to refer to same object
+```
+
+### new operator
+<hr/>
+
+Definition from [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new)
+
+> The `new` **operator** lets developers create an instance of a user-defined object type or of one of the built-in object types that has a constructor function.
+
+`new` operator takes parameters of `constructor` and `arguments` (a list of values that the `constructor` will be called with).
+
+### Promise.all
+<hr/>
+
+Code example from [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all#promise.all_fail-fast_behavior)
+
+Handling possible rejections by add `.catch` handler for each promise in the iterable:
+
+```javascript
+var p1 = new Promise((resolve, reject) => {
+  setTimeout(() => resolve('p1_delayed_resolution'), 1000);
+});
+
+var p2 = new Promise((resolve, reject) => {
+  reject(new Error('p2_immediate_rejection'));
+});
+
+Promise.all([
+  p1.catch(error => { return error }),
+  p2.catch(error => { return error }),
+]).then(values => {
+  console.log(values[0]) // "p1_delayed_resolution"
+  console.error(values[1]) // "Error: p2_immediate_rejection"
+})
+```
+
 
 ### Reference
 
 - [Event loop](https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop)
 - [Event capturing and bubbling](https://javascript.info/bubbling-and-capturing)
 - [Microtasks](https://javascript.info/microtask-queue)
+- [左边固定，右边自适应的七种方法](https://blog.csdn.net/qq_43633937/article/details/94064804)
+- [Object prototypes](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes)

@@ -1,3 +1,5 @@
+html { scroll-behavior: smooth; }
+
 body { margin: 0; font-family: Helvetica, sans-serif; -webkit-font-smoothing: antialiased; }
 
 body a { text-decoration: none; }
@@ -5,6 +7,12 @@ body a { text-decoration: none; }
 @font-face { font-family: "Assistant"; src: url("/assets/font/Assistant-VariableFont_wght.ttf"); }
 
 .main { font-family: "Assistant"; background-color: rgba(255, 255, 255, 0); max-width: 850px; margin: 0 auto 50px; padding-top: 20px; height: 100%; }
+
+.main #return-to-top { border: none; outline: none; background-color: #c4c4c4; color: #969696; font-size: 2.5rem; border-radius: 50%; transform: rotate(270deg) scale(0); transition: 200ms ease-in-out; position: fixed; bottom: 30px; right: 30px; }
+
+.main #return-to-top:hover { background-color: #969696; color: #c4c4c4; }
+
+.main #return-to-top[active] { transform: rotate(270deg) scale(1); }
 
 .main #me { width: 200px; height: auto; }
 
@@ -14,7 +22,7 @@ body a { text-decoration: none; }
 
 .main h2 { font-weight: 600; margin-block-end: 0.5em; }
 
-.main h3 { margin-block-start: 2em; margin-block-end: 0; }
+.main h3 { font-size: 1.3em; margin-block-start: 2em; margin-block-end: 0; }
 
 .main h4 { font-size: 1.2em; font-weight: bold; margin-block-start: 0; }
 
@@ -129,5 +137,9 @@ footer .content { border-top: solid 1px #ebe9e9; padding-top: 10px; width: 850px
 .main pre { width: 850px; background-color: #f6f8fa; border-radius: 5px; padding: 10px; font-size: 13pt; white-space: pre-wrap; word-wrap: break-word; }
 
 .main blockquote { color: #8a8a8a; margin: 0; padding-left: 1.4rem; border-left: 4px solid #dadada; }
+
+li li { list-style-type: lower-alpha; }
+
+li li li { list-style-type: lower-roman; }
 
 /*# sourceMappingURL=styles.css.map */

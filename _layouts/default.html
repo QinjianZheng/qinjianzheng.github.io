@@ -9,10 +9,13 @@
     <title>{{ page.title }}</title>
   </head>
   <body>
+    
     {% include navigation.html %}
     <div class="main">
+      <button id="return-to-top">➜</button>
       {{ content }}
     </div>
+    <script type="text/javascript" src="/assets/javascript/return_to_top.js"></script>
   </body>
   {% include footer.html %}
 </html>

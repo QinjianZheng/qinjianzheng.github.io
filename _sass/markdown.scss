@@ -16,3 +16,11 @@
     padding-left: 1.4rem;  
     border-left: 4px solid #dadada;
 }
+
+li li{
+    list-style-type: lower-alpha;
+}
+
+li li li{
+    list-style-type: lower-roman;
+}

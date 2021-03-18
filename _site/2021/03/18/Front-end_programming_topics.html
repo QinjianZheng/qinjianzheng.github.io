@@ -23,6 +23,7 @@
     <title>Front-end programming topics</title>
   </head>
   <body>
+    
     <nav>
     <div class="logo"><a href="/">QINJIAN</a></div>
     <div class="menu">
@@ -47,6 +48,7 @@
     
 </nav>
     <div class="main">
+      <button id="return-to-top">➜</button>
       <h2>Front-end programming topics</h2>
 <h5><i>18 Mar 2021</i></h5>
 
@@ -75,6 +77,20 @@
       <li><a href="#example-4">Example 4</a></li>
     </ul>
   </li>
+  <li><a href="#css-layout">CSS layout</a>
+    <ul>
+      <li><a href="#fixed-left-box-and-responsive-right-box">Fixed left box and responsive right box</a></li>
+    </ul>
+  </li>
+  <li><a href="#prototype-and-prototype-chains">Prototype and prototype chains</a></li>
+  <li><a href="#instanceof">instanceof</a>
+    <ul>
+      <li><a href="#code-example">Code example</a></li>
+    </ul>
+  </li>
+  <li><a href="#equality-and-strict-equality">Equality and strict equality</a></li>
+  <li><a href="#new-operator">new operator</a></li>
+  <li><a href="#promiseall">Promise.all</a></li>
   <li><a href="#reference">Reference</a>
 <!-- /TOC --></li>
 </ul>
@@ -292,15 +308,231 @@ promise1 promise { &lt;resolved&gt; "success" }
 promise2 promise { &lt;rejected&gt;: Error: error!!!}
 </code></pre></div></div>
 
+<h3 id="css-layout">CSS layout</h3>
+<hr />
+
+<h4 id="fixed-left-box-and-responsive-right-box">Fixed left box and responsive right box</h4>
+
+<div style="display: flex;border: solid 3px black;">
+    <div style="color: white; font-size: 3rem;flex: 0 0 200px; height:200px; background: #cb4b16;">Left</div>
+    <div style="color: white; font-size: 3rem;flex: 1; height: 200px; background: #859900;">Right</div>
+</div>
+
+<h3 id="prototype-and-prototype-chains">Prototype and prototype chains</h3>
+<hr />
+
+<p>Key points:</p>
+<ol>
+  <li>Prototype is like class, with inheritance and all.</li>
+  <li>To get an object’s prototype object directly via <code class="language-plaintext highlighter-rouge">Object.getPrototypeOf(obj)</code>.</li>
+  <li>Ones begin with <code class="language-plaintext highlighter-rouge">Object.prototype.</code> are inherited, ones begin with <code class="language-plaintext highlighter-rouge">Object.</code> are not.</li>
+  <li><code class="language-plaintext highlighter-rouge">constructor</code> property is contained in <code class="language-plaintext highlighter-rouge">prototype</code> property, and every instance object has this property. Also, <code class="language-plaintext highlighter-rouge">constructor</code> is a function can be invoked via parentheses, with <code class="language-plaintext highlighter-rouge">new</code> keyword, to create a new instance: <code class="language-plaintext highlighter-rouge">let person3 = new person1.constructor(...)</code>.</li>
+  <li>Add new methods and property outside the constructor function, call <code class="language-plaintext highlighter-rouge">YOUR_OBJECT.prototype.NEW_METHOD/NEW_PROPERTY = ...</code>.</li>
+  <li>ES6 Class Syntax, with <code class="language-plaintext highlighter-rouge">class YOUR_CLASS { constrcutor(...), YOUR_PROPERTIES, YOUR_METHODS(...) ...}</code></li>
+</ol>
+
+<h3 id="instanceof">instanceof</h3>
+<hr />
+
+<blockquote>
+  <p>The <code class="language-plaintext highlighter-rouge">instanceof</code> <strong>operator</strong> tests to see if the prototype property of a constructor appears anywhere in the prototype chain of an object. The return value is a boolean value.</p>
+</blockquote>
+
+<p>Syntax: object <code class="language-plaintext highlighter-rouge">instanceof</code> constructor/class</p>
+
+<p>My implementation:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">myInstanceof</span> <span class="o">=</span> <span class="p">(</span><span class="nx">object</span><span class="p">,</span> <span class="kd">constructor</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">proto</span> <span class="o">=</span> <span class="nx">object</span><span class="p">.</span><span class="nx">__proto__</span><span class="p">;</span>
+    <span class="k">while</span><span class="p">(</span><span class="nx">proto</span> <span class="o">!==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+        <span class="k">if</span><span class="p">(</span><span class="nx">proto</span> <span class="o">===</span> <span class="kd">constructor</span><span class="p">.</span><span class="nx">prototype</span><span class="p">)</span> <span class="p">{</span>
+            <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
+        <span class="p">}</span>
+        <span class="nx">proto</span> <span class="o">=</span> <span class="nx">proto</span><span class="p">.</span><span class="nx">__proto__</span><span class="p">;</span>
+    <span class="p">}</span>
+    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
+<h4 id="code-example">Code example</h4>
+
+<p>Open console, check the script right below and interact with the <code class="language-plaintext highlighter-rouge">Person</code> Object.</p>
+
+<p>Code example from <a href="https://github.com/mdn/learning-area/blob/master/javascript/oojs/introduction/oojs-class-further-exercises.html">MDN</a>.</p>
+
+<script>
+    // function Person(first, last, age, gender, interests) {
+    //     this.name = {
+    //         'first': first,
+    //         'last' : last
+    //     };
+    //     this.age = age;
+    //     this.gender = gender;
+    //     this.interests = interests;
+    //     this.bio = function() {
+    //     // First define a string, and make it equal to the part of
+    //     // the bio that we know will always be the same.
+    //         var string = this.name.first + ' ' + this.name.last + ' is ' + this.age + ' years old. ';
+    //         // define a variable that will contain the pronoun part of
+    //         // the second sentence
+    //         var pronoun;
+
+    //         // check what the value of gender is, and set pronoun
+    //         // to an appropriate value in each case
+    //         if(this.gender === 'male' || this.gender === 'Male' || this.gender === 'm' || this.gender === 'M') {
+    //             pronoun = 'He likes ';
+    //         } else if(this.gender === 'female' || this.gender === 'Female' || this.gender === 'f' || this.gender === 'F') {
+    //             pronoun = 'She likes ';
+    //         } else {
+    //             pronoun = 'They like ';
+    //         }
+
+    //         // add the pronoun string on to the end of the main string
+    //         string += pronoun;
+
+    //         // use another conditional to structure the last part of the
+    //         // second sentence depending on whether the number of interests
+    //         // is 1, 2, or 3
+    //         if(this.interests.length === 1) {
+    //             string += this.interests[0] + '.';
+    //         } else if(this.interests.length === 2) {
+    //             string += this.interests[0] + ' and ' + this.interests[1] + '.';
+    //         } else {
+    //             // if there are more than 2 interests, we loop through them
+    //             // all, adding each one to the main string followed by a comma,
+    //             // except for the last one, which needs an and & a full stop
+    //             for(var i = 0; i < this.interests.length; i++) {
+    //                 if(i === this.interests.length - 1) {
+    //                     string += 'and ' + this.interests[i] + '.';
+    //                 } else {
+    //                     string += this.interests[i] + ', ';
+    //                 }
+    //             }
+    //         }
+
+    //         // finally, with the string built, we alert() it
+    //         alert(string);
+    //     };
+    //     this.greeting = function() {
+    //         alert('Hi! I\'m ' + this.name.first + '.');
+    //     };
+    // };
+
+
+
+    // convert to ES2015 Classes Syntax
+    class Person {
+        constructor(first, last, age, gender, interests) {
+            this.name = {
+                first,
+                last
+            };
+            this.age = age;
+            this.gender = gender;
+            this.interests = interests;
+        }
+
+        greeting() {
+            console.log(`Hi! I'm ${this.name.first}`);
+        };
+
+        farewell() {
+            console.log(`${this.name.first} has left the building. Bye for now!`);
+        };
+    }
+    class Teacher extends Person {
+        constructor(first, last, age, gender, interests, subject, grade) {
+            super(first, last, age, gender, interests);
+            this.subject = subject;
+            this.grade = grade;
+        }
+    }
+    let person1 = new Person('Tammi', 'Smith', 32, 'neutral', ['music', 'skiing', 'kickboxing']);
+    Person.prototype.farewell = function() {
+        alert(this.name.first + ' has left the building. Bye for now!');
+    };
+    let snape = new Teacher('Severus', 'Snape', 58, 'male', ['Potions'], 'Dark arts', 5);
+</script>
+
+<h3 id="equality-and-strict-equality">Equality and strict equality</h3>
+<hr />
+
+<p>Definition from <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Strict_equality">MDN</a>:</p>
+
+<blockquote>
+  <p>The strict equality operator (===) checks whether its two operands are equal, returning a Boolean result. Unlike the equality operator, the strict equality operator always considers operands of different types to be different.</p>
+</blockquote>
+
+<blockquote>
+  <p>The equality operator (==) checks whether its two operands are equal, returning a Boolean result. Unlike the strict equality operator, it attempts to convert and compare operands that are of different types.</p>
+</blockquote>
+
+<p>Comparison between different types, try to convert them to the same type before comparing, see <a href="https://262.ecma-international.org/5.1/#sec-11.9.3">The Abstract Equality Comparison Algorithm</a>.</p>
+
+<p>Compare a object and a string or a number, convert the object using <code class="language-plaintext highlighter-rouge">ToPrimitive()</code> function, which</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="dl">"</span><span class="s2">1</span><span class="dl">"</span> <span class="o">==</span>  <span class="mi">1</span><span class="p">;</span>            <span class="c1">// true</span>
+<span class="mi">1</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">;</span>             <span class="c1">// true</span>
+<span class="mi">0</span> <span class="o">==</span> <span class="kc">false</span><span class="p">;</span>           <span class="c1">// true</span>
+<span class="mi">0</span> <span class="o">==</span> <span class="kc">null</span><span class="p">;</span>            <span class="c1">// false</span>
+<span class="mi">0</span> <span class="o">==</span> <span class="kc">undefined</span><span class="p">;</span>       <span class="c1">// false</span>
+<span class="mi">0</span> <span class="o">==</span> <span class="o">!!</span><span class="kc">null</span><span class="p">;</span>          <span class="c1">// true, look at Logical NOT operator</span>
+<span class="mi">0</span> <span class="o">==</span> <span class="o">!!</span><span class="kc">undefined</span><span class="p">;</span>     <span class="c1">// true, look at Logical NOT operator</span>
+<span class="kc">null</span> <span class="o">==</span> <span class="kc">undefined</span><span class="p">;</span>    <span class="c1">// true</span>
+
+<span class="kd">const</span> <span class="nx">number1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Number</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+<span class="kd">const</span> <span class="nx">number2</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Number</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+<span class="nx">number1</span> <span class="o">==</span> <span class="mi">3</span><span class="p">;</span>         <span class="c1">// true</span>
+<span class="nx">number1</span> <span class="o">==</span> <span class="nx">number2</span><span class="p">;</span>   <span class="c1">// false, need to refer to same object</span>
+</code></pre></div></div>
+
+<h3 id="new-operator">new operator</h3>
+<hr />
+
+<p>Definition from <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new">MDN</a></p>
+
+<blockquote>
+  <p>The <code class="language-plaintext highlighter-rouge">new</code> <strong>operator</strong> lets developers create an instance of a user-defined object type or of one of the built-in object types that has a constructor function.</p>
+</blockquote>
+
+<p><code class="language-plaintext highlighter-rouge">new</code> operator takes parameters of <code class="language-plaintext highlighter-rouge">constructor</code> and <code class="language-plaintext highlighter-rouge">arguments</code> (a list of values that the <code class="language-plaintext highlighter-rouge">constructor</code> will be called with).</p>
+
+<h3 id="promiseall">Promise.all</h3>
+<hr />
+
+<p>Code example from <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all#promise.all_fail-fast_behavior">MDN</a></p>
+
+<p>Handling possible rejections by add <code class="language-plaintext highlighter-rouge">.catch</code> handler for each promise in the iterable:</p>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">p1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">resolve</span><span class="p">(</span><span class="dl">'</span><span class="s1">p1_delayed_resolution</span><span class="dl">'</span><span class="p">),</span> <span class="mi">1000</span><span class="p">);</span>
+<span class="p">});</span>
+
+<span class="kd">var</span> <span class="nx">p2</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">reject</span><span class="p">(</span><span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">p2_immediate_rejection</span><span class="dl">'</span><span class="p">));</span>
+<span class="p">});</span>
+
+<span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span>
+  <span class="nx">p1</span><span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">error</span> <span class="p">}),</span>
+  <span class="nx">p2</span><span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">error</span> <span class="p">}),</span>
+<span class="p">]).</span><span class="nx">then</span><span class="p">(</span><span class="nx">values</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">values</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1">// "p1_delayed_resolution"</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">values</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="c1">// "Error: p2_immediate_rejection"</span>
+<span class="p">})</span>
+</code></pre></div></div>
+
 <h3 id="reference">Reference</h3>
 
 <ul>
   <li><a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop">Event loop</a></li>
   <li><a href="https://javascript.info/bubbling-and-capturing">Event capturing and bubbling</a></li>
   <li><a href="https://javascript.info/microtask-queue">Microtasks</a></li>
+  <li><a href="https://blog.csdn.net/qq_43633937/article/details/94064804">左边固定，右边自适应的七种方法</a></li>
+  <li><a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes">Object prototypes</a></li>
 </ul>
 
     </div>
+    <script type="text/javascript" src="/assets/javascript/return_to_top.js"></script>
   </body>
   <footer id="footer">
     <div class="content"> 

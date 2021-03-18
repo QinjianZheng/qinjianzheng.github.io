@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-03-18T14:41:41+08:00</updated><id>/feed.xml</id><entry><title type="html">Front-end programming topics</title><link href="/2021/03/18/Front-end_programming_topics.html" rel="alternate" type="text/html" title="Front-end programming topics" /><published>2021-03-18T00:00:00+08:00</published><updated>2021-03-18T00:00:00+08:00</updated><id>/2021/03/18/Front-end_programming_topics</id><content type="html" xml:base="/2021/03/18/Front-end_programming_topics.html">&lt;p&gt;To be a well-rounded front-end programmer, one should have a solid understanding of underlying mechanism of tools she uses. Some might think that knowing how to use the tools is good enough, but the mistakes usually come from the lack of understanding. What’s worse, these mistakes are not easy to detect since ones who make them might not realize they are mistakes.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-03-18T21:44:26+08:00</updated><id>/feed.xml</id><entry><title type="html">Front-end programming topics</title><link href="/2021/03/18/Front-end_programming_topics.html" rel="alternate" type="text/html" title="Front-end programming topics" /><published>2021-03-18T00:00:00+08:00</published><updated>2021-03-18T00:00:00+08:00</updated><id>/2021/03/18/Front-end_programming_topics</id><content type="html" xml:base="/2021/03/18/Front-end_programming_topics.html">&lt;p&gt;To be a well-rounded front-end programmer, one should have a solid understanding of underlying mechanism of tools she uses. Some might think that knowing how to use the tools is good enough, but the mistakes usually come from the lack of understanding. What’s worse, these mistakes are not easy to detect since ones who make them might not realize they are mistakes.&lt;/p&gt;
 
 &lt;p&gt;The topics in this post are all about my own understandings, there might be mistakes. So if you find any, do contact me via &lt;a href=&quot;mailto:qinjianzheng@student.unsw.edu.au&quot;&gt;Email&lt;/a&gt;.
 &lt;!--more--&gt;&lt;/p&gt;
@@ -23,6 +23,20 @@
       &lt;li&gt;&lt;a href=&quot;#example-4&quot;&gt;Example 4&lt;/a&gt;&lt;/li&gt;
     &lt;/ul&gt;
   &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#css-layout&quot;&gt;CSS layout&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#fixed-left-box-and-responsive-right-box&quot;&gt;Fixed left box and responsive right box&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#prototype-and-prototype-chains&quot;&gt;Prototype and prototype chains&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#instanceof&quot;&gt;instanceof&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#code-example&quot;&gt;Code example&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#equality-and-strict-equality&quot;&gt;Equality and strict equality&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#new-operator&quot;&gt;new operator&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#promiseall&quot;&gt;Promise.all&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#reference&quot;&gt;Reference&lt;/a&gt;
 &lt;!-- /TOC --&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -240,12 +254,227 @@ promise1 promise { &amp;lt;resolved&amp;gt; &quot;success&quot; }
 promise2 promise { &amp;lt;rejected&amp;gt;: Error: error!!!}
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
+&lt;h3 id=&quot;css-layout&quot;&gt;CSS layout&lt;/h3&gt;
+&lt;hr /&gt;
+
+&lt;h4 id=&quot;fixed-left-box-and-responsive-right-box&quot;&gt;Fixed left box and responsive right box&lt;/h4&gt;
+
+&lt;div style=&quot;display: flex;border: solid 3px black;&quot;&gt;
+    &lt;div style=&quot;color: white; font-size: 3rem;flex: 0 0 200px; height:200px; background: #cb4b16;&quot;&gt;Left&lt;/div&gt;
+    &lt;div style=&quot;color: white; font-size: 3rem;flex: 1; height: 200px; background: #859900;&quot;&gt;Right&lt;/div&gt;
+&lt;/div&gt;
+
+&lt;h3 id=&quot;prototype-and-prototype-chains&quot;&gt;Prototype and prototype chains&lt;/h3&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;Key points:&lt;/p&gt;
+&lt;ol&gt;
+  &lt;li&gt;Prototype is like class, with inheritance and all.&lt;/li&gt;
+  &lt;li&gt;To get an object’s prototype object directly via &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Object.getPrototypeOf(obj)&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Ones begin with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Object.prototype.&lt;/code&gt; are inherited, ones begin with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Object.&lt;/code&gt; are not.&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;constructor&lt;/code&gt; property is contained in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;prototype&lt;/code&gt; property, and every instance object has this property. Also, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;constructor&lt;/code&gt; is a function can be invoked via parentheses, with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;new&lt;/code&gt; keyword, to create a new instance: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;let person3 = new person1.constructor(...)&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;Add new methods and property outside the constructor function, call &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;YOUR_OBJECT.prototype.NEW_METHOD/NEW_PROPERTY = ...&lt;/code&gt;.&lt;/li&gt;
+  &lt;li&gt;ES6 Class Syntax, with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;class YOUR_CLASS { constrcutor(...), YOUR_PROPERTIES, YOUR_METHODS(...) ...}&lt;/code&gt;&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;h3 id=&quot;instanceof&quot;&gt;instanceof&lt;/h3&gt;
+&lt;hr /&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;instanceof&lt;/code&gt; &lt;strong&gt;operator&lt;/strong&gt; tests to see if the prototype property of a constructor appears anywhere in the prototype chain of an object. The return value is a boolean value.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Syntax: object &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;instanceof&lt;/code&gt; constructor/class&lt;/p&gt;
+
+&lt;p&gt;My implementation:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;myInstanceof&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;constructor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;kd&quot;&gt;let&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;proto&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;object&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;__proto__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;while&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;proto&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+        &lt;span class=&quot;k&quot;&gt;if&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;proto&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;===&lt;/span&gt; &lt;span class=&quot;kd&quot;&gt;constructor&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;prototype&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+            &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;true&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+        &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+        &lt;span class=&quot;nx&quot;&gt;proto&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;proto&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;__proto__&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;code-example&quot;&gt;Code example&lt;/h4&gt;
+
+&lt;p&gt;Open console, check the script right below and interact with the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Person&lt;/code&gt; Object.&lt;/p&gt;
+
+&lt;p&gt;Code example from &lt;a href=&quot;https://github.com/mdn/learning-area/blob/master/javascript/oojs/introduction/oojs-class-further-exercises.html&quot;&gt;MDN&lt;/a&gt;.&lt;/p&gt;
+
+&lt;script&gt;
+    // function Person(first, last, age, gender, interests) {
+    //     this.name = {
+    //         &apos;first&apos;: first,
+    //         &apos;last&apos; : last
+    //     };
+    //     this.age = age;
+    //     this.gender = gender;
+    //     this.interests = interests;
+    //     this.bio = function() {
+    //     // First define a string, and make it equal to the part of
+    //     // the bio that we know will always be the same.
+    //         var string = this.name.first + &apos; &apos; + this.name.last + &apos; is &apos; + this.age + &apos; years old. &apos;;
+    //         // define a variable that will contain the pronoun part of
+    //         // the second sentence
+    //         var pronoun;
+
+    //         // check what the value of gender is, and set pronoun
+    //         // to an appropriate value in each case
+    //         if(this.gender === &apos;male&apos; || this.gender === &apos;Male&apos; || this.gender === &apos;m&apos; || this.gender === &apos;M&apos;) {
+    //             pronoun = &apos;He likes &apos;;
+    //         } else if(this.gender === &apos;female&apos; || this.gender === &apos;Female&apos; || this.gender === &apos;f&apos; || this.gender === &apos;F&apos;) {
+    //             pronoun = &apos;She likes &apos;;
+    //         } else {
+    //             pronoun = &apos;They like &apos;;
+    //         }
+
+    //         // add the pronoun string on to the end of the main string
+    //         string += pronoun;
+
+    //         // use another conditional to structure the last part of the
+    //         // second sentence depending on whether the number of interests
+    //         // is 1, 2, or 3
+    //         if(this.interests.length === 1) {
+    //             string += this.interests[0] + &apos;.&apos;;
+    //         } else if(this.interests.length === 2) {
+    //             string += this.interests[0] + &apos; and &apos; + this.interests[1] + &apos;.&apos;;
+    //         } else {
+    //             // if there are more than 2 interests, we loop through them
+    //             // all, adding each one to the main string followed by a comma,
+    //             // except for the last one, which needs an and &amp; a full stop
+    //             for(var i = 0; i &lt; this.interests.length; i++) {
+    //                 if(i === this.interests.length - 1) {
+    //                     string += &apos;and &apos; + this.interests[i] + &apos;.&apos;;
+    //                 } else {
+    //                     string += this.interests[i] + &apos;, &apos;;
+    //                 }
+    //             }
+    //         }
+
+    //         // finally, with the string built, we alert() it
+    //         alert(string);
+    //     };
+    //     this.greeting = function() {
+    //         alert(&apos;Hi! I\&apos;m &apos; + this.name.first + &apos;.&apos;);
+    //     };
+    // };
+
+
+
+    // convert to ES2015 Classes Syntax
+    class Person {
+        constructor(first, last, age, gender, interests) {
+            this.name = {
+                first,
+                last
+            };
+            this.age = age;
+            this.gender = gender;
+            this.interests = interests;
+        }
+
+        greeting() {
+            console.log(`Hi! I&apos;m ${this.name.first}`);
+        };
+
+        farewell() {
+            console.log(`${this.name.first} has left the building. Bye for now!`);
+        };
+    }
+    class Teacher extends Person {
+        constructor(first, last, age, gender, interests, subject, grade) {
+            super(first, last, age, gender, interests);
+            this.subject = subject;
+            this.grade = grade;
+        }
+    }
+    let person1 = new Person(&apos;Tammi&apos;, &apos;Smith&apos;, 32, &apos;neutral&apos;, [&apos;music&apos;, &apos;skiing&apos;, &apos;kickboxing&apos;]);
+    Person.prototype.farewell = function() {
+        alert(this.name.first + &apos; has left the building. Bye for now!&apos;);
+    };
+    let snape = new Teacher(&apos;Severus&apos;, &apos;Snape&apos;, 58, &apos;male&apos;, [&apos;Potions&apos;], &apos;Dark arts&apos;, 5);
+&lt;/script&gt;
+
+&lt;h3 id=&quot;equality-and-strict-equality&quot;&gt;Equality and strict equality&lt;/h3&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;Definition from &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Strict_equality&quot;&gt;MDN&lt;/a&gt;:&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The strict equality operator (===) checks whether its two operands are equal, returning a Boolean result. Unlike the equality operator, the strict equality operator always considers operands of different types to be different.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The equality operator (==) checks whether its two operands are equal, returning a Boolean result. Unlike the strict equality operator, it attempts to convert and compare operands that are of different types.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;Comparison between different types, try to convert them to the same type before comparing, see &lt;a href=&quot;https://262.ecma-international.org/5.1/#sec-11.9.3&quot;&gt;The Abstract Equality Comparison Algorithm&lt;/a&gt;.&lt;/p&gt;
+
+&lt;p&gt;Compare a object and a string or a number, convert the object using &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;ToPrimitive()&lt;/code&gt; function, which&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt;  &lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;            &lt;span class=&quot;c1&quot;&gt;// true&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;             &lt;span class=&quot;c1&quot;&gt;// true&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;false&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;           &lt;span class=&quot;c1&quot;&gt;// true&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;            &lt;span class=&quot;c1&quot;&gt;// false&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;undefined&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;       &lt;span class=&quot;c1&quot;&gt;// false&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!!&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;          &lt;span class=&quot;c1&quot;&gt;// true, look at Logical NOT operator&lt;/span&gt;
+&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;!!&lt;/span&gt;&lt;span class=&quot;kc&quot;&gt;undefined&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;     &lt;span class=&quot;c1&quot;&gt;// true, look at Logical NOT operator&lt;/span&gt;
+&lt;span class=&quot;kc&quot;&gt;null&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;kc&quot;&gt;undefined&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;    &lt;span class=&quot;c1&quot;&gt;// true&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;number1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;const&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;number2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Number&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;number1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;3&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;         &lt;span class=&quot;c1&quot;&gt;// true&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;number1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;number2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;// false, need to refer to same object&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;new-operator&quot;&gt;new operator&lt;/h3&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;Definition from &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new&quot;&gt;MDN&lt;/a&gt;&lt;/p&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;The &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;new&lt;/code&gt; &lt;strong&gt;operator&lt;/strong&gt; lets developers create an instance of a user-defined object type or of one of the built-in object types that has a constructor function.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;new&lt;/code&gt; operator takes parameters of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;constructor&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;arguments&lt;/code&gt; (a list of values that the &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;constructor&lt;/code&gt; will be called with).&lt;/p&gt;
+
+&lt;h3 id=&quot;promiseall&quot;&gt;Promise.all&lt;/h3&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;Code example from &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all#promise.all_fail-fast_behavior&quot;&gt;MDN&lt;/a&gt;&lt;/p&gt;
+
+&lt;p&gt;Handling possible rejections by add &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;.catch&lt;/code&gt; handler for each promise in the iterable:&lt;/p&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;p1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Promise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;reject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;setTimeout&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;p1_delayed_resolution&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;),&lt;/span&gt; &lt;span class=&quot;mi&quot;&gt;1000&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;);&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;p2&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Promise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;((&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;resolve&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;reject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;reject&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;new&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;Error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;p2_immediate_rejection&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;));&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;});&lt;/span&gt;
+
+&lt;span class=&quot;nb&quot;&gt;Promise&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;all&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;([&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;p1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}),&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;p2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;k&quot;&gt;catch&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;}),&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;]).&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;then&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;values&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;0&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// &quot;p1_delayed_resolution&quot;&lt;/span&gt;
+  &lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;error&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;values&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;[&lt;/span&gt;&lt;span class=&quot;mi&quot;&gt;1&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;])&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// &quot;Error: p2_immediate_rejection&quot;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 &lt;h3 id=&quot;reference&quot;&gt;Reference&lt;/h3&gt;
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/EventLoop&quot;&gt;Event loop&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://javascript.info/bubbling-and-capturing&quot;&gt;Event capturing and bubbling&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://javascript.info/microtask-queue&quot;&gt;Microtasks&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://blog.csdn.net/qq_43633937/article/details/94064804&quot;&gt;左边固定，右边自适应的七种方法&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes&quot;&gt;Object prototypes&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content><author><name></name></author><summary type="html">To be a well-rounded front-end programmer, one should have a solid understanding of underlying mechanism of tools she uses. Some might think that knowing how to use the tools is good enough, but the mistakes usually come from the lack of understanding. What’s worse, these mistakes are not easy to detect since ones who make them might not realize they are mistakes. The topics in this post are all about my own understandings, there might be mistakes. So if you find any, do contact me via Email.</summary></entry><entry><title type="html">Quick Sort</title><link href="/2021/03/17/Quick_Sort.html" rel="alternate" type="text/html" title="Quick Sort" /><published>2021-03-17T00:00:00+08:00</published><updated>2021-03-17T00:00:00+08:00</updated><id>/2021/03/17/Quick_Sort</id><content type="html" xml:base="/2021/03/17/Quick_Sort.html">&lt;p&gt;Quick sort implementation and problems related to it.
 &lt;!--more--&gt;&lt;/p&gt;
 

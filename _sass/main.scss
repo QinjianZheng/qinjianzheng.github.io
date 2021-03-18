@@ -1,3 +1,8 @@
+html {
+    scroll-behavior: smooth;
+}
+
+
 body {
     margin: 0;
     font-family: Helvetica, sans-serif;
@@ -20,6 +25,29 @@ body a {
     margin: 0 auto 50px;
     padding-top: 20px;
     height: 100%;
+}
+
+.main #return-to-top {
+    border: none;
+    outline: none;
+    background-color: rgb(196, 196, 196);
+    color:rgb(150, 150, 150);
+    font-size: 2.5rem;
+    border-radius: 50%;
+    transform: rotate(270deg) scale(0);
+    transition: 200ms ease-in-out;
+    position: fixed;
+    bottom: 30px;
+    right: 30px;
+}
+
+.main #return-to-top:hover {
+    background-color: rgb(150, 150, 150);
+    color: rgb(196, 196, 196);
+}
+
+.main #return-to-top[active] {
+    transform: rotate(270deg) scale(1);
 }
 
 .main #me {
@@ -47,6 +75,7 @@ body a {
 }
 
 .main h3 {
+    font-size: 1.3em;
     margin-block-start: 2em;
     margin-block-end: 0;
 }
