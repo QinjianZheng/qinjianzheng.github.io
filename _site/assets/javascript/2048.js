@@ -122,7 +122,7 @@ const keyHandler = (event) => {
 
 const load = (event) => {
     keyHandler(event);
-    if(!gameOver()) {
+    if(gameOver()) {
         alert("Game Over!");
         window.removeEventListener("keydown", load);
     }
