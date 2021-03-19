@@ -23,3 +23,7 @@ This page contains links and resources of useful information about several topic
 - [4 Ways to Swap Variables in JavaScript](https://dmitripavlutin.com/swap-variables-javascript/#comments)
 
 
+### HTTP
+<hr/>
+
+- [面试精选之http缓存](https://juejin.cn/post/6844903634002509832)

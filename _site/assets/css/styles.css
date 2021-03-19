@@ -138,8 +138,8 @@ footer .content { border-top: solid 1px #ebe9e9; padding-top: 10px; width: 850px
 
 .main blockquote { color: #8a8a8a; margin: 0; padding-left: 1.4rem; border-left: 4px solid #dadada; }
 
-li li { list-style-type: lower-alpha; }
+ol li li { list-style-type: lower-alpha; }
 
-li li li { list-style-type: lower-roman; }
+ol li li li { list-style-type: lower-roman; }
 
 /*# sourceMappingURL=styles.css.map */

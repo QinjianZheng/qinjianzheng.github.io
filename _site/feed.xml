@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-03-18T21:44:26+08:00</updated><id>/feed.xml</id><entry><title type="html">Front-end programming topics</title><link href="/2021/03/18/Front-end_programming_topics.html" rel="alternate" type="text/html" title="Front-end programming topics" /><published>2021-03-18T00:00:00+08:00</published><updated>2021-03-18T00:00:00+08:00</updated><id>/2021/03/18/Front-end_programming_topics</id><content type="html" xml:base="/2021/03/18/Front-end_programming_topics.html">&lt;p&gt;To be a well-rounded front-end programmer, one should have a solid understanding of underlying mechanism of tools she uses. Some might think that knowing how to use the tools is good enough, but the mistakes usually come from the lack of understanding. What’s worse, these mistakes are not easy to detect since ones who make them might not realize they are mistakes.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-03-19T16:19:20+08:00</updated><id>/feed.xml</id><entry><title type="html">Front-end programming topics</title><link href="/2021/03/18/Front-end_programming_topics.html" rel="alternate" type="text/html" title="Front-end programming topics" /><published>2021-03-18T00:00:00+08:00</published><updated>2021-03-18T00:00:00+08:00</updated><id>/2021/03/18/Front-end_programming_topics</id><content type="html" xml:base="/2021/03/18/Front-end_programming_topics.html">&lt;p&gt;To be a well-rounded front-end programmer, one should have a solid understanding of underlying mechanism of tools she uses. Some might think that knowing how to use the tools is good enough, but the mistakes usually come from the lack of understanding. What’s worse, these mistakes are not easy to detect since ones who make them might not realize they are mistakes.&lt;/p&gt;
 
 &lt;p&gt;The topics in this post are all about my own understandings, there might be mistakes. So if you find any, do contact me via &lt;a href=&quot;mailto:qinjianzheng@student.unsw.edu.au&quot;&gt;Email&lt;/a&gt;.
 &lt;!--more--&gt;&lt;/p&gt;
@@ -599,6 +599,13 @@ promise2 promise { &amp;lt;rejected&amp;gt;: Error: error!!!}
 
 &lt;ul&gt;
   &lt;li&gt;&lt;a href=&quot;https://dmitripavlutin.com/swap-variables-javascript/#comments&quot;&gt;4 Ways to Swap Variables in JavaScript&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h3 id=&quot;http&quot;&gt;HTTP&lt;/h3&gt;
+&lt;hr /&gt;
+
+&lt;ul&gt;
+  &lt;li&gt;&lt;a href=&quot;https://juejin.cn/post/6844903634002509832&quot;&gt;面试精选之http缓存&lt;/a&gt;&lt;/li&gt;
 &lt;/ul&gt;</content><author><name></name></author><summary type="html">This page contains links and resources of useful information about several topics.</summary></entry><entry><title type="html">Notes of PostgreSQL operations and Shell commands</title><link href="/2021/03/08/Notes-of-PostgreSQL-operations-and-Shell-commands.html" rel="alternate" type="text/html" title="Notes of PostgreSQL operations and Shell commands" /><published>2021-03-08T00:00:00+08:00</published><updated>2021-03-08T00:00:00+08:00</updated><id>/2021/03/08/Notes%20of%20PostgreSQL%20operations%20and%20Shell%20commands</id><content type="html" xml:base="/2021/03/08/Notes-of-PostgreSQL-operations-and-Shell-commands.html">&lt;p&gt;Sometimes, commands will slip out the brain, and it is always good to have a place to look up these commands.
 &lt;!--more--&gt;&lt;/p&gt;
 
