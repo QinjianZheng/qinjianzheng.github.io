@@ -21,7 +21,8 @@ This page contains links and resources of useful information about several topic
 <hr/>
 
 - [4 Ways to Swap Variables in JavaScript](https://dmitripavlutin.com/swap-variables-javascript/#comments)
-
+- [User Input and Output in JavaScript](https://www.universalclass.com/articles/computers/javascript/user-input-and-output-in-javascript.htm)
+- [Getting User Input in Node.js](https://www.codecademy.com/articles/getting-user-input-in-node-js)
 
 ### HTTP
 <hr/>
