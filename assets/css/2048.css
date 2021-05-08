@@ -10,6 +10,29 @@ h2 {
     margin-block-start: 0.5em;
 }
 
+.resetGame {
+    background-color: #8f7a66;
+    color: #f9f6f2;
+    padding: 10px 20px;
+    font-size: 20pt;
+    border-radius: 5px;
+    border: none;
+    cursor: pointer;
+}
+
+.overlay {
+    background-color: #e7e1dbab;
+    height: 100%;
+    width: 100%;
+    border-radius: 10px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    z-index: 2;
+}
+
 #board {
     margin: 20px auto 0;
     display: grid;
@@ -24,9 +47,71 @@ h2 {
 
 .blank {
     background-color: #cdc1b4;
+    color: #776e65;
     margin: 10px;
-    font-size: 50pt;
+    font-size: 60pt; 
+    font-weight: bold;
     font-family: Arial, Helvetica, sans-serif;
     padding-top: 20px;
 }
 
+#board .empty {
+    background-color: #cdc1b4;
+}
+
+#board .style-2 {
+    background-color: #eee4da;
+    color: #776e65;
+}
+
+#board .style-4 {
+    background-color: #ede0c8;
+    color: #776e65;
+}
+
+#board .style-8 {
+    background-color: #f2b179;
+    color: #f9f6f2;
+}
+
+#board .style-16 {
+    background-color: #f59563;
+    color: #f9f6f2;
+}
+
+#board .style-32 {
+    background-color: #f67c5f;
+    color: #f9f6f2;
+}
+
+#board .style-64 {
+    background-color: #f65e3b;
+    color: #f9f6f2;
+}
+
+#board .style-128 {
+    background-color: #edcf72;
+    color: #f9f6f2;
+}
+
+#board .style-256 {
+    background-color: #edcc61;
+    color: #f9f6f2; 
+}
+
+#board .style-512 {
+    background-color: #edc850;
+    color: #f9f6f2;
+}
+
+#board .style-1024 {
+    background-color: #edc53f;
+    color: #f9f6f2;
+    font-size: 48pt; 
+}
+
+#board .style-2048 {
+    background-color: #edc22e;
+    color: #f9f6f2; 
+    font-size: 48pt;  
+}

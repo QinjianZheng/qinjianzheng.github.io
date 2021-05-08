@@ -1,25 +1,57 @@
 const board = document.getElementById("board");
 const score = document.getElementById("score");
+const winOverlay = document.getElementsByClassName('win');
+winOverlay[0].style.display = 'none';
+const lostOverlay = document.getElementsByClassName('lost');
+lostOverlay[0].style.display = 'none';
 const blanks = new Array(4);
-
+const buttons = document.getElementsByTagName('button');
 for(var i = 0; i < blanks.length; i++) {
     blanks[i] = new Array(4);
 }
 
-
-
-const popRandom = () => {
-    const value = (getRandomInt(10) < 9 ? 2 : 4);
-    let placed = false;
-    while(!placed) {
-        const i = getRandomInt(4);
-        const j = getRandomInt(4);
-        if(blanks[i][j].innerText === "") {
-            blanks[i][j].innerText = `${value}`
-            placed = true;
+const resetGame = () => {
+    for (let i = 0; i < blanks.length; i++) {
+        for(let j = 0; j < blanks[i].length; j++) {
+            blanks[i][j].innerText = '';
+            blanks[i][j].className = `blank empty`;
         }
     }
+    winOverlay[0].style.display = 'none';
+    lostOverlay[0].style.display = 'none';
+    window.addEventListener("keydown", load);
+    popRandom();
+};
+
+for (const button of buttons) {
+    button.addEventListener('click', resetGame);
 }
+
+const popRandom = () => {
+    const emptyBlankList = [];
+    const value = (getRandomInt(10) < 9 ? 2 : 4);
+    
+
+    for (let i = 0; i < blanks.length; i++) {
+        for(let j = 0; j < blanks[i].length; j++) {
+            if (! blanks[i][j].innerText) {
+                emptyBlankList.push({row: i, col: j});
+            }
+        }
+    }
+    
+    if (emptyBlankList.length) {
+        const randomCell = emptyBlankList[getRandomInt(emptyBlankList.length - 1)];
+        const i = randomCell.row;
+        const j = randomCell.col;
+        blanks[i][j].innerText = `${value}`;
+        blanks[i][j].className = `blank style-${value}`;
+        placed = true;
+    }
+
+        
+}
+
 
 
 const getRandomInt = (max) => {
@@ -30,7 +62,7 @@ const getRandomInt = (max) => {
 for (let i = 0; i < blanks.length; i++) {
     for(let j = 0; j < blanks[i].length; j++) {
         blanks[i][j] = document.createElement("div");
-        blanks[i][j].className = "blank";
+        blanks[i][j].className = 'blank empty';
         blanks[i][j].id = `blank${i}.${j}`;
         board.appendChild(blanks[i][j]);
         blanks[i][j].click();
@@ -44,21 +76,35 @@ if(getRandomInt(10) < 6) {
 } else {
     popRandom();
 }
-
-const gameOver = () => {
+const gameWon = () => 
+{
     for(let i = 0; i < blanks.length; i++) {
         for(let j = 0; j < blanks[0].length; j++) {
+            if(blanks[i][j].innerText === '2048') {
+                return true;
+            }
+        }
+    }
+    return false;
+}
+const gameOver = () => {
+    for(let i = 0; i < blanks.length; i++) {
+        for(let j = 0; j < blanks.length; j++) {
+            
             if(blanks[i][j].innerText === "") {
+                console.log(i,j, 'is empty');
                 return false;
             }
         }
     }
     for(let i = 0; i < blanks.length; i++) {
-        for(let j = 0; j < blanks[0].length; j++) {
-            if (blanks[i][j] === blanks[i][j + 1]) {
+        for(let j = 0; j < blanks[0].length - 1; j++) {
+            if (blanks[i][j].innerText === blanks[i][j + 1].innerText) {
+                console.log(i,j, 'is the same as', i, j+1);
                 return false;
             }
-            if (blanks[j][i] === blanks[j + 1][i]) {
+            if (blanks[j][i].innerText === blanks[j + 1][i].innerText) {
+                console.log(j,i, 'is the same as', j+1, i);
                 return false;
             }
         }
@@ -67,47 +113,35 @@ const gameOver = () => {
 }
 
 const keyHandler = (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     // pop out a random block
     // slide to the sides
     switch (event.key) {
         case "ArrowUp":
-            // demoUP().then(() => {
-            //     popRandom();
-            // });
-            // await sleep(600);
-            // popRandom();
             moveAll("UP");
-            
             break;
         case "ArrowDown":
-            // demoDOWN()
-            // await sleep(600);
-            // popRandom();
             moveAll("DOWN");
             break;
         case "ArrowLeft":
-            // demoLEFT()
-            // await sleep(600);
-            // popRandom();
             moveAll("LEFT");
             break;
         case "ArrowRight":
-            // demoRIGHT()
-            // await sleep(600);
-            // popRandom();
             moveAll("RIGHT");
             break;
         default:
             break;
     }
-
 }
 
 const load = (event) => {
     keyHandler(event);
+    if (gameWon()) {
+        winOverlay[0].style.display = 'flex';
+        window.removeEventListener("keydown", load);
+    }
     if(gameOver()) {
-        alert("Game Over!");
+        lostOverlay[0].style.display = 'flex';
         window.removeEventListener("keydown", load);
     }
 }
@@ -115,35 +149,11 @@ const load = (event) => {
 window.addEventListener("keydown", load);
     
 
-
-
-
 const sleep = (ms) => {
     return new Promise((resolve) => {
-        // console.log("hello");
         setTimeout(resolve, ms)
     });
 }
-
-// const sleepPromise = sleep(1000);
-
-// sleepPromise.then(
-//     ()=> {
-//         console.log("world");
-//     }
-// );
-
-
-// blanks[3][2].innerText = '2';
-// blanks[3][0].innerText = '2';
-// blanks[3][1].innerText = '2';
-// blanks[3][3].innerText = '2';
-// blanks[1][1].innerText = '4';
-// let mergedList = [];
-// let ismerged = {id: '2', merged: true};
-// mergedList.push(ismerged);
-
-
 
 const isInMergedList = (mergedList, id) => {
     mergedList.forEach(item => {
@@ -157,41 +167,38 @@ const isInMergedList = (mergedList, id) => {
 let scoreInt = 0;
 
 /*
-if UP or DOWN, nextCol is equal to col
-if LEFT or RIGHT, nextRow is equal to row
+    if UP or DOWN, nextCol is equal to col
+    if LEFT or RIGHT, nextRow is equal to row
 */
-const moveOneCell = async (row, nextRow, col, nextCol, mergedList) => {
+const moveOneCell = (row, nextRow, col, nextCol, mergedList) => {
     if(blanks[row][col].innerText) {
         if(blanks[nextRow][nextCol].innerText === "") {
-
             blanks[nextRow][nextCol].innerText = blanks[row][col].innerText;
-
+            blanks[nextRow][nextCol].className = `blank style-${blanks[nextRow][nextCol].innerText}`;
             blanks[row][col].innerText = "";
+            blanks[row][col].className = 'blank empty';
         } else if(blanks[row][col].innerText === blanks[nextRow][nextCol].innerText && 
                   !isInMergedList(mergedList, blanks[row][col].innerText)) {
-
             blanks[nextRow][nextCol].innerText = (parseInt(blanks[row][col].innerText) * 2).toString();
+            blanks[nextRow][nextCol].className = `blank style-${blanks[nextRow][nextCol].innerText}`;
             scoreInt += parseInt(blanks[nextRow][nextCol].innerText);
             score.innerText = `Score: ${scoreInt}`;
             let ismerged = {id: blanks[row][col].innerText, merged: true};
             mergedList.push(ismerged);
- 
             blanks[row][col].innerText = "";
-        }
-        
-        
-    }
+            blanks[row][col].className = 'blank empty';
+        } 
+    } 
 }
 
-const move = async (direction, v) => {
-    return new Promise( async (resolve, reject) => {
+const move = (direction, v) => {
+    return new Promise( (resolve, reject) => {
         let mergedList = [];
         if(direction === "UP" || direction === "LEFT") {
             for(let i = 1; i < blanks.length; i++) {
                 let j = i
                 while(j > 0) {
                     if(direction === "UP") {
-
                         moveOneCell(j, j-1, v, v, mergedList);
                     } else {
                         moveOneCell(v, v, j, j-1, mergedList);
@@ -216,9 +223,6 @@ const move = async (direction, v) => {
     });
 };
 
-
-
-
 const moveAll = (direction) => {
     Promise.all([
         move(direction, 0),
@@ -227,149 +231,5 @@ const moveAll = (direction) => {
         move(direction, 3)
     ]).then(() => {
         popRandom();
-        // console.log("done")
     })
 };
-
-
-
-const demoUP = () => {
-    return new Promise( async (resolve, reject) => {
-
-        // do something in the promise
-        for(let c = 0; c < blanks[0].length; c++) {
-            let ismerged = false;
-        
-            for(let i = 1; i < blanks.length; i++) {
-                // console.log(i);
-                let j = i
-                while(j > 0) {
-                    if(blanks[j][c].innerText) {
-                        if(blanks[j-1][c].innerText === "") {
-                            await sleep(10);
-                            blanks[j-1][c].innerText = blanks[j][c].innerText;
-                            await sleep(10);
-                            blanks[j][c].innerText = "";
-                
-                            // console.log(`blanks${j-1}.0 is empty!`);
-                        } else if(blanks[j][c].innerText === blanks[j-1][c].innerText && !ismerged) {
-                            await sleep(10);
-                            blanks[j-1][c].innerText = (parseInt(blanks[j][c].innerText) * 2).toString();
-                            await sleep(10);
-                            blanks[j][c].innerText = "";
-                            ismerged = true;
-                        }
-                    }
-                    j--;
-                }
-                
-    
-            }
-            // console.log("done");
-        }
-        resolve();
-
-    })};
-
-
-async function demoDOWN() {
-    for(let c = 0; c < blanks[0].length; c++) {
-        let ismerged = false;
-    
-        for(let i = blanks.length - 2; i >= 0; i--) {
-            // console.log(i);
-            let j = i
-            while(j < blanks.length - 1) {
-                if(blanks[j][c].innerText) {
-                    if(blanks[j+1][c].innerText === "") {
-                        await sleep(20);
-                        blanks[j+1][c].innerText = blanks[j][c].innerText;
-                        await sleep(20);
-                        blanks[j][c].innerText = "";
-            
-                        // console.log(`blanks${j+1}.0 is empty!`);
-                    } else if(blanks[j][c].innerText === blanks[j+1][c].innerText && !ismerged) {
-                        await sleep(20);
-                        blanks[j+1][c].innerText = (parseInt(blanks[j][c].innerText) * 2).toString();
-                        await sleep(20);
-                        blanks[j][c].innerText = "";
-                        ismerged = true;
-                    }
-                }
-                j++;
-            }
-            
-
-        }
-        // console.log("done");
-    }
-}
-
-async function demoLEFT() {
-    for(let r = 0; r < blanks.length; r++) {
-        let ismerged = false;
-    
-        for(let i = 1; i < blanks[0].length; i++) {
-            // console.log(i);
-            let j = i
-            while(j > 0) {
-                if(blanks[r][j].innerText) {
-                    if(blanks[r][j-1].innerText === "") {
-                        await sleep(20);
-                        blanks[r][j-1].innerText = blanks[r][j].innerText;
-                        await sleep(20);
-                        blanks[r][j].innerText = "";
-            
-                        // console.log(`blanks${r}.${j-1} is empty!`);
-                    } else if(blanks[r][j].innerText === blanks[r][j-1].innerText && !ismerged) {
-                        await sleep(20);
-                        blanks[r][j-1].innerText = (parseInt(blanks[r][j].innerText) * 2).toString();
-                        await sleep(20);
-                        blanks[r][j].innerText = "";
-                        ismerged = true;
-                    }
-                }
-                j--;
-            }
-            
-
-        }
-        // console.log("done");
-    }
-}
-
-async function demoRIGHT() {
-    for(let r = 0; r < blanks.length; r++) {
-        let ismerged = false;
-    
-        for(let i = blanks[0].length - 2; i >= 0; i--) {
-            // console.log(i);
-            let j = i
-            while(j < blanks.length - 1) {
-                if(blanks[r][j].innerText) {
-                    if(blanks[r][j+1].innerText === "") {
-                        await sleep(20);
-                        blanks[r][j+1].innerText = blanks[r][j].innerText;
-                        await sleep(20);
-                        blanks[r][j].innerText = "";
-            
-                        // console.log(`blanks${j+1}.0 is empty!`);
-                    } else if(blanks[r][j].innerText === blanks[r][j+1].innerText && !ismerged) {
-                        await sleep(20);
-                        blanks[r][j+1].innerText = (parseInt(blanks[r][j].innerText) * 2).toString();
-                        await sleep(20);
-                        blanks[r][j].innerText = "";
-                        ismerged = true;
-                    }
-                }
-                j++;
-            }
-            
-
-        }
-        // console.log("done");
-    }
-}
-
-
-

@@ -4,6 +4,14 @@ title: 2048
 <link rel="stylesheet" type="text/css" href="/assets/css/2048.css" />
 
 <div id="game2048">
+    <div class="overlay lost">
+        <h2>Game Over!</h2>
+        <button class='resetGame'>Try Again</button>
+    </div>
+    <div class="overlay win">
+        <h2>You Won!</h2>
+        <button class='resetGame'>Play Again</button>
+      </div>
     <h1>2048</h1>
     <h2 id="score">Score: 0</h2>
     <div id="board">
