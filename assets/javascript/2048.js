@@ -22,11 +22,6 @@ const popRandom = () => {
 }
 
 
-
-
-
-
-
 const getRandomInt = (max) => {
     return Math.floor(Math.random() * Math.ceil(max));
 }
@@ -34,16 +29,9 @@ const getRandomInt = (max) => {
 
 for (let i = 0; i < blanks.length; i++) {
     for(let j = 0; j < blanks[i].length; j++) {
-        
         blanks[i][j] = document.createElement("div");
         blanks[i][j].className = "blank";
         blanks[i][j].id = `blank${i}.${j}`;
-        // blanks[i][j].addEventListener("click", (event) => {
-        //     event.target.innerText = ((i + j) ** 2).toString();
-        //     const innerValue = Math.log2(parseInt(event.target.innerText, 10));
-        //     console.log(innerValue);
-        //     event.target.style.backgroundColor = `rgb(${innerValue * 20 + 100}, ${innerValue *50 + 60}, ${innerValue *30 + 90})`;
-        // })
         board.appendChild(blanks[i][j]);
         blanks[i][j].click();
         
@@ -57,12 +45,6 @@ if(getRandomInt(10) < 6) {
     popRandom();
 }
 
-
-// const colorControl = (blank) => {
-//     blank.style.backgroundColor = 
-//     blank.innerText = "2"
-// }
-
 const gameOver = () => {
     for(let i = 0; i < blanks.length; i++) {
         for(let j = 0; j < blanks[0].length; j++) {
@@ -71,15 +53,17 @@ const gameOver = () => {
             }
         }
     }
+    for(let i = 0; i < blanks.length; i++) {
+        for(let j = 0; j < blanks[0].length; j++) {
+            if (blanks[i][j] === blanks[i][j + 1]) {
+                return false;
+            }
+            if (blanks[j][i] === blanks[j + 1][i]) {
+                return false;
+            }
+        }
+    }
     return true;
-    // blanks.forEach(row => {
-    //     row.forEach(blank => {
-    //         if(blank.innerText === "") {
-    //             return false;
-    //         }
-    //     })
-    // })
-    // return true;
 }
 
 const keyHandler = (event) => {

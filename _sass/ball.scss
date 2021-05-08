@@ -1,9 +1,9 @@
 #plain {
-    
     width: 600px;
     height: 600px;
     border: solid 2px #cccccc;
     margin: 10px auto 0;
+    position: relative;
 }
 
 
@@ -12,10 +12,7 @@
     height: 50px;
     border-radius: 50%;
     background-color: green;
-    display: inline-block;
-    position: relative;
-    left: 275px;
-    top: 275px;
+    position: absolute;
 }
 
 #text {
