@@ -13,11 +13,11 @@
 <meta name="description" content="To be a well-rounded front-end programmer, one should have a solid understanding of underlying mechanism of tools she uses. Some might think that knowing how to use the tools is good enough, but the mistakes usually come from the lack of understanding. What’s worse, these mistakes are not easy to detect since ones who make them might not realize they are mistakes. The topics in this post are all about my own understandings, there might be mistakes. So if you find any, do contact me via Email." />
 <meta property="og:description" content="To be a well-rounded front-end programmer, one should have a solid understanding of underlying mechanism of tools she uses. Some might think that knowing how to use the tools is good enough, but the mistakes usually come from the lack of understanding. What’s worse, these mistakes are not easy to detect since ones who make them might not realize they are mistakes. The topics in this post are all about my own understandings, there might be mistakes. So if you find any, do contact me via Email." />
 <meta property="og:type" content="article" />
-<meta property="article:published_time" content="2021-03-18T00:00:00+08:00" />
+<meta property="article:published_time" content="2021-05-11T00:00:00+08:00" />
 <meta name="twitter:card" content="summary" />
 <meta property="twitter:title" content="Front-end programming topics" />
 <script type="application/ld+json">
-{"headline":"Front-end programming topics","dateModified":"2021-03-18T00:00:00+08:00","datePublished":"2021-03-18T00:00:00+08:00","mainEntityOfPage":{"@type":"WebPage","@id":"/2021/03/18/Front-end_programming_topics.html"},"url":"/2021/03/18/Front-end_programming_topics.html","@type":"BlogPosting","description":"To be a well-rounded front-end programmer, one should have a solid understanding of underlying mechanism of tools she uses. Some might think that knowing how to use the tools is good enough, but the mistakes usually come from the lack of understanding. What’s worse, these mistakes are not easy to detect since ones who make them might not realize they are mistakes. The topics in this post are all about my own understandings, there might be mistakes. So if you find any, do contact me via Email.","@context":"https://schema.org"}</script>
+{"headline":"Front-end programming topics","dateModified":"2021-05-11T00:00:00+08:00","datePublished":"2021-05-11T00:00:00+08:00","url":"/2021/05/11/Front-end_programming_topics.html","mainEntityOfPage":{"@type":"WebPage","@id":"/2021/05/11/Front-end_programming_topics.html"},"@type":"BlogPosting","description":"To be a well-rounded front-end programmer, one should have a solid understanding of underlying mechanism of tools she uses. Some might think that knowing how to use the tools is good enough, but the mistakes usually come from the lack of understanding. What’s worse, these mistakes are not easy to detect since ones who make them might not realize they are mistakes. The topics in this post are all about my own understandings, there might be mistakes. So if you find any, do contact me via Email.","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
     <title>Front-end programming topics</title>
@@ -50,7 +50,7 @@
     <div class="main">
       <button id="return-to-top">➜</button>
       <h2>Front-end programming topics</h2>
-<h5><i>18 Mar 2021</i></h5>
+<h5><i>11 May 2021</i></h5>
 
 <p>To be a well-rounded front-end programmer, one should have a solid understanding of underlying mechanism of tools she uses. Some might think that knowing how to use the tools is good enough, but the mistakes usually come from the lack of understanding. What’s worse, these mistakes are not easy to detect since ones who make them might not realize they are mistakes.</p>
 
@@ -89,8 +89,15 @@
     </ul>
   </li>
   <li><a href="#equality-and-strict-equality">Equality and strict equality</a></li>
-  <li><a href="#new-operator">new operator</a></li>
+  <li><a href="#new-operator"><code class="language-plaintext highlighter-rouge">new</code> operator</a></li>
   <li><a href="#promiseall">Promise.all</a></li>
+  <li><a href="#箭头函数的this指向问题">箭头函数的this指向问题</a></li>
+  <li><a href="#css-box-model">CSS Box Model</a>
+    <ul>
+      <li><a href="#difference-between-ie-box-model-and-w3c-box-model">Difference between IE box model and W3C box model</a></li>
+      <li><a href="#use-of-box-sizing">Use of <code class="language-plaintext highlighter-rouge">box-sizing</code></a></li>
+    </ul>
+  </li>
   <li><a href="#reference">Reference</a>
 <!-- /TOC --></li>
 </ul>
@@ -486,7 +493,7 @@ promise2 promise { &lt;rejected&gt;: Error: error!!!}
 <span class="nx">number1</span> <span class="o">==</span> <span class="nx">number2</span><span class="p">;</span>   <span class="c1">// false, need to refer to same object</span>
 </code></pre></div></div>
 
-<h3 id="new-operator">new operator</h3>
+<h3 id="new-operator"><code class="language-plaintext highlighter-rouge">new</code> operator</h3>
 <hr />
 
 <p>Definition from <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new">MDN</a></p>
@@ -521,6 +528,62 @@ promise2 promise { &lt;rejected&gt;: Error: error!!!}
 <span class="p">})</span>
 </code></pre></div></div>
 
+<h3 id="箭头函数的this指向问题">箭头函数的this指向问题</h3>
+
+<blockquote>
+  <p>Arrow functions do not bind their own <code class="language-plaintext highlighter-rouge">this</code>, instead, they inherit the one from the parent scope, which is called “lexical scoping”.</p>
+</blockquote>
+
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">x</span><span class="dl">'</span>
+<span class="kd">var</span> <span class="nx">people</span> <span class="o">=</span> <span class="p">{</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">y</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">setName</span><span class="p">:</span> <span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span> <span class="c1">// this -&gt; window</span>
+    <span class="k">return</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span>
+    <span class="p">}</span>
+  <span class="p">}</span>
+<span class="p">}</span>
+<span class="k">debugger</span>
+<span class="kd">var</span> <span class="nx">getName</span> <span class="o">=</span> <span class="nx">people</span><span class="p">.</span><span class="nx">setName</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="c1">// 'x' -&gt; this.name = 'x' -&gt; window.name = 'x'</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">people</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span> <span class="c1">// y -&gt; people.name</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">getName</span><span class="p">())</span> <span class="c1">// x -&gt; window.name</span>
+</code></pre></div></div>
+
+<h3 id="css-box-model">CSS Box Model</h3>
+<hr />
+
+<p>Parts:</p>
+<ul>
+  <li>margins</li>
+  <li>borders</li>
+  <li>padding</li>
+  <li>actual content</li>
+</ul>
+
+<h4 id="difference-between-ie-box-model-and-w3c-box-model">Difference between IE box model and W3C box model</h4>
+
+<p>How <code class="language-plaintext highlighter-rouge">width</code> and <code class="language-plaintext highlighter-rouge">height</code> is defined:</p>
+<ul>
+  <li>IE (&lt;= IE6): width = actual visible/rendered width of an element’s box; height = actual visible/rendered height of an element’s box</li>
+  <li>W3C (standard): width + padding + border = actual visible/rendered width of an element’s box; height + padding + border = actual visible/rendered height of an element’s box</li>
+</ul>
+
+<h4 id="use-of-box-sizing">Use of <code class="language-plaintext highlighter-rouge">box-sizing</code></h4>
+
+<p><code class="language-plaintext highlighter-rouge">content-box</code>, <code class="language-plaintext highlighter-rouge">padding-box</code>, <strong><code class="language-plaintext highlighter-rouge">border-box</code></strong></p>
+
+<p>When use <code class="language-plaintext highlighter-rouge">border-box</code>, it changes the box model to be the way where an element’s specified width and height aren’t affected by padding or borders.</p>
+
+<p><a href="https://css-tricks.com/box-sizing/">Universal Box Sizing with Inheritance</a> (better practice?)</p>
+<div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">html</span> <span class="p">{</span>
+  <span class="nl">box-sizing</span><span class="p">:</span> <span class="n">border-box</span><span class="p">;</span>
+<span class="p">}</span>
+<span class="o">*,</span> <span class="o">*</span><span class="nd">:before</span><span class="o">,</span> <span class="o">*</span><span class="nd">:after</span> <span class="p">{</span>
+  <span class="nl">box-sizing</span><span class="p">:</span> <span class="nb">inherit</span><span class="p">;</span>
+<span class="p">}</span>
+</code></pre></div></div>
+
 <h3 id="reference">Reference</h3>
 
 <ul>
@@ -529,7 +592,9 @@ promise2 promise { &lt;rejected&gt;: Error: error!!!}
   <li><a href="https://javascript.info/microtask-queue">Microtasks</a></li>
   <li><a href="https://blog.csdn.net/qq_43633937/article/details/94064804">左边固定，右边自适应的七种方法</a></li>
   <li><a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes">Object prototypes</a></li>
+  <li><a href="https://www.codementor.io/@dariogarciamoya/understanding-this-in-javascript-with-arrow-functions-gcpjwfyuc">Understanding “this” in javascript with arrow functions</a></li>
 </ul>
+
 
     </div>
     <script type="text/javascript" src="/assets/javascript/return_to_top.js"></script>

@@ -27,8 +27,12 @@ The topics in this post are all about my own understandings, there might be mist
 - [instanceof](#instanceof)
   - [Code example](#code-example)
 - [Equality and strict equality](#equality-and-strict-equality)
-- [new operator](#new-operator)
+- [`new` operator](#new-operator)
 - [Promise.all](#promiseall)
+- [箭头函数的this指向问题](#箭头函数的this指向问题)
+- [CSS Box Model](#css-box-model)
+  - [Difference between IE box model and W3C box model](#difference-between-ie-box-model-and-w3c-box-model)
+  - [Use of `box-sizing`](#use-of-box-sizing)
 - [Reference](#reference)
 <!-- /TOC -->
 
@@ -409,7 +413,7 @@ number1 == 3;         // true
 number1 == number2;   // false, need to refer to same object
 ```
 
-### new operator
+### `new` operator
 <hr/>
 
 Definition from [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new)
@@ -443,6 +447,57 @@ Promise.all([
 })
 ```
 
+### 箭头函数的this指向问题
+
+> Arrow functions do not bind their own `this`, instead, they inherit the one from the parent scope, which is called "lexical scoping". 
+
+```javascript
+var name = 'x'
+var people = {
+  name: 'y',
+  setName: (name) => {
+    this.name = name // this -> window
+    return () => {
+      return this.name
+    }
+  }
+}
+debugger
+var getName = people.setName(name) // 'x' -> this.name = 'x' -> window.name = 'x'
+console.log(people.name) // y -> people.name
+console.log(getName()) // x -> window.name
+```
+
+### CSS Box Model
+<hr/>
+
+Parts:
+- margins
+- borders
+- padding
+- actual content
+
+#### Difference between IE box model and W3C box model
+
+How `width` and `height` is defined:
+- IE (\<= IE6): width = actual visible/rendered width of an element's box; height = actual visible/rendered height of an element's box
+- W3C (standard): width + padding + border = actual visible/rendered width of an element’s box; height + padding + border = actual visible/rendered height of an element’s box
+
+#### Use of `box-sizing`
+
+`content-box`, `padding-box`, **`border-box`**
+
+When use `border-box`, it changes the box model to be the way where an element’s specified width and height aren’t affected by padding or borders.
+
+[Universal Box Sizing with Inheritance](https://css-tricks.com/box-sizing/) (better practice?)
+```css
+html {
+  box-sizing: border-box;
+}
+*, *:before, *:after {
+  box-sizing: inherit;
+}
+```
 
 ### Reference
 
@@ -451,3 +506,5 @@ Promise.all([
 - [Microtasks](https://javascript.info/microtask-queue)
 - [左边固定，右边自适应的七种方法](https://blog.csdn.net/qq_43633937/article/details/94064804)
 - [Object prototypes](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes)
+- [Understanding "this" in javascript with arrow functions](https://www.codementor.io/@dariogarciamoya/understanding-this-in-javascript-with-arrow-functions-gcpjwfyuc)
+

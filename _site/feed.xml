@@ -1,5 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-05-08T14:41:50+08:00</updated><id>/feed.xml</id><entry><title type="html">Coding Exercises</title><link href="/2021/03/19/Coding_Exercises.html" rel="alternate" type="text/html" title="Coding Exercises" /><published>2021-03-19T00:00:00+08:00</published><updated>2021-03-19T00:00:00+08:00</updated><id>/2021/03/19/Coding_Exercises</id><content type="html" xml:base="/2021/03/19/Coding_Exercises.html">&lt;p&gt;Coding exercises with various topics
-&lt;!--more--&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Coding exercises with various topics</summary></entry><entry><title type="html">Front-end programming topics</title><link href="/2021/03/18/Front-end_programming_topics.html" rel="alternate" type="text/html" title="Front-end programming topics" /><published>2021-03-18T00:00:00+08:00</published><updated>2021-03-18T00:00:00+08:00</updated><id>/2021/03/18/Front-end_programming_topics</id><content type="html" xml:base="/2021/03/18/Front-end_programming_topics.html">&lt;p&gt;To be a well-rounded front-end programmer, one should have a solid understanding of underlying mechanism of tools she uses. Some might think that knowing how to use the tools is good enough, but the mistakes usually come from the lack of understanding. What’s worse, these mistakes are not easy to detect since ones who make them might not realize they are mistakes.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-05-11T10:10:17+08:00</updated><id>/feed.xml</id><entry><title type="html">Front-end programming topics</title><link href="/2021/05/11/Front-end_programming_topics.html" rel="alternate" type="text/html" title="Front-end programming topics" /><published>2021-05-11T00:00:00+08:00</published><updated>2021-05-11T00:00:00+08:00</updated><id>/2021/05/11/Front-end_programming_topics</id><content type="html" xml:base="/2021/05/11/Front-end_programming_topics.html">&lt;p&gt;To be a well-rounded front-end programmer, one should have a solid understanding of underlying mechanism of tools she uses. Some might think that knowing how to use the tools is good enough, but the mistakes usually come from the lack of understanding. What’s worse, these mistakes are not easy to detect since ones who make them might not realize they are mistakes.&lt;/p&gt;
 
 &lt;p&gt;The topics in this post are all about my own understandings, there might be mistakes. So if you find any, do contact me via &lt;a href=&quot;mailto:qinjianzheng@student.unsw.edu.au&quot;&gt;Email&lt;/a&gt;.
 &lt;!--more--&gt;&lt;/p&gt;
@@ -36,8 +35,15 @@
     &lt;/ul&gt;
   &lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#equality-and-strict-equality&quot;&gt;Equality and strict equality&lt;/a&gt;&lt;/li&gt;
-  &lt;li&gt;&lt;a href=&quot;#new-operator&quot;&gt;new operator&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#new-operator&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;new&lt;/code&gt; operator&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#promiseall&quot;&gt;Promise.all&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#箭头函数的this指向问题&quot;&gt;箭头函数的this指向问题&lt;/a&gt;&lt;/li&gt;
+  &lt;li&gt;&lt;a href=&quot;#css-box-model&quot;&gt;CSS Box Model&lt;/a&gt;
+    &lt;ul&gt;
+      &lt;li&gt;&lt;a href=&quot;#difference-between-ie-box-model-and-w3c-box-model&quot;&gt;Difference between IE box model and W3C box model&lt;/a&gt;&lt;/li&gt;
+      &lt;li&gt;&lt;a href=&quot;#use-of-box-sizing&quot;&gt;Use of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;box-sizing&lt;/code&gt;&lt;/a&gt;&lt;/li&gt;
+    &lt;/ul&gt;
+  &lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;#reference&quot;&gt;Reference&lt;/a&gt;
 &lt;!-- /TOC --&gt;&lt;/li&gt;
 &lt;/ul&gt;
@@ -433,7 +439,7 @@ promise2 promise { &amp;lt;rejected&amp;gt;: Error: error!!!}
 &lt;span class=&quot;nx&quot;&gt;number1&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;==&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;number2&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;   &lt;span class=&quot;c1&quot;&gt;// false, need to refer to same object&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h3 id=&quot;new-operator&quot;&gt;new operator&lt;/h3&gt;
+&lt;h3 id=&quot;new-operator&quot;&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;new&lt;/code&gt; operator&lt;/h3&gt;
 &lt;hr /&gt;
 
 &lt;p&gt;Definition from &lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new&quot;&gt;MDN&lt;/a&gt;&lt;/p&gt;
@@ -468,6 +474,62 @@ promise2 promise { &amp;lt;rejected&amp;gt;: Error: error!!!}
 &lt;span class=&quot;p&quot;&gt;})&lt;/span&gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
+&lt;h3 id=&quot;箭头函数的this指向问题&quot;&gt;箭头函数的this指向问题&lt;/h3&gt;
+
+&lt;blockquote&gt;
+  &lt;p&gt;Arrow functions do not bind their own &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;this&lt;/code&gt;, instead, they inherit the one from the parent scope, which is called “lexical scoping”.&lt;/p&gt;
+&lt;/blockquote&gt;
+
+&lt;div class=&quot;language-javascript highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;x&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;people&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;s1&quot;&gt;y&lt;/span&gt;&lt;span class=&quot;dl&quot;&gt;&apos;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;
+  &lt;span class=&quot;na&quot;&gt;setName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// this -&amp;gt; window&lt;/span&gt;
+    &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;()&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&amp;gt;&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+      &lt;span class=&quot;k&quot;&gt;return&lt;/span&gt; &lt;span class=&quot;k&quot;&gt;this&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;
+    &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+  &lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;k&quot;&gt;debugger&lt;/span&gt;
+&lt;span class=&quot;kd&quot;&gt;var&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;getName&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;=&lt;/span&gt; &lt;span class=&quot;nx&quot;&gt;people&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;setName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// &apos;x&apos; -&amp;gt; this.name = &apos;x&apos; -&amp;gt; window.name = &apos;x&apos;&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;people&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;name&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;)&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// y -&amp;gt; people.name&lt;/span&gt;
+&lt;span class=&quot;nx&quot;&gt;console&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;.&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;log&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;(&lt;/span&gt;&lt;span class=&quot;nx&quot;&gt;getName&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;())&lt;/span&gt; &lt;span class=&quot;c1&quot;&gt;// x -&amp;gt; window.name&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h3 id=&quot;css-box-model&quot;&gt;CSS Box Model&lt;/h3&gt;
+&lt;hr /&gt;
+
+&lt;p&gt;Parts:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;margins&lt;/li&gt;
+  &lt;li&gt;borders&lt;/li&gt;
+  &lt;li&gt;padding&lt;/li&gt;
+  &lt;li&gt;actual content&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;difference-between-ie-box-model-and-w3c-box-model&quot;&gt;Difference between IE box model and W3C box model&lt;/h4&gt;
+
+&lt;p&gt;How &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;width&lt;/code&gt; and &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;height&lt;/code&gt; is defined:&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;IE (&amp;lt;= IE6): width = actual visible/rendered width of an element’s box; height = actual visible/rendered height of an element’s box&lt;/li&gt;
+  &lt;li&gt;W3C (standard): width + padding + border = actual visible/rendered width of an element’s box; height + padding + border = actual visible/rendered height of an element’s box&lt;/li&gt;
+&lt;/ul&gt;
+
+&lt;h4 id=&quot;use-of-box-sizing&quot;&gt;Use of &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;box-sizing&lt;/code&gt;&lt;/h4&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;content-box&lt;/code&gt;, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;padding-box&lt;/code&gt;, &lt;strong&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;border-box&lt;/code&gt;&lt;/strong&gt;&lt;/p&gt;
+
+&lt;p&gt;When use &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;border-box&lt;/code&gt;, it changes the box model to be the way where an element’s specified width and height aren’t affected by padding or borders.&lt;/p&gt;
+
+&lt;p&gt;&lt;a href=&quot;https://css-tricks.com/box-sizing/&quot;&gt;Universal Box Sizing with Inheritance&lt;/a&gt; (better practice?)&lt;/p&gt;
+&lt;div class=&quot;language-css highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;nt&quot;&gt;html&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;box-sizing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;n&quot;&gt;border-box&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;span class=&quot;o&quot;&gt;*,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;:before&lt;/span&gt;&lt;span class=&quot;o&quot;&gt;,&lt;/span&gt; &lt;span class=&quot;o&quot;&gt;*&lt;/span&gt;&lt;span class=&quot;nd&quot;&gt;:after&lt;/span&gt; &lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;
+  &lt;span class=&quot;nl&quot;&gt;box-sizing&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt; &lt;span class=&quot;nb&quot;&gt;inherit&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;;&lt;/span&gt;
+&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
 &lt;h3 id=&quot;reference&quot;&gt;Reference&lt;/h3&gt;
 
 &lt;ul&gt;
@@ -476,7 +538,9 @@ promise2 promise { &amp;lt;rejected&amp;gt;: Error: error!!!}
   &lt;li&gt;&lt;a href=&quot;https://javascript.info/microtask-queue&quot;&gt;Microtasks&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://blog.csdn.net/qq_43633937/article/details/94064804&quot;&gt;左边固定，右边自适应的七种方法&lt;/a&gt;&lt;/li&gt;
   &lt;li&gt;&lt;a href=&quot;https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes&quot;&gt;Object prototypes&lt;/a&gt;&lt;/li&gt;
-&lt;/ul&gt;</content><author><name></name></author><summary type="html">To be a well-rounded front-end programmer, one should have a solid understanding of underlying mechanism of tools she uses. Some might think that knowing how to use the tools is good enough, but the mistakes usually come from the lack of understanding. What’s worse, these mistakes are not easy to detect since ones who make them might not realize they are mistakes. The topics in this post are all about my own understandings, there might be mistakes. So if you find any, do contact me via Email.</summary></entry><entry><title type="html">Quick Sort</title><link href="/2021/03/17/Quick_Sort.html" rel="alternate" type="text/html" title="Quick Sort" /><published>2021-03-17T00:00:00+08:00</published><updated>2021-03-17T00:00:00+08:00</updated><id>/2021/03/17/Quick_Sort</id><content type="html" xml:base="/2021/03/17/Quick_Sort.html">&lt;p&gt;Quick sort implementation and problems related to it.
+  &lt;li&gt;&lt;a href=&quot;https://www.codementor.io/@dariogarciamoya/understanding-this-in-javascript-with-arrow-functions-gcpjwfyuc&quot;&gt;Understanding “this” in javascript with arrow functions&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">To be a well-rounded front-end programmer, one should have a solid understanding of underlying mechanism of tools she uses. Some might think that knowing how to use the tools is good enough, but the mistakes usually come from the lack of understanding. What’s worse, these mistakes are not easy to detect since ones who make them might not realize they are mistakes. The topics in this post are all about my own understandings, there might be mistakes. So if you find any, do contact me via Email.</summary></entry><entry><title type="html">Coding Exercises</title><link href="/2021/03/19/Coding_Exercises.html" rel="alternate" type="text/html" title="Coding Exercises" /><published>2021-03-19T00:00:00+08:00</published><updated>2021-03-19T00:00:00+08:00</updated><id>/2021/03/19/Coding_Exercises</id><content type="html" xml:base="/2021/03/19/Coding_Exercises.html">&lt;p&gt;Coding exercises with various topics
+&lt;!--more--&gt;&lt;/p&gt;</content><author><name></name></author><summary type="html">Coding exercises with various topics</summary></entry><entry><title type="html">Quick Sort</title><link href="/2021/03/17/Quick_Sort.html" rel="alternate" type="text/html" title="Quick Sort" /><published>2021-03-17T00:00:00+08:00</published><updated>2021-03-17T00:00:00+08:00</updated><id>/2021/03/17/Quick_Sort</id><content type="html" xml:base="/2021/03/17/Quick_Sort.html">&lt;p&gt;Quick sort implementation and problems related to it.
 &lt;!--more--&gt;&lt;/p&gt;
 
 &lt;p&gt;The idea of quick sort is to divide and conquer. For an unsorted array, pick a random number (pivot element) in the array and divide it into two parts, and make sure each element in the left part is less than the pivot and each element in the right part is larger than the pivot. Then, sort the two parts applying the same method.&lt;/p&gt;
