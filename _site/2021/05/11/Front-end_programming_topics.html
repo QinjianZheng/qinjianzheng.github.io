@@ -204,7 +204,7 @@
 <ol>
   <li>From top to bottom to execute the code, the code inside <code class="language-plaintext highlighter-rouge">Promise</code> constructor is called, log <code class="language-plaintext highlighter-rouge">promise1</code>.</li>
   <li><code class="language-plaintext highlighter-rouge">.then</code> handler is put into the microtask queue, waiting for current code to finish.</li>
-  <li><code class="language-plaintext highlighter-rouge">console.log('1', promise1)</code> is run after ``console.log(‘promise1’)<code class="language-plaintext highlighter-rouge"> but before </code>.then`.</li>
+  <li><code class="language-plaintext highlighter-rouge">console.log('1', promise1)</code> is run after <code class="language-plaintext highlighter-rouge">console.log('promise1')</code> but before <code class="language-plaintext highlighter-rouge">.then</code>.</li>
   <li><code class="language-plaintext highlighter-rouge">console.log(2)</code> inside <code class="language-plaintext highlighter-rouge">fn</code> is executed and the promise is resolved.</li>
   <li><code class="language-plaintext highlighter-rouge">console.log('start')</code> is still in the same marcotask as <code class="language-plaintext highlighter-rouge">console.log('promise1')</code> and <code class="language-plaintext highlighter-rouge">console.log(3);</code></li>
   <li>After all codes are finished, resolved promises will execute <code class="language-plaintext highlighter-rouge">.then</code> handler, in this case <code class="language-plaintext highlighter-rouge">console.log(res)</code>, print out <code class="language-plaintext highlighter-rouge">success</code></li>

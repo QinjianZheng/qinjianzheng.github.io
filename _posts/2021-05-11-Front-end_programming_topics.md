@@ -124,7 +124,7 @@ Analysis:
 
 1. From top to bottom to execute the code, the code inside `Promise` constructor is called, log `promise1`.
 2. `.then` handler is put into the microtask queue, waiting for current code to finish.
-3. `console.log('1', promise1)` is run after ``console.log('promise1')` but before `.then`.
+3. `console.log('1', promise1)` is run after `console.log('promise1')` but before `.then`.
 4. `console.log(2)` inside `fn` is executed and the promise is resolved.
 5. `console.log('start')` is still in the same marcotask as `console.log('promise1')` and `console.log(3);`
 6. After all codes are finished, resolved promises will execute `.then` handler, in this case `console.log(res)`, print out `success`
