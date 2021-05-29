@@ -1,4 +1,13 @@
 
+.info {
+    font-size: 2rem;
+    margin-left: 0.5rem;
+    color: grey;
+    cursor: pointer;
+    &:hover {
+        color: pink;
+    }
+}
 
 
 h1 {
@@ -37,6 +46,16 @@ h3 {
         margin: 10px;
     }
 }
+
+.help {
+    background-color: #e4e4e4da;
+}
+
+.help-text {
+    max-width: 500px;
+    font-size: 16pt !important; 
+}
+
 .container {
     position: absolute;
     top: 50%;
@@ -44,7 +63,6 @@ h3 {
     transform: translate(-50%, -50%);
     width: 500px;
     height: 300px;
-    // border: solid 1px black;
     display: flex;
     flex-direction: row;
     justify-content: center;
@@ -57,7 +75,6 @@ h3 {
     width: 300px;
     
     border: dashed 5px #ccc;
-    // background-color: blue;
     margin: 20px;
     display: flex;
     flex-direction: column;

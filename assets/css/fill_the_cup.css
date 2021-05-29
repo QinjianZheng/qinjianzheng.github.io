@@ -1,3 +1,14 @@
+.info {
+  font-size: 2rem;
+  margin-left: 0.5rem;
+  color: grey;
+  cursor: pointer;
+}
+
+.info:hover {
+  color: pink;
+}
+
 h1 {
   font-size: 3em;
   text-align: center;
@@ -46,6 +57,15 @@ h3 {
   font-size: 14pt;
   padding: 5px 10px;
   margin: 10px;
+}
+
+.help {
+  background-color: #e4e4e4da;
+}
+
+.help-text {
+  max-width: 500px;
+  font-size: 16pt !important;
 }
 
 .container {

@@ -7,9 +7,12 @@ const currentLevel = texts[2];
 const overlayWin = document.querySelector('.win');
 const overlayLost = document.querySelector('.lost');
 const overlayFinished = document.querySelector('.finish');
+const overlayHelp = document.querySelector('.help');
 const nextButton = document.querySelector('.next');
 const restartButtons = document.querySelectorAll('.restart');
 const resetButton = document.querySelector('.reset');
+const closeButton = document.querySelector('.close-overlay');
+const infoButton = document.querySelector('.info');
 let height = 0;
 
 const getRandomInt = (max) => {
@@ -83,8 +86,15 @@ currentLevel.innerText = `Current Level: ${localStorage.getItem('marginOfError')
 overlayWin.style.display = 'none';
 overlayLost.style.display = 'none';
 overlayFinished.style.display = 'none';
+overlayHelp.style.display = 'none';
 restartButtons.forEach(btn => {
   btn.addEventListener("click", restart);
 });
 nextButton.addEventListener("click", nextLevel);
 resetButton.addEventListener("click", reset);
+closeButton.addEventListener("click", () => {
+  overlayHelp.style.display = 'none';
+});
+infoButton.addEventListener("click", () => {
+  overlayHelp.style.display = 'flex';
+});
