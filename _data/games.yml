@@ -6,3 +6,6 @@
   link: /games/tic_tac_toe.html
 - name: 2048
   link: /games/2048.html
+- name: Fill The Cup
+  link: /games/fill_the_cup.html
+  

@@ -1,0 +1,25 @@
+.main pre {
+  width: 850px;
+  background-color: #f6f8fa;
+  border-radius: 5px;
+  padding: 10px;
+  font-size: 13pt;
+  white-space: pre-wrap;
+  word-wrap: break-word;
+}
+
+.main blockquote {
+  color: #8a8a8a;
+  margin: 0;
+  padding-left: 1.4rem;
+  border-left: 4px solid #dadada;
+}
+
+ol li li {
+  list-style-type: lower-alpha;
+}
+
+ol li li li {
+  list-style-type: lower-roman;
+}
+/*# sourceMappingURL=markdown.css.map */

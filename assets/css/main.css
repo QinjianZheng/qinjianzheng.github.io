@@ -1,0 +1,140 @@
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  font-family: Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
+}
+
+body a {
+  text-decoration: none;
+}
+
+@font-face {
+  font-family: "Assistant";
+  src: url("/assets/font/Assistant-VariableFont_wght.ttf");
+}
+
+.main {
+  font-family: "Assistant";
+  background-color: rgba(255, 255, 255, 0);
+  max-width: 850px;
+  margin: 0 auto 50px;
+  padding-top: 20px;
+  height: 100%;
+}
+
+.main #return-to-top {
+  border: none;
+  outline: none;
+  background-color: #c4c4c4;
+  color: #969696;
+  font-size: 2.5rem;
+  border-radius: 50%;
+  -webkit-transform: rotate(270deg) scale(0);
+          transform: rotate(270deg) scale(0);
+  -webkit-transition: 200ms ease-in-out;
+  transition: 200ms ease-in-out;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
+}
+
+.main #return-to-top:hover {
+  background-color: #969696;
+  color: #c4c4c4;
+}
+
+.main #return-to-top[active] {
+  -webkit-transform: rotate(270deg) scale(1);
+          transform: rotate(270deg) scale(1);
+}
+
+.main #me {
+  width: 200px;
+  height: auto;
+}
+
+.main #introduction {
+  font-size: 14pt;
+}
+
+.main #image {
+  width: 200px;
+  height: 213.56px;
+  border-radius: 50%;
+  overflow: hidden;
+  float: right;
+  margin-left: 20px;
+}
+
+.main h2 {
+  font-weight: 600;
+  -webkit-margin-after: 0.5em;
+          margin-block-end: 0.5em;
+}
+
+.main h3 {
+  font-size: 1.3em;
+  -webkit-margin-before: 2em;
+          margin-block-start: 2em;
+  -webkit-margin-after: 0;
+          margin-block-end: 0;
+}
+
+.main h4 {
+  font-size: 1.2em;
+  font-weight: bold;
+  -webkit-margin-before: 0;
+          margin-block-start: 0;
+}
+
+.main h5 {
+  font-size: 1.1em;
+  color: grey;
+  font-weight: 300;
+  -webkit-margin-before: 0;
+          margin-block-start: 0;
+}
+
+.main a:hover {
+  text-decoration: underline;
+}
+
+.main hr {
+  border: none;
+  height: 1px;
+  background-color: #c4c4c4;
+}
+
+.main p {
+  line-height: 1.6em;
+  font-size: 14pt;
+}
+
+.main ol {
+  font-size: 14pt;
+  line-height: 1.5em;
+}
+
+.main .listing {
+  border-bottom: dashed 1px #c4c4c4;
+  width: 100%;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-pack: justify;
+      -ms-flex-pack: justify;
+          justify-content: space-between;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  height: 30px;
+}
+
+.main .listing span {
+  color: grey;
+}
+/*# sourceMappingURL=main.css.map */

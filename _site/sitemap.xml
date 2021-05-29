@@ -23,9 +23,6 @@
 <loc>/games/2048.html</loc>
 </url>
 <url>
-<loc>/hidden/2048.html</loc>
-</url>
-<url>
 <loc>/about.html</loc>
 </url>
 <url>
@@ -36,6 +33,9 @@
 </url>
 <url>
 <loc>/blog.html</loc>
+</url>
+<url>
+<loc>/games/fill_the_cup.html</loc>
 </url>
 <url>
 <loc>/games.html</loc>

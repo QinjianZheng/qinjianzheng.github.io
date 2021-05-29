@@ -1,0 +1,97 @@
+
+
+
+h1 {
+    font-size: 3em;
+    text-align: center;
+}
+h2 {
+    text-align: center;
+}
+
+h3 {
+    text-align: center;
+}
+
+.game-info {
+    margin: 20px;
+}
+.overlay {
+    background-color: #e4e4e4ab;
+    height: 100%;
+    width: 100%;
+    // border-radius: 10px;
+    position: absolute;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    transform: translateY(-5%);
+    z-index: 2;
+    & h2 {
+        font-size: 3em;
+    }
+    & button {
+        font-size: 14pt;
+        padding: 5px 10px;
+        margin: 10px;
+    }
+}
+.container {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 500px;
+    height: 300px;
+    // border: solid 1px black;
+    display: flex;
+    flex-direction: row;
+    justify-content: center;
+    padding: 20px;
+    
+    
+}
+
+.drop-target {
+    width: 300px;
+    
+    border: dashed 5px #ccc;
+    // background-color: blue;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    & .icon {
+        font-size: 10rem;
+        color: rgb(181, 181, 181);
+        transform: translateX(-10%);
+    }
+}
+
+
+
+.cup {
+    width: 150px;
+    border: solid 2px #ccc;
+    // background-color: pink;
+    margin: 20px;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+    
+}
+
+.fill {
+    background-color: pink;
+    position: relative;
+}
+
+#output {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    font-size: 16pt;
+}

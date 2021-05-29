@@ -1,0 +1,44 @@
+nav {
+  height: 60px;
+  background-color: white;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -webkit-box-align: center;
+      -ms-flex-align: center;
+          align-items: center;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  border-bottom: solid 1px #ebe9e9;
+}
+
+.logo {
+  font-family: monospace;
+  font-size: 24pt;
+  font-weight: lighter;
+  margin-left: 30px;
+}
+
+.logo a {
+  color: #292727;
+}
+
+.menu {
+  font-size: 14pt;
+  display: -webkit-box;
+  display: -ms-flexbox;
+  display: flex;
+  -ms-flex-pack: distribute;
+      justify-content: space-around;
+  width: 400px;
+}
+
+.menu a {
+  color: #292727;
+  text-decoration: none;
+}
+
+.current {
+  color: green;
+}
+/*# sourceMappingURL=navigation.css.map */

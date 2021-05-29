@@ -1,0 +1,53 @@
+---
+title: Fill The Cup
+---
+
+<link rel="stylesheet" href="/assets/css/fill_the_cup.css" />
+<div id="fill_the_cup">
+  <div class="overlay win">
+    <h2>Congratulations!</h2>
+    <div class="buttons">
+      <button class="next">Next Level</button>
+      <button class="restart">Restart</button>
+    </div>
+  </div>
+  <div class="overlay lost">
+    <h2>Overflow...</h2>
+    <div class="buttons">
+      <button class="restart">Restart</button>
+    </div>
+  </div>
+  <div class="overlay finish">
+    <h2>You have finished the game!</h2>
+    <div class="buttons">
+      <button class="reset">Reset</button>
+    </div>
+  </div>
+  <h1>Fill The Cup</h1>
+  <h2>
+    <span class="game-info">Goal: </span>
+    <span class="game-info">Margin of error: </span>
+    
+  </h2>
+  <h2><span class="game-info">Current Level: </span></h2>
+  
+  <div class="container">
+    <div class="drop-target">
+      <i class="icon fas fa-file-import"></i>
+    </div>
+    <div class="cup">
+      <div class="fill">
+        <div id="output"></div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<script
+  type="text/javascript"
+  src="/assets/javascript/fill_the_cup.js"
+></script>
+<script
+  src="https://kit.fontawesome.com/f108cb7dac.js"
+  crossorigin="anonymous"
+></script>
