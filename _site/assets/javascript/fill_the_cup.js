@@ -22,11 +22,9 @@ let threshold = getRandomInt(100000);
 let marginOfError = 10;
 
 const nextLevel = () => {
-  if (localStorage.getItem('marginOfError')) {
-    marginOfError = localStorage.getItem('marginOfError');
-    marginOfError--;
-    localStorage.setItem('marginOfError', marginOfError);
-  }
+  marginOfError = localStorage.getItem('marginOfError') || marginOfError;
+  marginOfError--;
+  localStorage.setItem('marginOfError', marginOfError);
   threshold = getRandomInt(100000);
   goal.innerText = `Goal: ${threshold} bytes`;
   localStorage.setItem('marginOfError', marginOfError);
