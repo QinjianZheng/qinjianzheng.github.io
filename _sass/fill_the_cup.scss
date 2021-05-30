@@ -1,4 +1,6 @@
-
+#fill_the_cup {
+    width: 850px;
+}
 .info {
     font-size: 2rem;
     margin-left: 0.5rem;
@@ -28,7 +30,7 @@ h3 {
 .overlay {
     background-color: #e4e4e4ab;
     height: 100%;
-    width: 100%;
+    width: inherit;
     // border-radius: 10px;
     position: absolute;
     display: flex;
