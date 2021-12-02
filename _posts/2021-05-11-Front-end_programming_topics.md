@@ -258,7 +258,7 @@ Key points:
 3. Ones begin with `Object.prototype.` are inherited, ones begin with `Object.` are not.
 4. `constructor` property is contained in `prototype` property, and every instance object has this property. Also, `constructor` is a function can be invoked via parentheses, with `new` keyword, to create a new instance: `let person3 = new person1.constructor(...)`.
 5. Add new methods and property outside the constructor function, call `YOUR_OBJECT.prototype.NEW_METHOD/NEW_PROPERTY = ...`.
-6. ES6 Class Syntax, with `class YOUR_CLASS { constrcutor(...), YOUR_PROPERTIES, YOUR_METHODS(...) ...}`
+6. ES6 Class Syntax, with `class YOUR_CLASS { constructor(...), YOUR_PROPERTIES, YOUR_METHODS(...) ...}`
 
 
 ### instanceof
