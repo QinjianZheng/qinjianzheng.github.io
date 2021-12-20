@@ -5,7 +5,7 @@ title: Front-end programming topics
 
 To be a well-rounded front-end programmer, one should have a solid understanding of underlying mechanism of tools she uses. Some might think that knowing how to use the tools is good enough, but the mistakes usually come from the lack of understanding. What's worse, these mistakes are not easy to detect since ones who make them might not realize they are mistakes.
 
-The topics in this post are all about my own understandings, there might be mistakes. So if you find any, do contact me via [Email](mailto:qinjianzheng@student.unsw.edu.au).
+The topics in this post are all about my own understandings, there might be mistakes. So if you find any, do contact me via [Email](mailto:qinjian.zheng@student.unsw.edu.au).
 <!--more-->
 
 #### Table of Contents
