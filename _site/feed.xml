@@ -1,4 +1,89 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-07-07T09:29:53+08:00</updated><id>/feed.xml</id><entry><title type="html">Front-end programming topics</title><link href="/2021/05/11/Front-end_programming_topics.html" rel="alternate" type="text/html" title="Front-end programming topics" /><published>2021-05-11T00:00:00+08:00</published><updated>2021-05-11T00:00:00+08:00</updated><id>/2021/05/11/Front-end_programming_topics</id><content type="html" xml:base="/2021/05/11/Front-end_programming_topics.html">&lt;p&gt;To be a well-rounded front-end programmer, one should have a solid understanding of underlying mechanism of tools she uses. Some might think that knowing how to use the tools is good enough, but the mistakes usually come from the lack of understanding. What’s worse, these mistakes are not easy to detect since ones who make them might not realize they are mistakes.&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-12-20T11:15:52+08:00</updated><id>/feed.xml</id><entry><title type="html">Learning UML</title><link href="/2021/12/19/UML.html" rel="alternate" type="text/html" title="Learning UML" /><published>2021-12-19T00:00:00+08:00</published><updated>2021-12-19T00:00:00+08:00</updated><id>/2021/12/19/UML</id><content type="html" xml:base="/2021/12/19/UML.html">&lt;p&gt;UML 图可以绘制时序图，在本地生活实习的时候，经常看到时序图用于描述用户在点击页面链接到看到页面内容之间的全链路过程。时序图清晰地表示了链路中的每一个环节，最重要的是，顾名思义，环节发生的顺序。&lt;/p&gt;
+
+&lt;p&gt;UML 图还可以绘制静态结构图，是本次学习的重点。我应该会用来绘制业务结构图和数据库图。绘制工具为PlantUML。
+&lt;!--more--&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;plantuml&quot;&gt;PlantUML&lt;/h3&gt;
+
+&lt;h4 id=&quot;环境搭建&quot;&gt;环境搭建&lt;/h4&gt;
+
+&lt;p&gt;PlantUML-server&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;安装 docker&lt;/li&gt;
+  &lt;li&gt;按照&lt;a href=&quot;https://github.com/plantuml/plantuml-server#how-to-run-the-server-with-docker&quot;&gt;链接&lt;/a&gt;使用docker运行 plantUML 服务器&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;p&gt;PlantUML+VSCode&lt;/p&gt;
+
+&lt;ol&gt;
+  &lt;li&gt;安装 PlantUML 插件&lt;/li&gt;
+  &lt;li&gt;根据文档在 &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;setting.json&lt;/code&gt; 里添加服务器的配置，即可实现使用服务器渲染 UML 图&lt;/li&gt;
+&lt;/ol&gt;
+
+&lt;div class=&quot;language-json highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;&lt;span class=&quot;p&quot;&gt;{&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;plantuml.server&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;http://127.0.0.1:8080&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;,&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+  &lt;/span&gt;&lt;span class=&quot;nl&quot;&gt;&quot;plantuml.render&quot;&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;:&lt;/span&gt;&lt;span class=&quot;w&quot;&gt; &lt;/span&gt;&lt;span class=&quot;s2&quot;&gt;&quot;PlantUMLServer&quot;&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;span class=&quot;p&quot;&gt;}&lt;/span&gt;&lt;span class=&quot;w&quot;&gt;
+&lt;/span&gt;&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
+
+&lt;h4 id=&quot;e-r-图&quot;&gt;E-R 图&lt;/h4&gt;
+
+&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;|&lt;/code&gt; 代表 1
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;}&lt;/code&gt; 代表 多
+&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;o&lt;/code&gt; 代表 0（可能为0）&lt;/p&gt;
+
+&lt;p&gt;组合使用，可以生成，0或1，1，0或多，1或多&lt;/p&gt;
+
+&lt;p&gt;详细语法参考下面&lt;a href=&quot;https://plantuml.com/en/ie-diagram&quot;&gt;例子&lt;/a&gt;&lt;/p&gt;
+
+&lt;pre&gt;&lt;code class=&quot;language-plantuml&quot;&gt;@startuml Name
+
+&apos; hide the spot
+hide circle
+
+&apos; avoid problems with angled crows feet
+skinparam linetype ortho
+
+entity &quot;Entity01&quot; as e01 {
+  *e1_id : number &amp;lt;&amp;lt;generated&amp;gt;&amp;gt;
+  --
+  *name : text
+  description : text
+}
+
+entity &quot;Entity02&quot; as e02 {
+  *e2_id : number &amp;lt;&amp;lt;generated&amp;gt;&amp;gt;
+  --
+  *e1_id : number &amp;lt;&amp;lt;FK&amp;gt;&amp;gt;
+  other_details : text
+}
+
+entity &quot;Entity03&quot; as e03 {
+  *e3_id : number &amp;lt;&amp;lt;generated&amp;gt;&amp;gt;
+  --
+  e1_id : number &amp;lt;&amp;lt;FK&amp;gt;&amp;gt;
+  other_details : text
+}
+
+e01 ||..o{ e02
+e01 |o..o{ e03
+
+@enduml
+
+&lt;/code&gt;&lt;/pre&gt;
+
+&lt;h3 id=&quot;reference&quot;&gt;Reference&lt;/h3&gt;
+
+&lt;ul class=&quot;task-list&quot;&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;《大话设计模式》程杰&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;&lt;a href=&quot;https://www.shuzhiduo.com/A/WpdKxLvmzV/&quot;&gt;学习一之UML类图&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;&lt;a href=&quot;hhttps://www.microsoft.com/zh-cn/microsoft-365/business-insights-ideas/resources/guide-to-uml-diagramming-and-database-modeling&quot;&gt;UML 图表和数据库建模的简单指南&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;&lt;a href=&quot;https://support.microsoft.com/zh-cn/office/%e5%88%9b%e5%bb%ba-uml-%e9%9d%99%e6%80%81%e7%bb%93%e6%9e%84%e5%9b%be-bb11b3df-8830-4e31-a437-332585da7ce8?ui=zh-cn&amp;amp;rs=zh-cn&amp;amp;ad=cn&quot;&gt;创建 UML 静态结构图&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;&lt;a href=&quot;https://plantuml.com/zh/class-diagram&quot;&gt;类图&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;&lt;a href=&quot;https://github.com/plantuml/plantuml-server&quot;&gt;PlantUML-server&lt;/a&gt;&lt;/li&gt;
+  &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; checked=&quot;checked&quot; /&gt;&lt;a href=&quot;https://plantuml.com/en/ie-diagram#06a40b5d1c1792ac&quot;&gt;Entity Relationship Diagram&lt;/a&gt;&lt;/li&gt;
+&lt;/ul&gt;</content><author><name></name></author><summary type="html">UML 图可以绘制时序图，在本地生活实习的时候，经常看到时序图用于描述用户在点击页面链接到看到页面内容之间的全链路过程。时序图清晰地表示了链路中的每一个环节，最重要的是，顾名思义，环节发生的顺序。 UML 图还可以绘制静态结构图，是本次学习的重点。我应该会用来绘制业务结构图和数据库图。绘制工具为PlantUML。</summary></entry><entry><title type="html">Front-end programming topics</title><link href="/2021/05/11/Front-end_programming_topics.html" rel="alternate" type="text/html" title="Front-end programming topics" /><published>2021-05-11T00:00:00+08:00</published><updated>2021-05-11T00:00:00+08:00</updated><id>/2021/05/11/Front-end_programming_topics</id><content type="html" xml:base="/2021/05/11/Front-end_programming_topics.html">&lt;p&gt;To be a well-rounded front-end programmer, one should have a solid understanding of underlying mechanism of tools she uses. Some might think that knowing how to use the tools is good enough, but the mistakes usually come from the lack of understanding. What’s worse, these mistakes are not easy to detect since ones who make them might not realize they are mistakes.&lt;/p&gt;
 
 &lt;p&gt;The topics in this post are all about my own understandings, there might be mistakes. So if you find any, do contact me via &lt;a href=&quot;mailto:qinjianzheng@student.unsw.edu.au&quot;&gt;Email&lt;/a&gt;.
 &lt;!--more--&gt;&lt;/p&gt;
@@ -281,7 +366,7 @@ promise2 promise { &amp;lt;rejected&amp;gt;: Error: error!!!}
   &lt;li&gt;Ones begin with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Object.prototype.&lt;/code&gt; are inherited, ones begin with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;Object.&lt;/code&gt; are not.&lt;/li&gt;
   &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;constructor&lt;/code&gt; property is contained in &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;prototype&lt;/code&gt; property, and every instance object has this property. Also, &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;constructor&lt;/code&gt; is a function can be invoked via parentheses, with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;new&lt;/code&gt; keyword, to create a new instance: &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;let person3 = new person1.constructor(...)&lt;/code&gt;.&lt;/li&gt;
   &lt;li&gt;Add new methods and property outside the constructor function, call &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;YOUR_OBJECT.prototype.NEW_METHOD/NEW_PROPERTY = ...&lt;/code&gt;.&lt;/li&gt;
-  &lt;li&gt;ES6 Class Syntax, with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;class YOUR_CLASS { constrcutor(...), YOUR_PROPERTIES, YOUR_METHODS(...) ...}&lt;/code&gt;&lt;/li&gt;
+  &lt;li&gt;ES6 Class Syntax, with &lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;class YOUR_CLASS { constructor(...), YOUR_PROPERTIES, YOUR_METHODS(...) ...}&lt;/code&gt;&lt;/li&gt;
 &lt;/ol&gt;
 
 &lt;h3 id=&quot;instanceof&quot;&gt;instanceof&lt;/h3&gt;
