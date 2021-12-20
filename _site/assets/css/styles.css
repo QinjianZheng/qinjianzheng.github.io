@@ -4,9 +4,9 @@ body { margin: 0; font-family: Helvetica, sans-serif; -webkit-font-smoothing: an
 
 body a { text-decoration: none; }
 
-@font-face { font-family: "Assistant"; src: url("/assets/font/Assistant-VariableFont_wght.ttf"); }
+@font-face { font-family: 'Assistant'; src: url("/assets/font/Assistant-VariableFont_wght.ttf"); }
 
-.main { font-family: "Assistant"; background-color: rgba(255, 255, 255, 0); max-width: 850px; margin: 0 auto 50px; padding-top: 20px; height: 100%; }
+.main { font-family: 'Assistant'; background-color: rgba(255, 255, 255, 0); max-width: 850px; margin: 0 auto 50px; padding-top: 20px; height: 100%; }
 
 .main #return-to-top { border: none; outline: none; background-color: #c4c4c4; color: #969696; font-size: 2.5rem; border-radius: 50%; transform: rotate(270deg) scale(0); transition: 200ms ease-in-out; position: fixed; bottom: 30px; right: 30px; }
 

@@ -1,136 +1,124 @@
 html {
-    scroll-behavior: smooth;
+  scroll-behavior: smooth;
 }
-
 
 body {
-    margin: 0;
-    font-family: Helvetica, sans-serif;
-    -webkit-font-smoothing: antialiased;
+  margin: 0;
+  font-family: Helvetica, sans-serif;
+  -webkit-font-smoothing: antialiased;
 }
-
 
 body a {
-    text-decoration: none;
+  text-decoration: none;
 }
 @font-face {
-    font-family: "Assistant";
-    src: url("/assets/font/Assistant-VariableFont_wght.ttf");
+  font-family: 'Assistant';
+  src: url('/assets/font/Assistant-VariableFont_wght.ttf');
 }
 
 .main {
-    font-family: "Assistant";
-    background-color: rgba(255,255,255,0);
-    max-width: 850px;
-    margin: 0 auto 50px;
-    padding-top: 20px;
-    height: 100%;
+  font-family: 'Assistant';
+  background-color: rgba(255, 255, 255, 0);
+  max-width: 850px;
+  margin: 0 auto 50px;
+  padding-top: 20px;
+  height: 100%;
 }
 
 .main #return-to-top {
-    border: none;
-    outline: none;
-    background-color: rgb(196, 196, 196);
-    color:rgb(150, 150, 150);
-    font-size: 2.5rem;
-    border-radius: 50%;
-    transform: rotate(270deg) scale(0);
-    transition: 200ms ease-in-out;
-    position: fixed;
-    bottom: 30px;
-    right: 30px;
+  border: none;
+  outline: none;
+  background-color: rgb(196, 196, 196);
+  color: rgb(150, 150, 150);
+  font-size: 2.5rem;
+  border-radius: 50%;
+  transform: rotate(270deg) scale(0);
+  transition: 200ms ease-in-out;
+  position: fixed;
+  bottom: 30px;
+  right: 30px;
 }
 
 .main #return-to-top:hover {
-    background-color: rgb(150, 150, 150);
-    color: rgb(196, 196, 196);
+  background-color: rgb(150, 150, 150);
+  color: rgb(196, 196, 196);
 }
 
 .main #return-to-top[active] {
-    transform: rotate(270deg) scale(1);
+  transform: rotate(270deg) scale(1);
 }
 
 .main #me {
-    width: 200px;
-    height: auto;
-
+  width: 200px;
+  height: auto;
 }
 
 .main #introduction {
-   font-size: 14pt;
+  font-size: 14pt;
 }
 
 .main #image {
-    width: 200px;
-    height: 213.56px;
-    border-radius: 50%;
-    overflow: hidden;
-    float: right;
-    margin-left: 20px;
+  width: 200px;
+  height: 213.56px;
+  border-radius: 50%;
+  overflow: hidden;
+  float: right;
+  margin-left: 20px;
 }
 
 .main h2 {
-    font-weight: 600;
-    margin-block-end: 0.5em;
+  font-weight: 600;
+  margin-block-end: 0.5em;
 }
 
 .main h3 {
-    font-size: 1.3em;
-    margin-block-start: 2em;
-    margin-block-end: 0;
+  font-size: 1.3em;
+  margin-block-start: 2em;
+  margin-block-end: 0;
 }
 
-
 .main h4 {
-    font-size: 1.2em;
-    font-weight: bold;
-    margin-block-start: 0;
+  font-size: 1.2em;
+  font-weight: bold;
+  margin-block-start: 0;
 }
 
 .main h5 {
-    font-size: 1.1em;
-    color: grey;
-    font-weight: 300;
-    margin-block-start: 0;
+  font-size: 1.1em;
+  color: grey;
+  font-weight: 300;
+  margin-block-start: 0;
 }
 
 .main a:hover {
-    text-decoration: underline;
+  text-decoration: underline;
 }
 
 .main hr {
-    border: none;
-    height: 1px;
-    background-color: rgb(196, 196, 196);;
+  border: none;
+  height: 1px;
+  background-color: rgb(196, 196, 196);
 }
 
 .main p {
-    line-height: 1.6em;
-    font-size: 14pt;
+  line-height: 1.6em;
+  font-size: 14pt;
 }
 
-
-
-
 .main ol {
-    font-size: 14pt;
-    line-height: 1.5em;
+  font-size: 14pt;
+  line-height: 1.5em;
 }
 
 .main .listing {
-    border-bottom: dashed 1px rgb(196, 196, 196);
-    width: 100%;
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-
-    height: 30px;
-}
-
-.main .listing a {
-    
+  border-bottom: dashed 1px rgb(196, 196, 196);
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  height: 30px;
 }
 
 .main .listing span {
-    color: grey;
+  color: grey;
 }
