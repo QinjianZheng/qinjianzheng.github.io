@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-12-20T14:53:17+08:00</updated><id>/feed.xml</id><entry><title type="html">Learning UML</title><link href="/2021/12/19/UML.html" rel="alternate" type="text/html" title="Learning UML" /><published>2021-12-19T00:00:00+08:00</published><updated>2021-12-19T00:00:00+08:00</updated><id>/2021/12/19/UML</id><content type="html" xml:base="/2021/12/19/UML.html">&lt;p&gt;UML 图可以绘制时序图，在本地生活实习的时候，经常看到时序图用于描述用户在点击页面链接到看到页面内容之间的全链路过程。时序图清晰地表示了链路中的每一个环节，最重要的是，顾名思义，环节发生的顺序。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-12-20T15:27:35+08:00</updated><id>/feed.xml</id><entry><title type="html">Learning UML</title><link href="/2021/12/19/UML.html" rel="alternate" type="text/html" title="Learning UML" /><published>2021-12-19T00:00:00+08:00</published><updated>2021-12-19T00:00:00+08:00</updated><id>/2021/12/19/UML</id><content type="html" xml:base="/2021/12/19/UML.html">&lt;p&gt;UML 图可以绘制时序图，在本地生活实习的时候，经常看到时序图用于描述用户在点击页面链接到看到页面内容之间的全链路过程。时序图清晰地表示了链路中的每一个环节，最重要的是，顾名思义，环节发生的顺序。&lt;/p&gt;
 
 &lt;p&gt;UML 图还可以绘制静态结构图，是本次学习的重点。我应该会用来绘制业务结构图和数据库图。绘制工具为PlantUML。
 &lt;!--more--&gt;&lt;/p&gt;
@@ -30,9 +30,11 @@
 
 &lt;h4 id=&quot;e-r-图&quot;&gt;E-R 图&lt;/h4&gt;
 
-&lt;p&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;|&lt;/code&gt; 代表 1
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;}&lt;/code&gt; 代表 多
-&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;o&lt;/code&gt; 代表 0（可能为0）&lt;/p&gt;
+&lt;ul&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;|&lt;/code&gt; 代表 1&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;}&lt;/code&gt; 代表 多&lt;/li&gt;
+  &lt;li&gt;&lt;code class=&quot;language-plaintext highlighter-rouge&quot;&gt;o&lt;/code&gt; 代表 0（可能为0）&lt;/li&gt;
+&lt;/ul&gt;
 
 &lt;p&gt;组合使用，可以生成，0或1，1，0或多，1或多&lt;/p&gt;
 
