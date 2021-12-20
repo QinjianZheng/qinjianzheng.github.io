@@ -1,9 +1,10 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-12-20T11:19:20+08:00</updated><id>/feed.xml</id><entry><title type="html">Learning UML</title><link href="/2021/12/19/UML.html" rel="alternate" type="text/html" title="Learning UML" /><published>2021-12-19T00:00:00+08:00</published><updated>2021-12-19T00:00:00+08:00</updated><id>/2021/12/19/UML</id><content type="html" xml:base="/2021/12/19/UML.html">&lt;p&gt;UML 图可以绘制时序图，在本地生活实习的时候，经常看到时序图用于描述用户在点击页面链接到看到页面内容之间的全链路过程。时序图清晰地表示了链路中的每一个环节，最重要的是，顾名思义，环节发生的顺序。&lt;/p&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2021-12-20T11:24:14+08:00</updated><id>/feed.xml</id><entry><title type="html">Learning UML</title><link href="/2021/12/19/UML.html" rel="alternate" type="text/html" title="Learning UML" /><published>2021-12-19T00:00:00+08:00</published><updated>2021-12-19T00:00:00+08:00</updated><id>/2021/12/19/UML</id><content type="html" xml:base="/2021/12/19/UML.html">&lt;p&gt;UML 图可以绘制时序图，在本地生活实习的时候，经常看到时序图用于描述用户在点击页面链接到看到页面内容之间的全链路过程。时序图清晰地表示了链路中的每一个环节，最重要的是，顾名思义，环节发生的顺序。&lt;/p&gt;
 
 &lt;p&gt;UML 图还可以绘制静态结构图，是本次学习的重点。我应该会用来绘制业务结构图和数据库图。绘制工具为PlantUML。
 &lt;!--more--&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;plantuml&quot;&gt;PlantUML&lt;/h3&gt;
+&lt;hr /&gt;
 
 &lt;h4 id=&quot;环境搭建&quot;&gt;环境搭建&lt;/h4&gt;
 
@@ -74,6 +75,7 @@ e01 |o..o{ e03
 &lt;/code&gt;&lt;/pre&gt;
 
 &lt;h3 id=&quot;reference&quot;&gt;Reference&lt;/h3&gt;
+&lt;hr /&gt;
 
 &lt;ul class=&quot;task-list&quot;&gt;
   &lt;li class=&quot;task-list-item&quot;&gt;&lt;input type=&quot;checkbox&quot; class=&quot;task-list-item-checkbox&quot; disabled=&quot;disabled&quot; /&gt;《大话设计模式》程杰&lt;/li&gt;
