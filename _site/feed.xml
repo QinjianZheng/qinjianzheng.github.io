@@ -1,4 +1,4 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-01-07T21:54:28+08:00</updated><id>/feed.xml</id><entry><title type="html">Setting up FTP sharing in Windows 11/10</title><link href="/2022/01/02/Windows_FTP_Share.html" rel="alternate" type="text/html" title="Setting up FTP sharing in Windows 11/10" /><published>2022-01-02T00:00:00+08:00</published><updated>2022-01-02T00:00:00+08:00</updated><id>/2022/01/02/Windows_FTP_Share</id><content type="html" xml:base="/2022/01/02/Windows_FTP_Share.html">&lt;p&gt;笔记：FTP sharing in Windows
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-01-07T22:00:01+08:00</updated><id>/feed.xml</id><entry><title type="html">Setting up FTP sharing in Windows 11/10</title><link href="/2022/01/02/Windows_FTP_Share.html" rel="alternate" type="text/html" title="Setting up FTP sharing in Windows 11/10" /><published>2022-01-02T00:00:00+08:00</published><updated>2022-01-02T00:00:00+08:00</updated><id>/2022/01/02/Windows_FTP_Share</id><content type="html" xml:base="/2022/01/02/Windows_FTP_Share.html">&lt;p&gt;笔记：FTP sharing in Windows
 &lt;!--more--&gt;&lt;/p&gt;
 
 &lt;h3 id=&quot;启用-iis-功能&quot;&gt;启用 IIS 功能&lt;/h3&gt;
@@ -20,8 +20,8 @@
 
 &lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;.
 |-- LocalUser
-    └── \&amp;lt;username&amp;gt;
-        └── \&amp;lt;files&amp;gt;
+    └── &amp;lt;username&amp;gt;
+        └── &amp;lt;files&amp;gt;
 &lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
 &lt;h3 id=&quot;iis-设置&quot;&gt;IIS 设置&lt;/h3&gt;

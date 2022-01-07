@@ -26,8 +26,8 @@ FTP 分享的文件夹
 ```
 .
 |-- LocalUser
-    └── \<username>
-        └── \<files>
+    └── <username>
+        └── <files>
 ```
 
 ### IIS 设置
