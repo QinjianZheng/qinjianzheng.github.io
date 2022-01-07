@@ -1,23 +1,31 @@
-<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-01-06T12:06:10+08:00</updated><id>/feed.xml</id><entry><title type="html">Setting up FTP sharing in Windows 11/10</title><link href="/2022/01/02/Windows_FTP_Share.html" rel="alternate" type="text/html" title="Setting up FTP sharing in Windows 11/10" /><published>2022-01-02T00:00:00+08:00</published><updated>2022-01-02T00:00:00+08:00</updated><id>/2022/01/02/Windows_FTP_Share</id><content type="html" xml:base="/2022/01/02/Windows_FTP_Share.html">&lt;h2 id=&quot;启用-iis-功能&quot;&gt;启用 IIS 功能&lt;/h2&gt;
+<?xml version="1.0" encoding="utf-8"?><feed xmlns="http://www.w3.org/2005/Atom" ><generator uri="https://jekyllrb.com/" version="4.2.0">Jekyll</generator><link href="/feed.xml" rel="self" type="application/atom+xml" /><link href="/" rel="alternate" type="text/html" /><updated>2022-01-07T21:54:28+08:00</updated><id>/feed.xml</id><entry><title type="html">Setting up FTP sharing in Windows 11/10</title><link href="/2022/01/02/Windows_FTP_Share.html" rel="alternate" type="text/html" title="Setting up FTP sharing in Windows 11/10" /><published>2022-01-02T00:00:00+08:00</published><updated>2022-01-02T00:00:00+08:00</updated><id>/2022/01/02/Windows_FTP_Share</id><content type="html" xml:base="/2022/01/02/Windows_FTP_Share.html">&lt;p&gt;笔记：FTP sharing in Windows
+&lt;!--more--&gt;&lt;/p&gt;
+
+&lt;h3 id=&quot;启用-iis-功能&quot;&gt;启用 IIS 功能&lt;/h3&gt;
+&lt;hr /&gt;
 
 &lt;p&gt;在搜索框中搜索 功能/features，找到“启用或关闭 Windows 功能” – Internet Information Services，勾选 FTP 服务器，Web 管理工具 – IIS 6 WMI 兼容性 – IIS 元数据库和 IIS 6 配置兼容性和 Web 管理工具 – IIS 管理控制台。点击确定，完成服务安装后，重启电脑。&lt;/p&gt;
 
-&lt;h2 id=&quot;添加本地帐户&quot;&gt;添加本地帐户&lt;/h2&gt;
+&lt;h3 id=&quot;添加本地帐户&quot;&gt;添加本地帐户&lt;/h3&gt;
+&lt;hr /&gt;
 
 &lt;p&gt;为了方便管理多用户对 FTP 服务器不同文件的权限，需要添加多个本地帐户。&lt;/p&gt;
 
 &lt;p&gt;例如：添加本地帐户 ftp_user，设置密码，帐户类型为标准用户。&lt;/p&gt;
 
-&lt;h2 id=&quot;文件夹目录结构&quot;&gt;文件夹目录结构&lt;/h2&gt;
+&lt;h3 id=&quot;文件夹目录结构&quot;&gt;文件夹目录结构&lt;/h3&gt;
+&lt;hr /&gt;
 
 &lt;p&gt;FTP 分享的文件夹&lt;/p&gt;
 
-&lt;p&gt;.
-|– LocalUser
-    └── &amp;lt;username&amp;gt;
-        └── &amp;lt;files&amp;gt;&lt;/p&gt;
+&lt;div class=&quot;language-plaintext highlighter-rouge&quot;&gt;&lt;div class=&quot;highlight&quot;&gt;&lt;pre class=&quot;highlight&quot;&gt;&lt;code&gt;.
+|-- LocalUser
+    └── \&amp;lt;username&amp;gt;
+        └── \&amp;lt;files&amp;gt;
+&lt;/code&gt;&lt;/pre&gt;&lt;/div&gt;&lt;/div&gt;
 
-&lt;h2 id=&quot;iis-设置&quot;&gt;IIS 设置&lt;/h2&gt;
+&lt;h3 id=&quot;iis-设置&quot;&gt;IIS 设置&lt;/h3&gt;
+&lt;hr /&gt;
 
 &lt;ol&gt;
   &lt;li&gt;在“网站”下添加 FTP 站点，设置站点名称和内容目录&lt;/li&gt;
@@ -25,13 +33,15 @@
   &lt;li&gt;身份验证勾选“基本”，授权“所有用户”读取权限。&lt;/li&gt;
 &lt;/ol&gt;
 
-&lt;h2 id=&quot;ftp-用户隔离&quot;&gt;FTP 用户隔离&lt;/h2&gt;
+&lt;h3 id=&quot;ftp-用户隔离&quot;&gt;FTP 用户隔离&lt;/h3&gt;
+&lt;hr /&gt;
 
 &lt;p&gt;选择按照用户目录隔离&lt;/p&gt;
 
-&lt;h2 id=&quot;文件夹共享&quot;&gt;文件夹共享&lt;/h2&gt;
+&lt;h3 id=&quot;文件夹共享&quot;&gt;文件夹共享&lt;/h3&gt;
+&lt;hr /&gt;
 
-&lt;p&gt;在上面选定的 FTP 服务器根目录的共享属性中，开启共享功能，并添加共享的用户。&lt;/p&gt;</content><author><name></name></author><summary type="html">启用 IIS 功能 在搜索框中搜索 功能/features，找到“启用或关闭 Windows 功能” – Internet Information Services，勾选 FTP 服务器，Web 管理工具 – IIS 6 WMI 兼容性 – IIS 元数据库和 IIS 6 配置兼容性和 Web 管理工具 – IIS 管理控制台。点击确定，完成服务安装后，重启电脑。 添加本地帐户 为了方便管理多用户对 FTP 服务器不同文件的权限，需要添加多个本地帐户。 例如：添加本地帐户 ftp_user，设置密码，帐户类型为标准用户。 文件夹目录结构 FTP 分享的文件夹 . |– LocalUser └── &amp;lt;username&amp;gt; └── &amp;lt;files&amp;gt; IIS 设置 在“网站”下添加 FTP 站点，设置站点名称和内容目录 绑定 IP 地址，局域网设备 IP，端口默认为 21。无需 SSL 身份验证勾选“基本”，授权“所有用户”读取权限。 FTP 用户隔离 选择按照用户目录隔离 文件夹共享 在上面选定的 FTP 服务器根目录的共享属性中，开启共享功能，并添加共享的用户。</summary></entry><entry><title type="html">Learning UML</title><link href="/2021/12/19/UML.html" rel="alternate" type="text/html" title="Learning UML" /><published>2021-12-19T00:00:00+08:00</published><updated>2021-12-19T00:00:00+08:00</updated><id>/2021/12/19/UML</id><content type="html" xml:base="/2021/12/19/UML.html">&lt;p&gt;UML 图可以绘制时序图，在本地生活实习的时候，经常看到时序图用于描述用户在点击页面链接到看到页面内容之间的全链路过程。时序图清晰地表示了链路中的每一个环节，最重要的是，顾名思义，环节发生的顺序。&lt;/p&gt;
+&lt;p&gt;在上面选定的 FTP 服务器根目录的共享属性中，开启共享功能，并添加共享的用户。&lt;/p&gt;</content><author><name></name></author><summary type="html">笔记：FTP sharing in Windows</summary></entry><entry><title type="html">Learning UML</title><link href="/2021/12/19/UML.html" rel="alternate" type="text/html" title="Learning UML" /><published>2021-12-19T00:00:00+08:00</published><updated>2021-12-19T00:00:00+08:00</updated><id>/2021/12/19/UML</id><content type="html" xml:base="/2021/12/19/UML.html">&lt;p&gt;UML 图可以绘制时序图，在本地生活实习的时候，经常看到时序图用于描述用户在点击页面链接到看到页面内容之间的全链路过程。时序图清晰地表示了链路中的每一个环节，最重要的是，顾名思义，环节发生的顺序。&lt;/p&gt;
 
 &lt;p&gt;UML 图还可以绘制静态结构图，是本次学习的重点。我应该会用来绘制业务结构图和数据库图。绘制工具为PlantUML。
 &lt;!--more--&gt;&lt;/p&gt;
