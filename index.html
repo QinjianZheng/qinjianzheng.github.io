@@ -3,24 +3,24 @@ layout: default
 title: Qinjian's Place
 ---
 
-<h2>Hi, I'm Qinjian<div id="image"><img id="me" src="/assets/imgs/me.png" alt="me"/></div></h2>
+<h2>
+  Hi, I'm Qinjian
+  <div id="image"><img id="me" src="/assets/imgs/me.jpg" alt="me" /></div>
+</h2>
 
 <p id="introduction">
-    Welcome to my site! This is my personal place to 
-    share some of my thoughts about interesting things I found in life and study. Feel free to hang around.
+  Welcome to my site! This is my personal place to share some of my thoughts
+  about interesting things I found in life and study. Feel free to hang around.
 </p>
-    
-<br/><br/>
+
+<br /><br />
 <h2>Recent Posts</h2>
-<br/>
+<br />
 
+{% for post in site.posts %}
 
-    {% for post in site.posts %}
+<h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
+{{ post.excerpt | markdownify }}
+<hr />
 
-        <h3><a href="{{ post.url }}">{{ post.title }}</a></h3>
-        {{ post.excerpt | markdownify }}
-        <hr/>
-
-        
-    {% endfor %}
-
+{% endfor %}
