@@ -1,0 +1,12 @@
+- name: Pick Me Up
+  link: /projects/ballgame.html
+- name: Escape Ball
+  link: /projects/ballgame2.html
+- name: Tic Tac Toe
+  link: /projects/tic_tac_toe.html
+- name: 2048
+  link: /projects/2048.html
+- name: Fill The Cup
+  link: /projects/fill_the_cup.html
+- name: BigBrain
+  link: "https://qinjianzheng.github.io/BigBrain"

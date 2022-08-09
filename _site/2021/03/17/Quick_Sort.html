@@ -40,8 +40,8 @@
                 Blog
             </a>
         
-            <a href="/games.html" >
-                Game
+            <a href="/projects.html" >
+                Projects
             </a>
         
     </div>
@@ -52,12 +52,14 @@
       <h2>Quick Sort</h2>
 <h5><i>17 Mar 2021</i></h5>
 
-<p>Quick sort implementation and problems related to it.
-<!--more--></p>
+<p>Quick sort implementation and problems related to it.</p>
+
+<!--more-->
 
 <p>The idea of quick sort is to divide and conquer. For an unsorted array, pick a random number (pivot element) in the array and divide it into two parts, and make sure each element in the left part is less than the pivot and each element in the right part is larger than the pivot. Then, sort the two parts applying the same method.</p>
 
 <h3 id="implementation-from-introduction-of-algorithms">Implementation from “Introduction of Algorithms”</h3>
+
 <hr />
 
 <div class="language-c highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// quicksort implementaton using C</span>
@@ -95,28 +97,29 @@
 <span class="c1">// swap two values [a, b] = [b, a]; cool</span>
 
 <span class="kd">const</span> <span class="nx">partition</span> <span class="o">=</span> <span class="p">(</span><span class="nx">array</span><span class="p">,</span> <span class="nx">left</span><span class="p">,</span> <span class="nx">right</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="kd">let</span> <span class="nx">pivot</span> <span class="o">=</span> <span class="nx">array</span><span class="p">[</span><span class="nx">right</span><span class="p">];</span>
-    <span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="nx">left</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
-    <span class="k">for</span><span class="p">(</span><span class="kd">let</span> <span class="nx">j</span> <span class="o">=</span> <span class="nx">left</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&lt;</span> <span class="nx">right</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span><span class="p">(</span><span class="nx">array</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="nx">pivot</span><span class="p">)</span> <span class="p">{</span>
-            <span class="nx">i</span><span class="o">++</span><span class="p">;</span>
-            <span class="p">[</span><span class="nx">array</span><span class="p">[</span><span class="nx">j</span><span class="p">],</span> <span class="nx">array</span><span class="p">[</span><span class="nx">i</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="nx">array</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span> <span class="nx">array</span><span class="p">[</span><span class="nx">j</span><span class="p">]];</span>
-        <span class="p">}</span>
+  <span class="kd">let</span> <span class="nx">pivot</span> <span class="o">=</span> <span class="nx">array</span><span class="p">[</span><span class="nx">right</span><span class="p">];</span>
+  <span class="kd">let</span> <span class="nx">i</span> <span class="o">=</span> <span class="nx">left</span> <span class="o">-</span> <span class="mi">1</span><span class="p">;</span>
+  <span class="k">for</span> <span class="p">(</span><span class="kd">let</span> <span class="nx">j</span> <span class="o">=</span> <span class="nx">left</span><span class="p">;</span> <span class="nx">j</span> <span class="o">&lt;</span> <span class="nx">right</span><span class="p">;</span> <span class="nx">j</span><span class="o">++</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">array</span><span class="p">[</span><span class="nx">j</span><span class="p">]</span> <span class="o">&lt;=</span> <span class="nx">pivot</span><span class="p">)</span> <span class="p">{</span>
+      <span class="nx">i</span><span class="o">++</span><span class="p">;</span>
+      <span class="p">[</span><span class="nx">array</span><span class="p">[</span><span class="nx">j</span><span class="p">],</span> <span class="nx">array</span><span class="p">[</span><span class="nx">i</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="nx">array</span><span class="p">[</span><span class="nx">i</span><span class="p">],</span> <span class="nx">array</span><span class="p">[</span><span class="nx">j</span><span class="p">]];</span>
     <span class="p">}</span>
-    <span class="p">[</span><span class="nx">array</span><span class="p">[</span><span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">],</span> <span class="nx">array</span><span class="p">[</span><span class="nx">right</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="nx">array</span><span class="p">[</span><span class="nx">right</span><span class="p">],</span> <span class="nx">array</span><span class="p">[</span><span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">]];</span>
-    <span class="k">return</span> <span class="nx">i</span><span class="o">+</span><span class="mi">1</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="p">[</span><span class="nx">array</span><span class="p">[</span><span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">],</span> <span class="nx">array</span><span class="p">[</span><span class="nx">right</span><span class="p">]]</span> <span class="o">=</span> <span class="p">[</span><span class="nx">array</span><span class="p">[</span><span class="nx">right</span><span class="p">],</span> <span class="nx">array</span><span class="p">[</span><span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">]];</span>
+  <span class="k">return</span> <span class="nx">i</span> <span class="o">+</span> <span class="mi">1</span><span class="p">;</span>
 <span class="p">};</span>
 
 <span class="kd">const</span> <span class="nx">quicksort</span> <span class="o">=</span> <span class="p">(</span><span class="nx">array</span><span class="p">,</span> <span class="nx">left</span><span class="p">,</span> <span class="nx">right</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="k">if</span><span class="p">(</span><span class="nx">left</span> <span class="o">&lt;</span> <span class="nx">right</span><span class="p">)</span> <span class="p">{</span>
-        <span class="kd">let</span> <span class="nx">pivot</span> <span class="o">=</span> <span class="nx">partition</span><span class="p">(</span><span class="nx">array</span><span class="p">,</span> <span class="nx">left</span><span class="p">,</span> <span class="nx">right</span><span class="p">);</span>
-        <span class="nx">quicksort</span><span class="p">(</span><span class="nx">array</span><span class="p">,</span> <span class="nx">left</span><span class="p">,</span> <span class="nx">pivot</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
-        <span class="nx">quicksort</span><span class="p">(</span><span class="nx">array</span><span class="p">,</span> <span class="nx">pivot</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">right</span><span class="p">);</span>
-    <span class="p">}</span>
-<span class="p">}</span>
+  <span class="k">if</span> <span class="p">(</span><span class="nx">left</span> <span class="o">&lt;</span> <span class="nx">right</span><span class="p">)</span> <span class="p">{</span>
+    <span class="kd">let</span> <span class="nx">pivot</span> <span class="o">=</span> <span class="nx">partition</span><span class="p">(</span><span class="nx">array</span><span class="p">,</span> <span class="nx">left</span><span class="p">,</span> <span class="nx">right</span><span class="p">);</span>
+    <span class="nx">quicksort</span><span class="p">(</span><span class="nx">array</span><span class="p">,</span> <span class="nx">left</span><span class="p">,</span> <span class="nx">pivot</span> <span class="o">-</span> <span class="mi">1</span><span class="p">);</span>
+    <span class="nx">quicksort</span><span class="p">(</span><span class="nx">array</span><span class="p">,</span> <span class="nx">pivot</span> <span class="o">+</span> <span class="mi">1</span><span class="p">,</span> <span class="nx">right</span><span class="p">);</span>
+  <span class="p">}</span>
+<span class="p">};</span>
 </code></pre></div></div>
 
 <h3 id="find-the-median-in-the-unsorted-array-with-time-complexity-less-than-onlogn">Find the median in the unsorted array with time complexity less than O(nlogn)</h3>
+
 <hr />
 
 <p>Let’s define median to be the number in the array with index of (size/2) when size is even and that with index of (size-1/2) when size is odd.</p>
@@ -146,6 +149,7 @@
 </code></pre></div></div>
 
 <p>We have already know that function partition will give us a pivot with all numbers in its left are less than it and all numbers in its right are greater than it, so instead of sorting the whole array, we can simply locate the pivot after first partition,</p>
+
 <ol>
   <li>compare it to the median index, and then</li>
   <li>perform partition to the left part when pivot is greater than median index and perform to the right part when pivot is smaller, (since left part has more numbers and all numbers are less than those in right part, median must be in the left part, similar reasoning applies when pivot is smaller than median index).</li>

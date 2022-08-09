@@ -6,6 +6,7 @@ title: Front-end programming topics
 To be a well-rounded front-end programmer, one should have a solid understanding of underlying mechanism of tools she uses. Some might think that knowing how to use the tools is good enough, but the mistakes usually come from the lack of understanding. What's worse, these mistakes are not easy to detect since ones who make them might not realize they are mistakes.
 
 The topics in this post are all about my own understandings, there might be mistakes. So if you find any, do contact me via [Email](mailto:qinjian.zheng@student.unsw.edu.au).
+
 <!--more-->
 
 #### Table of Contents
@@ -29,15 +30,15 @@ The topics in this post are all about my own understandings, there might be mist
 - [Equality and strict equality](#equality-and-strict-equality)
 - [`new` operator](#new-operator)
 - [Promise.all](#promiseall)
-- [箭头函数的this指向问题](#箭头函数的this指向问题)
+- [箭头函数的 this 指向问题](#箭头函数的-this-指向问题)
 - [CSS Box Model](#css-box-model)
   - [Difference between IE box model and W3C box model](#difference-between-ie-box-model-and-w3c-box-model)
   - [Use of `box-sizing`](#use-of-box-sizing)
 - [Reference](#reference)
 <!-- /TOC -->
 
-
 ### Closure 闭包
+
 <hr/>
 
 Definition from [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures):
@@ -52,6 +53,7 @@ In my own words, a closure is made up of 3 parts, a function, the usage of varia
 2. Emulate private methods which can only be accessed by other methods in the same class (a function that return an object which contains functions that have access to its outer scope. Outside the function, instances of the function will have their own lexical environment, in effect, create a class with attributes and methods)
 
 ### Event loop 事件循环
+
 <hr/>
 
 > The event loop is a single-threaded loop which runs in the browser, and manages all events. When an event is triggered, the event is added to the queue.
@@ -60,7 +62,7 @@ Event loop general implementation:
 
 ```javascript
 while (queue.waitForMessage()) {
-  queue.processNextMessage()
+  queue.processNextMessage();
 }
 ```
 
@@ -83,13 +85,15 @@ Relating to method `AddEventListerner` third argument`[Capture: true]`: optional
 `event.stopPropagation()` is used to stop the event handler in the target the method assigned to, effectly stop bubbling, but it is rarely used. `event.stopPropagation()` can only stop the event listener which is binded with this method, `event.stopImmediatePropagation()` can stop all handlers.
 
 ### Microtasks
+
 <hr/>
 
 > Promise handlers .then/.catch/.finally are always asynchronous.
-> 
+>
 > Asynchronous tasks need proper management. For that, the ECMA standard specifies an internal queue PromiseJobs, more often referred to as the “microtask queue” (V8 term).
-> 
+>
 > As stated in the specification:
+>
 > - The queue is first-in-first-out: tasks enqueued first are run first.
 > - Execution of a task is initiated only when nothing else is running.
 
@@ -97,27 +101,28 @@ Contrast to microtasks, macrotasks are tasks in the event loop including scripts
 
 Microtasks are tasks relating to promises. `.then/catch/finally` handlers will be put into the microtask queue, and only when current code (marcotask) is finished, or the handlers will be called.
 
-> code example from [this post](https://juejin.cn/post/6844904087163502605) 
+> code example from [this post](https://juejin.cn/post/6844904087163502605)
 
 #### Example 1
 
 ```javascript
 const promise1 = new Promise((resolve, reject) => {
-    console.log('promise1')
-})
-promise1.then(() => {
-    console.log(3);
+  console.log("promise1");
 });
-console.log('1', promise1);
+promise1.then(() => {
+  console.log(3);
+});
+console.log("1", promise1);
 
-const fn = () => (new Promise((resolve, reject) => {
+const fn = () =>
+  new Promise((resolve, reject) => {
     console.log(2);
-    resolve('success')
-}))
-fn().then(res => {
-    console.log(res)
-})
-console.log('start')
+    resolve("success");
+  });
+fn().then((res) => {
+  console.log(res);
+});
+console.log("start");
 ```
 
 Analysis:
@@ -131,6 +136,7 @@ Analysis:
 7. Since `promise1` is nevered resolved, `.then` handler is never called.
 
 Result:
+
 ```
 promise1
 1 Promise { <pending> }
@@ -142,23 +148,28 @@ success
 #### Example 2
 
 ```javascript
-                                        // macro1 -- Whole script
-Promise.resolve().then(() => {          // micro1 -- .then  
-    console.log('promise1');            
-    const timer2 = setTimeout(() => {   // macro3 -- setTimeout
-        console.log('timer2')
-    }, 0)
+// macro1 -- Whole script
+Promise.resolve().then(() => {
+  // micro1 -- .then
+  console.log("promise1");
+  const timer2 = setTimeout(() => {
+    // macro3 -- setTimeout
+    console.log("timer2");
+  }, 0);
 });
-const timer1 = setTimeout(() => {       // macro2 -- setTimeout
-    console.log('timer1')
-    Promise.resolve().then(() => {      // micro2
-        console.log('promise2')
-    })
-}, 0)
-console.log('start');                   // macro1 -- execute -- start
+const timer1 = setTimeout(() => {
+  // macro2 -- setTimeout
+  console.log("timer1");
+  Promise.resolve().then(() => {
+    // micro2
+    console.log("promise2");
+  });
+}, 0);
+console.log("start"); // macro1 -- execute -- start
 ```
 
 Analysis:
+
 1. Execute script as macro1, add micro1 to microqueue
 2. Add macro2 to the event loop
 3. Execute macro1, log `start`
@@ -168,6 +179,7 @@ Analysis:
 7. Execute macro3, log `timer2`
 
 Result:
+
 ```
 start
 promise1
@@ -179,28 +191,32 @@ timer2
 #### Example 3
 
 ```javascript
-                                                        // macro1
-const promise1 = new Promise((resolve, reject) => {     
-    setTimeout(() => {                                  // macro2
-        resolve('success')                              // promise1 resolve
-    }, 1000)
-})
-const promise2 = promise1.then(() => {                  // promise1 pending promise2 pending
-    throw new Error('error!!!')                         // micro1
-})
-console.log('promise1', promise1)                       // macro1
-console.log('promise2', promise2)                       // macro1
-setTimeout(() => {                                      // macro3
-    console.log('promise1', promise1)
-    console.log('promise2', promise2)
-}, 2000)
+// macro1
+const promise1 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    // macro2
+    resolve("success"); // promise1 resolve
+  }, 1000);
+});
+const promise2 = promise1.then(() => {
+  // promise1 pending promise2 pending
+  throw new Error("error!!!"); // micro1
+});
+console.log("promise1", promise1); // macro1
+console.log("promise2", promise2); // macro1
+setTimeout(() => {
+  // macro3
+  console.log("promise1", promise1);
+  console.log("promise2", promise2);
+}, 2000);
 ```
 
 Result:
+
 ```
 promise1 promise { <pending> }
 promise2 promise { <pending> }
-Uncaught in promise Error 
+Uncaught in promise Error
 promise1 promise { <resolved> "success" }
 promise2 promise { <rejected>: Error: error!!!}
 ```
@@ -208,26 +224,30 @@ promise2 promise { <rejected>: Error: error!!!}
 #### Example 4
 
 ```javascript
-const promise1 = new Promise((resolve, reject) => { 
-    setTimeout(() => {                        // macro2
-        resolve("success");                   // promise1 resolved 
-        console.log("timer1");                // macro2
-    }, 1000);
-    console.log("promise1里的内容");           // macro1
+const promise1 = new Promise((resolve, reject) => {
+  setTimeout(() => {
+    // macro2
+    resolve("success"); // promise1 resolved
+    console.log("timer1"); // macro2
+  }, 1000);
+  console.log("promise1里的内容"); // macro1
 });
-const promise2 = promise1.then(() => {        // promise pending
-    throw new Error("error!!!");              // micro1 after macro2
+const promise2 = promise1.then(() => {
+  // promise pending
+  throw new Error("error!!!"); // micro1 after macro2
 });
-console.log("promise1", promise1);            // macro1
-console.log("promise2", promise2);            // macro1
-setTimeout(() => {                            // macro3
-    console.log("timer2");                    // macro3
-    console.log("promise1", promise1);        // macro3
-    console.log("promise2", promise2);        // macro3
+console.log("promise1", promise1); // macro1
+console.log("promise2", promise2); // macro1
+setTimeout(() => {
+  // macro3
+  console.log("timer2"); // macro3
+  console.log("promise1", promise1); // macro3
+  console.log("promise2", promise2); // macro3
 }, 2000);
 ```
 
 Result:
+
 ```
 promise1里的内容
 promise1 promise { <pending> }
@@ -240,6 +260,7 @@ promise2 promise { <rejected>: Error: error!!!}
 ```
 
 ### CSS layout
+
 <hr/>
 
 #### Fixed left box and responsive right box
@@ -250,9 +271,11 @@ promise2 promise { <rejected>: Error: error!!!}
 </div>
 
 ### Prototype and prototype chains
+
 <hr/>
 
 Key points:
+
 1. Prototype is like class, with inheritance and all.
 2. To get an object's prototype object directly via `Object.getPrototypeOf(obj)`.
 3. Ones begin with `Object.prototype.` are inherited, ones begin with `Object.` are not.
@@ -260,11 +283,11 @@ Key points:
 5. Add new methods and property outside the constructor function, call `YOUR_OBJECT.prototype.NEW_METHOD/NEW_PROPERTY = ...`.
 6. ES6 Class Syntax, with `class YOUR_CLASS { constructor(...), YOUR_PROPERTIES, YOUR_METHODS(...) ...}`
 
-
 ### instanceof
+
 <hr/>
 
-> The `instanceof` **operator** tests to see if the prototype property of a constructor appears anywhere in the prototype chain of an object. The return value is a boolean value. 
+> The `instanceof` **operator** tests to see if the prototype property of a constructor appears anywhere in the prototype chain of an object. The return value is a boolean value.
 
 Syntax: object `instanceof` constructor/class
 
@@ -272,15 +295,15 @@ My implementation:
 
 ```javascript
 const myInstanceof = (object, constructor) => {
-    let proto = object.__proto__;
-    while(proto !== null) {
-        if(proto === constructor.prototype) {
-            return true;
-        }
-        proto = proto.__proto__;
+  let proto = object.__proto__;
+  while (proto !== null) {
+    if (proto === constructor.prototype) {
+      return true;
     }
-    return false;
-}
+    proto = proto.__proto__;
+  }
+  return false;
+};
 ```
 
 #### Code example
@@ -288,7 +311,6 @@ const myInstanceof = (object, constructor) => {
 Open console, check the script right below and interact with the `Person` Object.
 
 Code example from [MDN](https://github.com/mdn/learning-area/blob/master/javascript/oojs/introduction/oojs-class-further-exercises.html).
-
 
 <script>
     // function Person(first, last, age, gender, interests) {
@@ -385,6 +407,7 @@ Code example from [MDN](https://github.com/mdn/learning-area/blob/master/javascr
 </script>
 
 ### Equality and strict equality
+
 <hr/>
 
 Definition from [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Strict_equality):
@@ -395,25 +418,26 @@ Definition from [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Re
 
 Comparison between different types, try to convert them to the same type before comparing, see [The Abstract Equality Comparison Algorithm](https://262.ecma-international.org/5.1/#sec-11.9.3).
 
-Compare a object and a string or a number, convert the object using `ToPrimitive()` function, which 
+Compare a object and a string or a number, convert the object using `ToPrimitive()` function, which
 
 ```javascript
-"1" ==  1;            // true
-1 == "1";             // true
-0 == false;           // true
-0 == null;            // false
-0 == undefined;       // false
-0 == !!null;          // true, look at Logical NOT operator
-0 == !!undefined;     // true, look at Logical NOT operator
-null == undefined;    // true
+"1" == 1; // true
+1 == "1"; // true
+0 == false; // true
+0 == null; // false
+0 == undefined; // false
+0 == !!null; // true, look at Logical NOT operator
+0 == !!undefined; // true, look at Logical NOT operator
+null == undefined; // true
 
 const number1 = new Number(3);
 const number2 = new Number(3);
-number1 == 3;         // true
-number1 == number2;   // false, need to refer to same object
+number1 == 3; // true
+number1 == number2; // false, need to refer to same object
 ```
 
 ### `new` operator
+
 <hr/>
 
 Definition from [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new)
@@ -423,6 +447,7 @@ Definition from [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Re
 `new` operator takes parameters of `constructor` and `arguments` (a list of values that the `constructor` will be called with).
 
 ### Promise.all
+
 <hr/>
 
 Code example from [MDN](https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all#promise.all_fail-fast_behavior)
@@ -431,47 +456,53 @@ Handling possible rejections by add `.catch` handler for each promise in the ite
 
 ```javascript
 var p1 = new Promise((resolve, reject) => {
-  setTimeout(() => resolve('p1_delayed_resolution'), 1000);
+  setTimeout(() => resolve("p1_delayed_resolution"), 1000);
 });
 
 var p2 = new Promise((resolve, reject) => {
-  reject(new Error('p2_immediate_rejection'));
+  reject(new Error("p2_immediate_rejection"));
 });
 
 Promise.all([
-  p1.catch(error => { return error }),
-  p2.catch(error => { return error }),
-]).then(values => {
-  console.log(values[0]) // "p1_delayed_resolution"
-  console.error(values[1]) // "Error: p2_immediate_rejection"
-})
+  p1.catch((error) => {
+    return error;
+  }),
+  p2.catch((error) => {
+    return error;
+  }),
+]).then((values) => {
+  console.log(values[0]); // "p1_delayed_resolution"
+  console.error(values[1]); // "Error: p2_immediate_rejection"
+});
 ```
 
-### 箭头函数的this指向问题
+### 箭头函数的 this 指向问题
 
-> Arrow functions do not bind their own `this`, instead, they inherit the one from the parent scope, which is called "lexical scoping". 
+> Arrow functions do not bind their own `this`, instead, they inherit the one from the parent scope, which is called "lexical scoping".
 
 ```javascript
-var name = 'x'
+var name = "x";
 var people = {
-  name: 'y',
+  name: "y",
   setName: (name) => {
-    this.name = name // this -> window
+    this.name = name; // this -> window
     return () => {
-      return this.name
-    }
-  }
-}
-debugger
-var getName = people.setName(name) // 'x' -> this.name = 'x' -> window.name = 'x'
-console.log(people.name) // y -> people.name
-console.log(getName()) // x -> window.name
+      return this.name;
+    };
+  },
+};
+debugger;
+var getName = people.setName(name); // 'x' -> this.name = 'x' -> window.name = 'x'
+console.log(people.name); // y -> people.name
+console.log(getName()); // x -> window.name
 ```
 
 ### CSS Box Model
+
 <hr/>
 
 Parts:
+
 - margins
 - borders
 - padding
@@ -480,6 +511,7 @@ Parts:
 #### Difference between IE box model and W3C box model
 
 How `width` and `height` is defined:
+
 - IE (\<= IE6): width = actual visible/rendered width of an element's box; height = actual visible/rendered height of an element's box
 - W3C (standard): width + padding + border = actual visible/rendered width of an element’s box; height + padding + border = actual visible/rendered height of an element’s box
 
@@ -490,11 +522,14 @@ How `width` and `height` is defined:
 When use `border-box`, it changes the box model to be the way where an element’s specified width and height aren’t affected by padding or borders.
 
 [Universal Box Sizing with Inheritance](https://css-tricks.com/box-sizing/) (better practice?)
+
 ```css
 html {
   box-sizing: border-box;
 }
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   box-sizing: inherit;
 }
 ```
@@ -507,4 +542,3 @@ html {
 - [左边固定，右边自适应的七种方法](https://blog.csdn.net/qq_43633937/article/details/94064804)
 - [Object prototypes](https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes)
 - [Understanding "this" in javascript with arrow functions](https://www.codementor.io/@dariogarciamoya/understanding-this-in-javascript-with-arrow-functions-gcpjwfyuc)
-

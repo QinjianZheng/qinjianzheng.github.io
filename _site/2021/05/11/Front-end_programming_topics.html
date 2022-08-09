@@ -40,8 +40,8 @@
                 Blog
             </a>
         
-            <a href="/games.html" >
-                Game
+            <a href="/projects.html" >
+                Projects
             </a>
         
     </div>
@@ -54,8 +54,9 @@
 
 <p>To be a well-rounded front-end programmer, one should have a solid understanding of underlying mechanism of tools she uses. Some might think that knowing how to use the tools is good enough, but the mistakes usually come from the lack of understanding. What’s worse, these mistakes are not easy to detect since ones who make them might not realize they are mistakes.</p>
 
-<p>The topics in this post are all about my own understandings, there might be mistakes. So if you find any, do contact me via <a href="mailto:qinjian.zheng@student.unsw.edu.au">Email</a>.
-<!--more--></p>
+<p>The topics in this post are all about my own understandings, there might be mistakes. So if you find any, do contact me via <a href="mailto:qinjian.zheng@student.unsw.edu.au">Email</a>.</p>
+
+<!--more-->
 
 <h4 id="table-of-contents">Table of Contents</h4>
 
@@ -91,7 +92,7 @@
   <li><a href="#equality-and-strict-equality">Equality and strict equality</a></li>
   <li><a href="#new-operator"><code class="language-plaintext highlighter-rouge">new</code> operator</a></li>
   <li><a href="#promiseall">Promise.all</a></li>
-  <li><a href="#箭头函数的this指向问题">箭头函数的this指向问题</a></li>
+  <li><a href="#箭头函数的-this-指向问题">箭头函数的 this 指向问题</a></li>
   <li><a href="#css-box-model">CSS Box Model</a>
     <ul>
       <li><a href="#difference-between-ie-box-model-and-w3c-box-model">Difference between IE box model and W3C box model</a></li>
@@ -103,6 +104,7 @@
 </ul>
 
 <h3 id="closure-闭包">Closure 闭包</h3>
+
 <hr />
 
 <p>Definition from <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Closures">MDN</a>:</p>
@@ -121,6 +123,7 @@
 </ol>
 
 <h3 id="event-loop-事件循环">Event loop 事件循环</h3>
+
 <hr />
 
 <blockquote>
@@ -130,7 +133,7 @@
 <p>Event loop general implementation:</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="k">while</span> <span class="p">(</span><span class="nx">queue</span><span class="p">.</span><span class="nx">waitForMessage</span><span class="p">())</span> <span class="p">{</span>
-  <span class="nx">queue</span><span class="p">.</span><span class="nx">processNextMessage</span><span class="p">()</span>
+  <span class="nx">queue</span><span class="p">.</span><span class="nx">processNextMessage</span><span class="p">();</span>
 <span class="p">}</span>
 </code></pre></div></div>
 
@@ -157,6 +160,7 @@
 <p><code class="language-plaintext highlighter-rouge">event.stopPropagation()</code> is used to stop the event handler in the target the method assigned to, effectly stop bubbling, but it is rarely used. <code class="language-plaintext highlighter-rouge">event.stopPropagation()</code> can only stop the event listener which is binded with this method, <code class="language-plaintext highlighter-rouge">event.stopImmediatePropagation()</code> can stop all handlers.</p>
 
 <h3 id="microtasks">Microtasks</h3>
+
 <hr />
 
 <blockquote>
@@ -165,6 +169,7 @@
   <p>Asynchronous tasks need proper management. For that, the ECMA standard specifies an internal queue PromiseJobs, more often referred to as the “microtask queue” (V8 term).</p>
 
   <p>As stated in the specification:</p>
+
   <ul>
     <li>The queue is first-in-first-out: tasks enqueued first are run first.</li>
     <li>Execution of a task is initiated only when nothing else is running.</li>
@@ -182,21 +187,22 @@
 <h4 id="example-1">Example 1</h4>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">promise1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">promise1</span><span class="dl">'</span><span class="p">)</span>
-<span class="p">})</span>
-<span class="nx">promise1</span><span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">promise1</span><span class="dl">"</span><span class="p">);</span>
 <span class="p">});</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">1</span><span class="dl">'</span><span class="p">,</span> <span class="nx">promise1</span><span class="p">);</span>
+<span class="nx">promise1</span><span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">,</span> <span class="nx">promise1</span><span class="p">);</span>
 
-<span class="kd">const</span> <span class="nx">fn</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">(</span><span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+<span class="kd">const</span> <span class="nx">fn</span> <span class="o">=</span> <span class="p">()</span> <span class="o">=&gt;</span>
+  <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
     <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="mi">2</span><span class="p">);</span>
-    <span class="nx">resolve</span><span class="p">(</span><span class="dl">'</span><span class="s1">success</span><span class="dl">'</span><span class="p">)</span>
-<span class="p">}))</span>
-<span class="nx">fn</span><span class="p">().</span><span class="nx">then</span><span class="p">(</span><span class="nx">res</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">)</span>
-<span class="p">})</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">start</span><span class="dl">'</span><span class="p">)</span>
+    <span class="nx">resolve</span><span class="p">(</span><span class="dl">"</span><span class="s2">success</span><span class="dl">"</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="nx">fn</span><span class="p">().</span><span class="nx">then</span><span class="p">((</span><span class="nx">res</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">res</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">start</span><span class="dl">"</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p>Analysis:</p>
@@ -212,6 +218,7 @@
 </ol>
 
 <p>Result:</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>promise1
 1 Promise { &lt;pending&gt; }
 2
@@ -221,23 +228,28 @@ success
 
 <h4 id="example-2">Example 2</h4>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                                        <span class="c1">// macro1 -- Whole script</span>
-<span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>          <span class="c1">// micro1 -- .then  </span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">promise1</span><span class="dl">'</span><span class="p">);</span>            
-    <span class="kd">const</span> <span class="nx">timer2</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>   <span class="c1">// macro3 -- setTimeout</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">timer2</span><span class="dl">'</span><span class="p">)</span>
-    <span class="p">},</span> <span class="mi">0</span><span class="p">)</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// macro1 -- Whole script</span>
+<span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// micro1 -- .then</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">promise1</span><span class="dl">"</span><span class="p">);</span>
+  <span class="kd">const</span> <span class="nx">timer2</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// macro3 -- setTimeout</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">timer2</span><span class="dl">"</span><span class="p">);</span>
+  <span class="p">},</span> <span class="mi">0</span><span class="p">);</span>
 <span class="p">});</span>
-<span class="kd">const</span> <span class="nx">timer1</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>       <span class="c1">// macro2 -- setTimeout</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">timer1</span><span class="dl">'</span><span class="p">)</span>
-    <span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>      <span class="c1">// micro2</span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">promise2</span><span class="dl">'</span><span class="p">)</span>
-    <span class="p">})</span>
-<span class="p">},</span> <span class="mi">0</span><span class="p">)</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">start</span><span class="dl">'</span><span class="p">);</span>                   <span class="c1">// macro1 -- execute -- start</span>
+<span class="kd">const</span> <span class="nx">timer1</span> <span class="o">=</span> <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// macro2 -- setTimeout</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">timer1</span><span class="dl">"</span><span class="p">);</span>
+  <span class="nb">Promise</span><span class="p">.</span><span class="nx">resolve</span><span class="p">().</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// micro2</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">promise2</span><span class="dl">"</span><span class="p">);</span>
+  <span class="p">});</span>
+<span class="p">},</span> <span class="mi">0</span><span class="p">);</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">start</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// macro1 -- execute -- start</span>
 </code></pre></div></div>
 
 <p>Analysis:</p>
+
 <ol>
   <li>Execute script as macro1, add micro1 to microqueue</li>
   <li>Add macro2 to the event loop</li>
@@ -249,6 +261,7 @@ success
 </ol>
 
 <p>Result:</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>start
 promise1
 timer1
@@ -258,53 +271,61 @@ timer2
 
 <h4 id="example-3">Example 3</h4>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code>                                                        <span class="c1">// macro1</span>
-<span class="kd">const</span> <span class="nx">promise1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>     
-    <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>                                  <span class="c1">// macro2</span>
-        <span class="nx">resolve</span><span class="p">(</span><span class="dl">'</span><span class="s1">success</span><span class="dl">'</span><span class="p">)</span>                              <span class="c1">// promise1 resolve</span>
-    <span class="p">},</span> <span class="mi">1000</span><span class="p">)</span>
-<span class="p">})</span>
-<span class="kd">const</span> <span class="nx">promise2</span> <span class="o">=</span> <span class="nx">promise1</span><span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>                  <span class="c1">// promise1 pending promise2 pending</span>
-    <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">error!!!</span><span class="dl">'</span><span class="p">)</span>                         <span class="c1">// micro1</span>
-<span class="p">})</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">promise1</span><span class="dl">'</span><span class="p">,</span> <span class="nx">promise1</span><span class="p">)</span>                       <span class="c1">// macro1</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">promise2</span><span class="dl">'</span><span class="p">,</span> <span class="nx">promise2</span><span class="p">)</span>                       <span class="c1">// macro1</span>
-<span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>                                      <span class="c1">// macro3</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">promise1</span><span class="dl">'</span><span class="p">,</span> <span class="nx">promise1</span><span class="p">)</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">'</span><span class="s1">promise2</span><span class="dl">'</span><span class="p">,</span> <span class="nx">promise2</span><span class="p">)</span>
-<span class="p">},</span> <span class="mi">2000</span><span class="p">)</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="c1">// macro1</span>
+<span class="kd">const</span> <span class="nx">promise1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// macro2</span>
+    <span class="nx">resolve</span><span class="p">(</span><span class="dl">"</span><span class="s2">success</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// promise1 resolve</span>
+  <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+<span class="p">});</span>
+<span class="kd">const</span> <span class="nx">promise2</span> <span class="o">=</span> <span class="nx">promise1</span><span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// promise1 pending promise2 pending</span>
+  <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">"</span><span class="s2">error!!!</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// micro1</span>
+<span class="p">});</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">promise1</span><span class="dl">"</span><span class="p">,</span> <span class="nx">promise1</span><span class="p">);</span> <span class="c1">// macro1</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">promise2</span><span class="dl">"</span><span class="p">,</span> <span class="nx">promise2</span><span class="p">);</span> <span class="c1">// macro1</span>
+<span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// macro3</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">promise1</span><span class="dl">"</span><span class="p">,</span> <span class="nx">promise1</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">promise2</span><span class="dl">"</span><span class="p">,</span> <span class="nx">promise2</span><span class="p">);</span>
+<span class="p">},</span> <span class="mi">2000</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p>Result:</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>promise1 promise { &lt;pending&gt; }
 promise2 promise { &lt;pending&gt; }
-Uncaught in promise Error 
+Uncaught in promise Error
 promise1 promise { &lt;resolved&gt; "success" }
 promise2 promise { &lt;rejected&gt;: Error: error!!!}
 </code></pre></div></div>
 
 <h4 id="example-4">Example 4</h4>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">promise1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span> 
-    <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>                        <span class="c1">// macro2</span>
-        <span class="nx">resolve</span><span class="p">(</span><span class="dl">"</span><span class="s2">success</span><span class="dl">"</span><span class="p">);</span>                   <span class="c1">// promise1 resolved </span>
-        <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">timer1</span><span class="dl">"</span><span class="p">);</span>                <span class="c1">// macro2</span>
-    <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">promise1里的内容</span><span class="dl">"</span><span class="p">);</span>           <span class="c1">// macro1</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">promise1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="c1">// macro2</span>
+    <span class="nx">resolve</span><span class="p">(</span><span class="dl">"</span><span class="s2">success</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// promise1 resolved</span>
+    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">timer1</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// macro2</span>
+  <span class="p">},</span> <span class="mi">1000</span><span class="p">);</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">promise1里的内容</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// macro1</span>
 <span class="p">});</span>
-<span class="kd">const</span> <span class="nx">promise2</span> <span class="o">=</span> <span class="nx">promise1</span><span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>        <span class="c1">// promise pending</span>
-    <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">"</span><span class="s2">error!!!</span><span class="dl">"</span><span class="p">);</span>              <span class="c1">// micro1 after macro2</span>
+<span class="kd">const</span> <span class="nx">promise2</span> <span class="o">=</span> <span class="nx">promise1</span><span class="p">.</span><span class="nx">then</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// promise pending</span>
+  <span class="k">throw</span> <span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">"</span><span class="s2">error!!!</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// micro1 after macro2</span>
 <span class="p">});</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">promise1</span><span class="dl">"</span><span class="p">,</span> <span class="nx">promise1</span><span class="p">);</span>            <span class="c1">// macro1</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">promise2</span><span class="dl">"</span><span class="p">,</span> <span class="nx">promise2</span><span class="p">);</span>            <span class="c1">// macro1</span>
-<span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>                            <span class="c1">// macro3</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">timer2</span><span class="dl">"</span><span class="p">);</span>                    <span class="c1">// macro3</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">promise1</span><span class="dl">"</span><span class="p">,</span> <span class="nx">promise1</span><span class="p">);</span>        <span class="c1">// macro3</span>
-    <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">promise2</span><span class="dl">"</span><span class="p">,</span> <span class="nx">promise2</span><span class="p">);</span>        <span class="c1">// macro3</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">promise1</span><span class="dl">"</span><span class="p">,</span> <span class="nx">promise1</span><span class="p">);</span> <span class="c1">// macro1</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">promise2</span><span class="dl">"</span><span class="p">,</span> <span class="nx">promise2</span><span class="p">);</span> <span class="c1">// macro1</span>
+<span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="c1">// macro3</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">timer2</span><span class="dl">"</span><span class="p">);</span> <span class="c1">// macro3</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">promise1</span><span class="dl">"</span><span class="p">,</span> <span class="nx">promise1</span><span class="p">);</span> <span class="c1">// macro3</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="dl">"</span><span class="s2">promise2</span><span class="dl">"</span><span class="p">,</span> <span class="nx">promise2</span><span class="p">);</span> <span class="c1">// macro3</span>
 <span class="p">},</span> <span class="mi">2000</span><span class="p">);</span>
 </code></pre></div></div>
 
 <p>Result:</p>
+
 <div class="language-plaintext highlighter-rouge"><div class="highlight"><pre class="highlight"><code>promise1里的内容
 promise1 promise { &lt;pending&gt; }
 promise2 promise { &lt;pending&gt; }
@@ -316,6 +337,7 @@ promise2 promise { &lt;rejected&gt;: Error: error!!!}
 </code></pre></div></div>
 
 <h3 id="css-layout">CSS layout</h3>
+
 <hr />
 
 <h4 id="fixed-left-box-and-responsive-right-box">Fixed left box and responsive right box</h4>
@@ -326,9 +348,11 @@ promise2 promise { &lt;rejected&gt;: Error: error!!!}
 </div>
 
 <h3 id="prototype-and-prototype-chains">Prototype and prototype chains</h3>
+
 <hr />
 
 <p>Key points:</p>
+
 <ol>
   <li>Prototype is like class, with inheritance and all.</li>
   <li>To get an object’s prototype object directly via <code class="language-plaintext highlighter-rouge">Object.getPrototypeOf(obj)</code>.</li>
@@ -339,6 +363,7 @@ promise2 promise { &lt;rejected&gt;: Error: error!!!}
 </ol>
 
 <h3 id="instanceof">instanceof</h3>
+
 <hr />
 
 <blockquote>
@@ -350,15 +375,15 @@ promise2 promise { &lt;rejected&gt;: Error: error!!!}
 <p>My implementation:</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">const</span> <span class="nx">myInstanceof</span> <span class="o">=</span> <span class="p">(</span><span class="nx">object</span><span class="p">,</span> <span class="kd">constructor</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="kd">let</span> <span class="nx">proto</span> <span class="o">=</span> <span class="nx">object</span><span class="p">.</span><span class="nx">__proto__</span><span class="p">;</span>
-    <span class="k">while</span><span class="p">(</span><span class="nx">proto</span> <span class="o">!==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
-        <span class="k">if</span><span class="p">(</span><span class="nx">proto</span> <span class="o">===</span> <span class="kd">constructor</span><span class="p">.</span><span class="nx">prototype</span><span class="p">)</span> <span class="p">{</span>
-            <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
-        <span class="p">}</span>
-        <span class="nx">proto</span> <span class="o">=</span> <span class="nx">proto</span><span class="p">.</span><span class="nx">__proto__</span><span class="p">;</span>
+  <span class="kd">let</span> <span class="nx">proto</span> <span class="o">=</span> <span class="nx">object</span><span class="p">.</span><span class="nx">__proto__</span><span class="p">;</span>
+  <span class="k">while</span> <span class="p">(</span><span class="nx">proto</span> <span class="o">!==</span> <span class="kc">null</span><span class="p">)</span> <span class="p">{</span>
+    <span class="k">if</span> <span class="p">(</span><span class="nx">proto</span> <span class="o">===</span> <span class="kd">constructor</span><span class="p">.</span><span class="nx">prototype</span><span class="p">)</span> <span class="p">{</span>
+      <span class="k">return</span> <span class="kc">true</span><span class="p">;</span>
     <span class="p">}</span>
-    <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
-<span class="p">}</span>
+    <span class="nx">proto</span> <span class="o">=</span> <span class="nx">proto</span><span class="p">.</span><span class="nx">__proto__</span><span class="p">;</span>
+  <span class="p">}</span>
+  <span class="k">return</span> <span class="kc">false</span><span class="p">;</span>
+<span class="p">};</span>
 </code></pre></div></div>
 
 <h4 id="code-example">Code example</h4>
@@ -462,6 +487,7 @@ promise2 promise { &lt;rejected&gt;: Error: error!!!}
 </script>
 
 <h3 id="equality-and-strict-equality">Equality and strict equality</h3>
+
 <hr />
 
 <p>Definition from <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/Strict_equality">MDN</a>:</p>
@@ -478,22 +504,23 @@ promise2 promise { &lt;rejected&gt;: Error: error!!!}
 
 <p>Compare a object and a string or a number, convert the object using <code class="language-plaintext highlighter-rouge">ToPrimitive()</code> function, which</p>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="dl">"</span><span class="s2">1</span><span class="dl">"</span> <span class="o">==</span>  <span class="mi">1</span><span class="p">;</span>            <span class="c1">// true</span>
-<span class="mi">1</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">;</span>             <span class="c1">// true</span>
-<span class="mi">0</span> <span class="o">==</span> <span class="kc">false</span><span class="p">;</span>           <span class="c1">// true</span>
-<span class="mi">0</span> <span class="o">==</span> <span class="kc">null</span><span class="p">;</span>            <span class="c1">// false</span>
-<span class="mi">0</span> <span class="o">==</span> <span class="kc">undefined</span><span class="p">;</span>       <span class="c1">// false</span>
-<span class="mi">0</span> <span class="o">==</span> <span class="o">!!</span><span class="kc">null</span><span class="p">;</span>          <span class="c1">// true, look at Logical NOT operator</span>
-<span class="mi">0</span> <span class="o">==</span> <span class="o">!!</span><span class="kc">undefined</span><span class="p">;</span>     <span class="c1">// true, look at Logical NOT operator</span>
-<span class="kc">null</span> <span class="o">==</span> <span class="kc">undefined</span><span class="p">;</span>    <span class="c1">// true</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="dl">"</span><span class="s2">1</span><span class="dl">"</span> <span class="o">==</span> <span class="mi">1</span><span class="p">;</span> <span class="c1">// true</span>
+<span class="mi">1</span> <span class="o">==</span> <span class="dl">"</span><span class="s2">1</span><span class="dl">"</span><span class="p">;</span> <span class="c1">// true</span>
+<span class="mi">0</span> <span class="o">==</span> <span class="kc">false</span><span class="p">;</span> <span class="c1">// true</span>
+<span class="mi">0</span> <span class="o">==</span> <span class="kc">null</span><span class="p">;</span> <span class="c1">// false</span>
+<span class="mi">0</span> <span class="o">==</span> <span class="kc">undefined</span><span class="p">;</span> <span class="c1">// false</span>
+<span class="mi">0</span> <span class="o">==</span> <span class="o">!!</span><span class="kc">null</span><span class="p">;</span> <span class="c1">// true, look at Logical NOT operator</span>
+<span class="mi">0</span> <span class="o">==</span> <span class="o">!!</span><span class="kc">undefined</span><span class="p">;</span> <span class="c1">// true, look at Logical NOT operator</span>
+<span class="kc">null</span> <span class="o">==</span> <span class="kc">undefined</span><span class="p">;</span> <span class="c1">// true</span>
 
 <span class="kd">const</span> <span class="nx">number1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Number</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
 <span class="kd">const</span> <span class="nx">number2</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Number</span><span class="p">(</span><span class="mi">3</span><span class="p">);</span>
-<span class="nx">number1</span> <span class="o">==</span> <span class="mi">3</span><span class="p">;</span>         <span class="c1">// true</span>
-<span class="nx">number1</span> <span class="o">==</span> <span class="nx">number2</span><span class="p">;</span>   <span class="c1">// false, need to refer to same object</span>
+<span class="nx">number1</span> <span class="o">==</span> <span class="mi">3</span><span class="p">;</span> <span class="c1">// true</span>
+<span class="nx">number1</span> <span class="o">==</span> <span class="nx">number2</span><span class="p">;</span> <span class="c1">// false, need to refer to same object</span>
 </code></pre></div></div>
 
 <h3 id="new-operator"><code class="language-plaintext highlighter-rouge">new</code> operator</h3>
+
 <hr />
 
 <p>Definition from <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Operators/new">MDN</a></p>
@@ -505,6 +532,7 @@ promise2 promise { &lt;rejected&gt;: Error: error!!!}
 <p><code class="language-plaintext highlighter-rouge">new</code> operator takes parameters of <code class="language-plaintext highlighter-rouge">constructor</code> and <code class="language-plaintext highlighter-rouge">arguments</code> (a list of values that the <code class="language-plaintext highlighter-rouge">constructor</code> will be called with).</p>
 
 <h3 id="promiseall">Promise.all</h3>
+
 <hr />
 
 <p>Code example from <a href="https://developer.mozilla.org/en-US/docs/Web/JavaScript/Reference/Global_Objects/Promise/all#promise.all_fail-fast_behavior">MDN</a></p>
@@ -512,48 +540,54 @@ promise2 promise { &lt;rejected&gt;: Error: error!!!}
 <p>Handling possible rejections by add <code class="language-plaintext highlighter-rouge">.catch</code> handler for each promise in the iterable:</p>
 
 <div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">p1</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">resolve</span><span class="p">(</span><span class="dl">'</span><span class="s1">p1_delayed_resolution</span><span class="dl">'</span><span class="p">),</span> <span class="mi">1000</span><span class="p">);</span>
+  <span class="nx">setTimeout</span><span class="p">(()</span> <span class="o">=&gt;</span> <span class="nx">resolve</span><span class="p">(</span><span class="dl">"</span><span class="s2">p1_delayed_resolution</span><span class="dl">"</span><span class="p">),</span> <span class="mi">1000</span><span class="p">);</span>
 <span class="p">});</span>
 
 <span class="kd">var</span> <span class="nx">p2</span> <span class="o">=</span> <span class="k">new</span> <span class="nb">Promise</span><span class="p">((</span><span class="nx">resolve</span><span class="p">,</span> <span class="nx">reject</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="nx">reject</span><span class="p">(</span><span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">'</span><span class="s1">p2_immediate_rejection</span><span class="dl">'</span><span class="p">));</span>
+  <span class="nx">reject</span><span class="p">(</span><span class="k">new</span> <span class="nb">Error</span><span class="p">(</span><span class="dl">"</span><span class="s2">p2_immediate_rejection</span><span class="dl">"</span><span class="p">));</span>
 <span class="p">});</span>
 
 <span class="nb">Promise</span><span class="p">.</span><span class="nx">all</span><span class="p">([</span>
-  <span class="nx">p1</span><span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">error</span> <span class="p">}),</span>
-  <span class="nx">p2</span><span class="p">.</span><span class="k">catch</span><span class="p">(</span><span class="nx">error</span> <span class="o">=&gt;</span> <span class="p">{</span> <span class="k">return</span> <span class="nx">error</span> <span class="p">}),</span>
-<span class="p">]).</span><span class="nx">then</span><span class="p">(</span><span class="nx">values</span> <span class="o">=&gt;</span> <span class="p">{</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">values</span><span class="p">[</span><span class="mi">0</span><span class="p">])</span> <span class="c1">// "p1_delayed_resolution"</span>
-  <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">values</span><span class="p">[</span><span class="mi">1</span><span class="p">])</span> <span class="c1">// "Error: p2_immediate_rejection"</span>
-<span class="p">})</span>
+  <span class="nx">p1</span><span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">error</span><span class="p">;</span>
+  <span class="p">}),</span>
+  <span class="nx">p2</span><span class="p">.</span><span class="k">catch</span><span class="p">((</span><span class="nx">error</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+    <span class="k">return</span> <span class="nx">error</span><span class="p">;</span>
+  <span class="p">}),</span>
+<span class="p">]).</span><span class="nx">then</span><span class="p">((</span><span class="nx">values</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">values</span><span class="p">[</span><span class="mi">0</span><span class="p">]);</span> <span class="c1">// "p1_delayed_resolution"</span>
+  <span class="nx">console</span><span class="p">.</span><span class="nx">error</span><span class="p">(</span><span class="nx">values</span><span class="p">[</span><span class="mi">1</span><span class="p">]);</span> <span class="c1">// "Error: p2_immediate_rejection"</span>
+<span class="p">});</span>
 </code></pre></div></div>
 
-<h3 id="箭头函数的this指向问题">箭头函数的this指向问题</h3>
+<h3 id="箭头函数的-this-指向问题">箭头函数的 this 指向问题</h3>
 
 <blockquote>
   <p>Arrow functions do not bind their own <code class="language-plaintext highlighter-rouge">this</code>, instead, they inherit the one from the parent scope, which is called “lexical scoping”.</p>
 </blockquote>
 
-<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">'</span><span class="s1">x</span><span class="dl">'</span>
+<div class="language-javascript highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="kd">var</span> <span class="nx">name</span> <span class="o">=</span> <span class="dl">"</span><span class="s2">x</span><span class="dl">"</span><span class="p">;</span>
 <span class="kd">var</span> <span class="nx">people</span> <span class="o">=</span> <span class="p">{</span>
-  <span class="na">name</span><span class="p">:</span> <span class="dl">'</span><span class="s1">y</span><span class="dl">'</span><span class="p">,</span>
+  <span class="na">name</span><span class="p">:</span> <span class="dl">"</span><span class="s2">y</span><span class="dl">"</span><span class="p">,</span>
   <span class="na">setName</span><span class="p">:</span> <span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="o">=&gt;</span> <span class="p">{</span>
-    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span> <span class="c1">// this -&gt; window</span>
+    <span class="k">this</span><span class="p">.</span><span class="nx">name</span> <span class="o">=</span> <span class="nx">name</span><span class="p">;</span> <span class="c1">// this -&gt; window</span>
     <span class="k">return</span> <span class="p">()</span> <span class="o">=&gt;</span> <span class="p">{</span>
-      <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span>
-    <span class="p">}</span>
-  <span class="p">}</span>
-<span class="p">}</span>
-<span class="k">debugger</span>
-<span class="kd">var</span> <span class="nx">getName</span> <span class="o">=</span> <span class="nx">people</span><span class="p">.</span><span class="nx">setName</span><span class="p">(</span><span class="nx">name</span><span class="p">)</span> <span class="c1">// 'x' -&gt; this.name = 'x' -&gt; window.name = 'x'</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">people</span><span class="p">.</span><span class="nx">name</span><span class="p">)</span> <span class="c1">// y -&gt; people.name</span>
-<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">getName</span><span class="p">())</span> <span class="c1">// x -&gt; window.name</span>
+      <span class="k">return</span> <span class="k">this</span><span class="p">.</span><span class="nx">name</span><span class="p">;</span>
+    <span class="p">};</span>
+  <span class="p">},</span>
+<span class="p">};</span>
+<span class="k">debugger</span><span class="p">;</span>
+<span class="kd">var</span> <span class="nx">getName</span> <span class="o">=</span> <span class="nx">people</span><span class="p">.</span><span class="nx">setName</span><span class="p">(</span><span class="nx">name</span><span class="p">);</span> <span class="c1">// 'x' -&gt; this.name = 'x' -&gt; window.name = 'x'</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">people</span><span class="p">.</span><span class="nx">name</span><span class="p">);</span> <span class="c1">// y -&gt; people.name</span>
+<span class="nx">console</span><span class="p">.</span><span class="nx">log</span><span class="p">(</span><span class="nx">getName</span><span class="p">());</span> <span class="c1">// x -&gt; window.name</span>
 </code></pre></div></div>
 
 <h3 id="css-box-model">CSS Box Model</h3>
+
 <hr />
 
 <p>Parts:</p>
+
 <ul>
   <li>margins</li>
   <li>borders</li>
@@ -564,6 +598,7 @@ promise2 promise { &lt;rejected&gt;: Error: error!!!}
 <h4 id="difference-between-ie-box-model-and-w3c-box-model">Difference between IE box model and W3C box model</h4>
 
 <p>How <code class="language-plaintext highlighter-rouge">width</code> and <code class="language-plaintext highlighter-rouge">height</code> is defined:</p>
+
 <ul>
   <li>IE (&lt;= IE6): width = actual visible/rendered width of an element’s box; height = actual visible/rendered height of an element’s box</li>
   <li>W3C (standard): width + padding + border = actual visible/rendered width of an element’s box; height + padding + border = actual visible/rendered height of an element’s box</li>
@@ -576,10 +611,13 @@ promise2 promise { &lt;rejected&gt;: Error: error!!!}
 <p>When use <code class="language-plaintext highlighter-rouge">border-box</code>, it changes the box model to be the way where an element’s specified width and height aren’t affected by padding or borders.</p>
 
 <p><a href="https://css-tricks.com/box-sizing/">Universal Box Sizing with Inheritance</a> (better practice?)</p>
+
 <div class="language-css highlighter-rouge"><div class="highlight"><pre class="highlight"><code><span class="nt">html</span> <span class="p">{</span>
   <span class="nl">box-sizing</span><span class="p">:</span> <span class="n">border-box</span><span class="p">;</span>
 <span class="p">}</span>
-<span class="o">*,</span> <span class="o">*</span><span class="nd">:before</span><span class="o">,</span> <span class="o">*</span><span class="nd">:after</span> <span class="p">{</span>
+<span class="o">*,</span>
+<span class="o">*</span><span class="nd">:before</span><span class="o">,</span>
+<span class="o">*</span><span class="nd">:after</span> <span class="p">{</span>
   <span class="nl">box-sizing</span><span class="p">:</span> <span class="nb">inherit</span><span class="p">;</span>
 <span class="p">}</span>
 </code></pre></div></div>
@@ -594,7 +632,6 @@ promise2 promise { &lt;rejected&gt;: Error: error!!!}
   <li><a href="https://developer.mozilla.org/en-US/docs/Learn/JavaScript/Objects/Object_prototypes">Object prototypes</a></li>
   <li><a href="https://www.codementor.io/@dariogarciamoya/understanding-this-in-javascript-with-arrow-functions-gcpjwfyuc">Understanding “this” in javascript with arrow functions</a></li>
 </ul>
-
 
     </div>
     <script type="text/javascript" src="/assets/javascript/return_to_top.js"></script>

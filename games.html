@@ -1,17 +1,15 @@
 ---
 layout: default
-title: Games - Qinjian
-head: Games
+title: Projects - Qinjian
+head: Projects
 ---
 
 <h2>{{ page.head }}</h2>
-<br/>
+<br />
 <div class="gamecontainer">
-    {%- for item in site.data.games -%}
-    <div id="game">
-        <a href="{{ item.link }}">
-            {{ item.name }}
-        </a>
-    </div>
-    {%- endfor -%}
+  {%- for item in site.data.projects -%}
+  <div id="game">
+    <a href="{{ item.link }}"> {{ item.name }} </a>
+  </div>
+  {%- endfor -%}
 </div>
