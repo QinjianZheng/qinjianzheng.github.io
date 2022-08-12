@@ -6,17 +6,21 @@
     <link rel="shortcut icon" href="/assets/imgs/favicon.ico" type="image/x-icon" />
     <link type="application/atom+xml" rel="alternate" href="/feed.xml" />
     <!-- Begin Jekyll SEO tag v2.7.1 -->
-<title>Qinjian’s Place</title>
+<title>Examples from Youtube video “Exploring Advanced TypeScript Concepts” by Headway</title>
 <meta name="generator" content="Jekyll v4.2.0" />
-<meta property="og:title" content="Qinjian’s Place" />
+<meta property="og:title" content="Examples from Youtube video “Exploring Advanced TypeScript Concepts” by Headway" />
 <meta property="og:locale" content="en_US" />
+<meta name="description" content="Lookup types A nested type inside another type type Route = { origin: {...}; destination: {...}; } type Origin = Route[&#39;origin&#39;]; type Destination = Route[&#39;destination&#39;]; Generics export enum TaskType { feature = &quot;feature&quot;, bug = &quot;bug&quot;, } type Task&lt;T = TaskType&gt; = { name: string; type: T; }; const whatever: Task = { name: &quot;SSO&quot;, type: TaskType.feature }; Extract Utility Function type Trip = | { origin: { uuid: string; city: string; state: string } } | { originUuid: string }; type TripWithOriginRef = Extract&lt;Trip, { originUuid: string }&gt;; type TripWithOriginWhole = Extract&lt;Trip, { origin: { uuid: string } }&gt;; const tripOriginRef = { originUuid: &quot;123&quot; }; const tripOriginWhole = { origin: { uuid: &quot;123&quot;, city: &quot;Denvor&quot;, state: &quot;Colorado&quot; }, }; const isRef = (trip: Trip): trip is TripWithOriginRef =&gt; { return trip.hasOwnProperty(&quot;originUuid&quot;); }; const isDraft = (trip: Trip): trip is TripWithOriginWhole =&gt; { return trip.hasOwnProperty(&quot;origin&quot;); }; const result = [tripOriginRef, tripOriginWhole].filter(isRef); Conditional Types type Diesel = { type: &quot;petroleum&quot; | &quot;bio&quot; | &quot;synthetic&quot;; }; type Gasoline = { type: &quot;hybrid&quot; | &quot;conventional&quot;; }; type Bus = { engine: Diesel; }; type Car = { engine: Gasoline; }; type Engine&lt;T&gt; = T extends { engine: unknown } ? T[&quot;engine&quot;] : never; type BusEngine = Engine&lt;Bus&gt;; const bugEngine: BusEngine = { type: &quot;bio&quot;, }; const carEngine: Engine&lt;Car&gt; = { type: &quot;hybrid&quot;, }; type Bicycle = { power: &quot;limbs&quot;; }; type NoEngine = Engine&lt;Bicycle&gt;; // const noEngine: NoEngine = { type: &quot;limbs&quot; }; // Type &#39;{ type: string; }&#39; is not assignable to type &#39;never&#39;.ts(2322) enum Priority { mustHave, } const backlog = { releases: [ { name: &quot;Sprint 1&quot;, epics: [ { name: &quot;Account Management&quot;, tasks: [ { name: &quot;SSO&quot;, priority: Priority.mustHave }, { name: &quot;Email Notifications&quot;, priority: Priority.mustHave }, ], }, ], }, ], }; type Unarray&lt;T&gt; = T extends Array&lt;infer U&gt; ? U : T; type Release = Unarray&lt;typeof backlog[&quot;releases&quot;]&gt;; Omit import React from &quot;react&quot;; import { Button, ButtonProps } from &quot;@material-ui/core&quot;; // you don&#39;t want people to change the variant of your button type Props = Omit&lt;ButtonProps, &quot;variant&quot;&gt;; const BrandButton: React.FC&lt;Props&gt; = ({ children, variant, ...rest }) =&gt; { return &lt;Button {...rest}&gt;{children}&lt;/Button&gt;; }; Pick and Omit in TypeScript have same semantics with those in lodash, they work on types instead of objects. infer keyword usage Exploring Advanced TypeScript Concepts" />
+<meta property="og:description" content="Lookup types A nested type inside another type type Route = { origin: {...}; destination: {...}; } type Origin = Route[&#39;origin&#39;]; type Destination = Route[&#39;destination&#39;]; Generics export enum TaskType { feature = &quot;feature&quot;, bug = &quot;bug&quot;, } type Task&lt;T = TaskType&gt; = { name: string; type: T; }; const whatever: Task = { name: &quot;SSO&quot;, type: TaskType.feature }; Extract Utility Function type Trip = | { origin: { uuid: string; city: string; state: string } } | { originUuid: string }; type TripWithOriginRef = Extract&lt;Trip, { originUuid: string }&gt;; type TripWithOriginWhole = Extract&lt;Trip, { origin: { uuid: string } }&gt;; const tripOriginRef = { originUuid: &quot;123&quot; }; const tripOriginWhole = { origin: { uuid: &quot;123&quot;, city: &quot;Denvor&quot;, state: &quot;Colorado&quot; }, }; const isRef = (trip: Trip): trip is TripWithOriginRef =&gt; { return trip.hasOwnProperty(&quot;originUuid&quot;); }; const isDraft = (trip: Trip): trip is TripWithOriginWhole =&gt; { return trip.hasOwnProperty(&quot;origin&quot;); }; const result = [tripOriginRef, tripOriginWhole].filter(isRef); Conditional Types type Diesel = { type: &quot;petroleum&quot; | &quot;bio&quot; | &quot;synthetic&quot;; }; type Gasoline = { type: &quot;hybrid&quot; | &quot;conventional&quot;; }; type Bus = { engine: Diesel; }; type Car = { engine: Gasoline; }; type Engine&lt;T&gt; = T extends { engine: unknown } ? T[&quot;engine&quot;] : never; type BusEngine = Engine&lt;Bus&gt;; const bugEngine: BusEngine = { type: &quot;bio&quot;, }; const carEngine: Engine&lt;Car&gt; = { type: &quot;hybrid&quot;, }; type Bicycle = { power: &quot;limbs&quot;; }; type NoEngine = Engine&lt;Bicycle&gt;; // const noEngine: NoEngine = { type: &quot;limbs&quot; }; // Type &#39;{ type: string; }&#39; is not assignable to type &#39;never&#39;.ts(2322) enum Priority { mustHave, } const backlog = { releases: [ { name: &quot;Sprint 1&quot;, epics: [ { name: &quot;Account Management&quot;, tasks: [ { name: &quot;SSO&quot;, priority: Priority.mustHave }, { name: &quot;Email Notifications&quot;, priority: Priority.mustHave }, ], }, ], }, ], }; type Unarray&lt;T&gt; = T extends Array&lt;infer U&gt; ? U : T; type Release = Unarray&lt;typeof backlog[&quot;releases&quot;]&gt;; Omit import React from &quot;react&quot;; import { Button, ButtonProps } from &quot;@material-ui/core&quot;; // you don&#39;t want people to change the variant of your button type Props = Omit&lt;ButtonProps, &quot;variant&quot;&gt;; const BrandButton: React.FC&lt;Props&gt; = ({ children, variant, ...rest }) =&gt; { return &lt;Button {...rest}&gt;{children}&lt;/Button&gt;; }; Pick and Omit in TypeScript have same semantics with those in lodash, they work on types instead of objects. infer keyword usage Exploring Advanced TypeScript Concepts" />
+<meta property="og:type" content="article" />
+<meta property="article:published_time" content="2022-08-12T00:00:00+10:00" />
 <meta name="twitter:card" content="summary" />
-<meta property="twitter:title" content="Qinjian’s Place" />
+<meta property="twitter:title" content="Examples from Youtube video “Exploring Advanced TypeScript Concepts” by Headway" />
 <script type="application/ld+json">
-{"headline":"Qinjian’s Place","url":"/","@type":"WebSite","@context":"https://schema.org"}</script>
+{"headline":"Examples from Youtube video “Exploring Advanced TypeScript Concepts” by Headway","dateModified":"2022-08-12T00:00:00+10:00","datePublished":"2022-08-12T00:00:00+10:00","mainEntityOfPage":{"@type":"WebPage","@id":"/2022/08/12/TypeScript.html"},"url":"/2022/08/12/TypeScript.html","@type":"BlogPosting","description":"Lookup types A nested type inside another type type Route = { origin: {...}; destination: {...}; } type Origin = Route[&#39;origin&#39;]; type Destination = Route[&#39;destination&#39;]; Generics export enum TaskType { feature = &quot;feature&quot;, bug = &quot;bug&quot;, } type Task&lt;T = TaskType&gt; = { name: string; type: T; }; const whatever: Task = { name: &quot;SSO&quot;, type: TaskType.feature }; Extract Utility Function type Trip = | { origin: { uuid: string; city: string; state: string } } | { originUuid: string }; type TripWithOriginRef = Extract&lt;Trip, { originUuid: string }&gt;; type TripWithOriginWhole = Extract&lt;Trip, { origin: { uuid: string } }&gt;; const tripOriginRef = { originUuid: &quot;123&quot; }; const tripOriginWhole = { origin: { uuid: &quot;123&quot;, city: &quot;Denvor&quot;, state: &quot;Colorado&quot; }, }; const isRef = (trip: Trip): trip is TripWithOriginRef =&gt; { return trip.hasOwnProperty(&quot;originUuid&quot;); }; const isDraft = (trip: Trip): trip is TripWithOriginWhole =&gt; { return trip.hasOwnProperty(&quot;origin&quot;); }; const result = [tripOriginRef, tripOriginWhole].filter(isRef); Conditional Types type Diesel = { type: &quot;petroleum&quot; | &quot;bio&quot; | &quot;synthetic&quot;; }; type Gasoline = { type: &quot;hybrid&quot; | &quot;conventional&quot;; }; type Bus = { engine: Diesel; }; type Car = { engine: Gasoline; }; type Engine&lt;T&gt; = T extends { engine: unknown } ? T[&quot;engine&quot;] : never; type BusEngine = Engine&lt;Bus&gt;; const bugEngine: BusEngine = { type: &quot;bio&quot;, }; const carEngine: Engine&lt;Car&gt; = { type: &quot;hybrid&quot;, }; type Bicycle = { power: &quot;limbs&quot;; }; type NoEngine = Engine&lt;Bicycle&gt;; // const noEngine: NoEngine = { type: &quot;limbs&quot; }; // Type &#39;{ type: string; }&#39; is not assignable to type &#39;never&#39;.ts(2322) enum Priority { mustHave, } const backlog = { releases: [ { name: &quot;Sprint 1&quot;, epics: [ { name: &quot;Account Management&quot;, tasks: [ { name: &quot;SSO&quot;, priority: Priority.mustHave }, { name: &quot;Email Notifications&quot;, priority: Priority.mustHave }, ], }, ], }, ], }; type Unarray&lt;T&gt; = T extends Array&lt;infer U&gt; ? U : T; type Release = Unarray&lt;typeof backlog[&quot;releases&quot;]&gt;; Omit import React from &quot;react&quot;; import { Button, ButtonProps } from &quot;@material-ui/core&quot;; // you don&#39;t want people to change the variant of your button type Props = Omit&lt;ButtonProps, &quot;variant&quot;&gt;; const BrandButton: React.FC&lt;Props&gt; = ({ children, variant, ...rest }) =&gt; { return &lt;Button {...rest}&gt;{children}&lt;/Button&gt;; }; Pick and Omit in TypeScript have same semantics with those in lodash, they work on types instead of objects. infer keyword usage Exploring Advanced TypeScript Concepts","@context":"https://schema.org"}</script>
 <!-- End Jekyll SEO tag -->
 
-    <title>Qinjian's Place</title>
+    <title>Examples from Youtube video "Exploring Advanced TypeScript Concepts" by Headway</title>
   </head>
   <body>
     
@@ -24,7 +28,7 @@
     <div class="logo"><a href="/">QINJIAN</a></div>
     <div class="menu">
         
-            <a href="/"  class="current" >
+            <a href="/" >
                 Home
             </a>
         
@@ -45,23 +49,9 @@
 </nav>
     <div class="main">
       <button id="return-to-top">➜</button>
-      <h2>
-  Hi, I'm Qinjian
-  <div id="image"><img id="me" src="/assets/imgs/me.png" alt="me" /></div>
-</h2>
+      <h2>Examples from Youtube video "Exploring Advanced TypeScript Concepts" by Headway</h2>
+<h5><i>12 Aug 2022</i></h5>
 
-<p id="introduction">
-  Welcome to my site! This is my personal place to share some of my thoughts
-  about interesting things I found in life and study. Feel free to hang around.
-</p>
-
-<br /><br />
-<h2>Recent Posts</h2>
-<br />
-
-
-
-<h3><a href="/2022/08/12/TypeScript.html">Examples from Youtube video "Exploring Advanced TypeScript Concepts" by Headway</a></h3>
 <h3 id="lookup-types">Lookup types</h3>
 
 <p>A nested type inside another type</p>
@@ -199,28 +189,6 @@
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" /><a href="https://learntypescript.dev/09/l2-conditional-infer"><code class="language-plaintext highlighter-rouge">infer</code> keyword usage</a></li>
   <li class="task-list-item"><input type="checkbox" class="task-list-item-checkbox" disabled="disabled" checked="checked" /><a href="https://youtu.be/eJ6R1knfsoc">Exploring Advanced TypeScript Concepts</a></li>
 </ul>
-
-<hr />
-
-
-
-<h3><a href="/2021/05/11/Front-end_programming_topics.html">Front-end programming topics</a></h3>
-<p>To be a well-rounded front-end programmer, one should have a solid understanding of underlying mechanism of tools she uses. Some might think that knowing how to use the tools is good enough, but the mistakes usually come from the lack of understanding. What’s worse, these mistakes are not easy to detect since ones who make them might not realize they are mistakes.</p>
-
-<p>The topics in this post are all about my own understandings, there might be mistakes. So if you find any, do contact me via <a href="mailto:qinjian.zheng@student.unsw.edu.au">Email</a>.</p>
-
-
-<hr />
-
-
-
-<h3><a href="/2021/03/17/Quick_Sort.html">Quick Sort</a></h3>
-<p>Quick sort implementation and problems related to it.</p>
-
-
-<hr />
-
-
 
     </div>
     <script type="text/javascript" src="/assets/javascript/return_to_top.js"></script>

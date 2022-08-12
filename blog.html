@@ -5,15 +5,12 @@ head: Posts
 ---
 
 <h2>{{ page.head }}</h2>
-<br/>
-  {% for post in site.posts %}
-    
-      <div class="listing">
-        <a href="{{ post.url }}">
-          {{ post.title }}
-        </a>
-        <span>{{ post.date | date_to_string}}</span>
-      </div>
+<br />
+{% for post in site.posts %}
 
+<div class="listing">
+  <a href="{{ post.url }}"> {{ post.title }} </a>
+  <span>{{ post.date | date_to_string}}</span>
+</div>
 
-  {% endfor %}
+{% endfor %}
